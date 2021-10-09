@@ -1,0 +1,56 @@
+<div class="template-array">
+	<div id="templateArrayTest">
+		<h3>Test the TemplateArray class.</h3>
+
+		<h3>Test 1: Parent and list.</h3>
+		<div id="test1Parent">
+			This is the header parent part.<br>
+			The variable abc is [${this.abc}].<br>
+			Below is the list<br>
+			<div id="test1List">
+				${index} : ${item.text}, ${item.number} : [${this.abc}]<br>
+			</div>
+			This is the footer parent part.<br>
+			The variable abc is [${this.abc}].
+		</div>
+
+		<h3>Test 2: Parent and empty list.</h3>
+		<div id="test2Parent">
+			<div class="${this.arrayList2.length===0 ? 'hidden' : ''}">
+				This list has something to show.
+				<div id="test2List">
+					${index} : ${item.text}, ${item.number} : [${this.abc}]<br>
+				</div>
+				I hope it is showing something.<br>
+				<button
+					onclick="
+						getController(this).arrayList2.shift();
+						getController(this).test2TemplateArray.update()">Clear list.</button>
+			</div>
+			<div class="${this.arrayList2.length!==0 ? 'hidden' : ''}">
+				List is empty.<br>
+				<button
+					onclick="
+						getController(this).arrayList2.push({text:'added', number: 1});
+						getController(this).test2TemplateArray.update()">Add to list.</button>
+			</div>
+		</div>
+
+		<h3>Test 3: No Parent with list.</h3>
+		<p>Should be a list of items below.</p>
+		<div id="test3List">
+			${index} : ${item.text}, ${item.number} : [${this.abc}]<br>
+		</div>
+
+		<h3>Test 4: Parent, list and special formatting.</h3>
+		<div id="test4Parent">
+			This is the header parent part.<br>
+			You should see the text [<span special-highlight="true">HELLO</span>] as highlighted but you should see the text [<span special-highlight="false">WORLD</span>] as normal.
+			<br>
+			<div id="test4List">
+				<span special-highlight="${index % 2 ? 'true' : 'false'}">${index} : ${item.text}, ${item.number} : [${this.abc}]</span><br>
+			</div>
+			This is the footer parent part.
+		</div>
+
+</div>

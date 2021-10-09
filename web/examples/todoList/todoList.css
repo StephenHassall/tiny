@@ -1,0 +1,139 @@
+/**
+ * Todo List CSS
+ */
+ 
+.todo-list {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  height: 100%;
+  padding-top: 5rem;
+  background-color: rgb(248,248,248);
+}
+
+.hidden {
+  display: none;
+}
+
+.panel {
+  width: 30rem;
+  margin: auto;
+  border-radius: 1rem;
+  padding: 1rem;
+  background-color: white;
+  box-shadow: 0 0.1rem 0.5rem rgb(0 0 0 / 30%);
+  position: relative;
+}
+
+.panel > h2 {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.1rem solid lightgray;
+}
+
+/* Form */
+.form-information {
+  display: inline-block;
+  width: calc(100% - 3rem);
+  height: 2rem;
+  padding: 0.2rem 0.4rem;
+  font-size: 1rem;
+  line-height: 1rem;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 0.1rem solid #ccc;
+  border-radius: 0.5rem;
+  box-sizing: border-box; 
+  box-shadow: inset 0 0.1rem 0.1rem rgb(0 0 0 / 8%);
+}
+
+.form-information:focus {
+  border-color: #66afe9;
+  outline: 0;
+  box-shadow: inset 0 0.1rem 0.1rem rgb(0 0 0 / 8%), 0 0 8px rgb(102 175 233 / 60%);
+}
+
+.form-done {
+  padding: 0;
+  margin: 0;
+  width: 2rem;
+  height: 2rem;
+  vertical-align: bottom;
+}
+
+/* Buttons */
+.add-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: x-large;
+  border-radius: 1rem;
+  box-shadow: none;
+  border: none;
+  width: 2rem;
+  background-color: lightsteelblue;
+  color: white;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  background-color: lightskyblue;
+}
+
+.button {
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+  border: 2px solid #555;
+  background-color: #999;
+  color: white;
+  font-size: 120%;
+  user-select: none;
+  cursor: pointer;
+  box-shadow: 0 0 0.3rem rgb(0 0 0 / 30%);
+  margin-right: 0.5rem;
+}
+
+.button:hover {
+  background-color: #777;
+}
+
+.button:disabled {
+  background-color: #eee;
+  color: #555;
+  cursor: not-allowed;
+  border: 2px solid #ddd;
+}
+
+/* Todo list */
+.todo-list-area {
+  margin-top: 1rem;
+}
+
+.todo-item {
+  width: 100%;
+  height: 3rem;
+  line-height: 3rem;
+  background-color: #eee;
+  border-radius: 0.3rem;
+  text-overflow: ellipsis;
+  padding-left: 1rem;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-top: 0.5rem;
+  box-sizing: border-box;
+  box-shadow: 0 0 0.3rem rgb(0 0 0 / 20%);
+  user-select: none;
+  cursor: pointer;
+}
+
+.todo-item-done {
+  border-left: 0.65rem solid #ffca3a;
+}
+
+.todo-list-empty {
+  text-align: center;
+  line-height: 10rem;
+  font-size: 150%;
+}

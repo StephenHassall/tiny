@@ -1,0 +1,67 @@
+<div class="todo-list">
+	<div class="panel">
+		<h2>Todo List</h2>
+			
+		<!-- Form Area -->
+		<form
+			id="formArea"
+			class="${this.mode===1 || this.mode===2 ? 'not-hidden' : 'hidden'}">
+			<div style="margin-top: 1rem; margin-bottom: 1rem;">
+				<input
+					id="formInfo"
+					class="form-information"
+					type="text"
+					placeholder="what to do?"
+					oninput="getController(this).formChange()">
+				<input
+					id="formDone"
+					class="form-done"
+					type="checkbox">
+			</div>
+		</form>
+
+		<!-- Butto Area -->
+		<div id="buttonArea">
+			<button
+				class="${this.mode===0 ? 'add-button' : 'hidden'}"
+				onclick="getController(this).add()">+</button>
+			<button
+				class="${this.mode===1 ? 'button' : 'hidden'}"
+				tiny-disabled="${this.formValid===false ? 'disabled' : ''}"
+				onclick="getController(this).save()">Save</button>
+			<button
+				class="${this.mode===2 ? 'button' : 'hidden'}"
+				tiny-disabled="${this.formValid===false ? 'disabled' : ''}"
+				onclick="getController(this).update()">Update</button>
+			<button
+				class="${this.mode===1 || this.mode===2 ? 'button' : 'hidden'}"
+				onclick="getController(this).cancel()">Cancel</button>
+			<button
+				class="${this.mode===2 ? 'button' : 'hidden'}"
+				onclick="getController(this).delete()">Delete</button>
+			<div
+				style="border-bottom: 0.1rem solid lightgray; padding-top: 1rem;"
+				class="${this.mode===0 ? 'hidden' : 'not-hidden'}">
+			</div>
+		</div>
+
+		<!-- List Area -->
+		<div id="todoListParent">
+			<div class="${this.todoList.length===0 ? 'todo-list-empty' : 'hidden'}">
+				Nothing to do...
+			</div>
+			<div class="${this.todoList.length!==0 ? 'not-hidden' : 'hidden'}">
+				<div
+					id="todoListList"
+					class="todo-list-area">
+					<div
+						class="${item.done===true ? 'todo-item todo-item-done' : 'todo-item'}"
+						onclick="getController(this).select('${index}')">
+						${item.info}
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

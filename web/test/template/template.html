@@ -1,0 +1,81 @@
+<div class="template">
+	<div id="templateTest">
+		<h3>Test the Template class.</h3>
+		<p>
+			There are 3 variables. a = 1, b = 2, c = 3.
+			<br>
+			Sum: ${this.a + this.b + this.c}
+			<br>
+			Check a is 1: ${this.a===1 ? 'Yes is a is 1' : 'No a is not 1'}
+			<br>
+			Check a is not 1: ${this.a!==1 ? 'Yes a is not 1' : 'No a is 1'}
+			<br>
+			Check a is 1 and b is 2: ${this.a===1 && this.b===2 ? 'Yes a is 1 and b is 2' : 'No a is not 1 or b is not 2'}
+			<br>
+			Check a is 1 or b is 2 or c is 3: ${this.a===1 || this.b===2 || this.c===3 ? 'Yes your are right' : 'No something is wrong'}
+			<br>
+			Check a is 5 or b is 6 or c is 7: ${this.a===5 || this.b===6 || this.c===7 ? 'Yes your are right' : 'No a is not 5 and b is not 6 and c is not 7'}
+			<br>
+			Check a is less than b: ${this.a < this.b ? 'a is less than b' : 'a is not less than b'}
+			<br>
+			Check c is more than a: ${this.c > this.a ? 'c is more than a' : 'c is not more than a'}
+			<br>
+		</p>
+		<p>
+			There is the string abc = "hello world".
+			<br>
+			Show abc: ${this.abc}
+			<br>
+			Show first 3 characters: ${this.abc.substr(0, 3)}
+			<br>
+			Check abc starts with hello: ${this.abc.startsWith('hello')===true ? 'yes, starts with hello' : 'no, something wrong'}
+			<br>
+			Show with starting and ending [ ] characters: ${'[' + this.abc + ']'}
+		</p>
+		<p>
+			There is a function that doubles the parameter.
+			<br>
+			1 x 1 is 2: ${this.double(1)}
+			<br>
+			4 x 4 is 16: ${this.double(4)}
+		</p>
+		<p>
+			Make sure normal ampersand &amp; character is correct.
+			<br>
+			Make sure normal less than &lt; character is correct.
+			<br>
+			Make sure normal greater than &gt; character is correct.
+		</p>
+		<p>
+			Test adding styles to text. There is a variable called color1 (red), color2 (green).
+			<br>
+			<span tiny-style="background-color: ${this.color1}">This should be red background.</span>
+			<br>
+			<span tiny-style="background-color: ${this.color2}">This should be green background.</span>
+			<br>
+			<span tiny-style="background-color: ${this.a===1 ? this.color1 : this.color2}">If a is 1 then show green else show red.</span>
+		</p>
+		<p>
+			Some attrubites are boolean (exists=true, missing=false)
+			<br>
+			<button tiny-disabled="${this.a===1 ? 'disabled' : ''}">Disabled if a is 1</button>
+			<br>
+			<button tiny-disabled="${this.a===5 ? 'disabled' : ''}">Disabled if a is 5 (should not be disabled)</button>
+			<br>
+			<input type="text" value="read only if b is 2" tiny-readonly="${this.b===2 ? 'readonly' : ''}">
+		</p>
+		<p>
+			You will need to use &lt;span&gt; to stop it from formatting the following examples.
+			<br>
+			This is normal text <span style="color: blue;">tiny-</span>help="please do not format".
+			<br>
+			This is normal text <span style="color: blue;">$</span>{this.a===1 && this.b===2}.
+		</p>
+	</div>
+	<div id="specialTemplateTest">
+		<p>
+			Looking at SpecialTemplate to make sure it formats the extra formatting.<br>
+			You should see the text [<span special-highlight="true">HELLO</span>] as highlighted but you should see the text [<span special-highlight="false">WORLD</span>] as normal.
+		</p>
+	</div>
+</div>

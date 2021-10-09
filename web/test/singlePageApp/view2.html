@@ -1,0 +1,39 @@
+<div>
+  <h3>View #2</h3>
+	<table>
+		<tbody id="templateArea">
+			<tr>
+				<td>Local View Count</td>
+				<td>${this.localViewCount}</td>
+        <td>
+          <button type="button" onclick="getController(this).addLocalViewCount()">+</button>
+          <button type="button" onclick="getController(this).minusLocalViewCount()">-</button>
+        </td>
+			</tr>
+			<tr>
+				<td>Global Count</td>
+				<td>${this.globalService.globalCount}</td>
+        <td>
+          <button
+            type="button"
+            onclick="
+              getController(this).globalService.addGlobalCount();
+              getController(this).update();">+</button>
+          <button
+            type="button"
+            onclick="
+              getController(this).globalService.minusGlobalCount();
+              getController(this).update();">-</button>
+        </td>
+			</tr>
+			<tr>
+				<td>Param1</td>
+				<td>${this.routeParams.param1}</td>
+			</tr>
+		</tbody>
+	</table>
+
+  <button class="goto-button" onclick="getController(this).gotoView(1)">Go To View 1</button>
+  <button class="goto-button" onclick="getController(this).gotoView(2)">Go To View 2</button>
+  <button class="goto-button" onclick="getController(this).gotoView(3)">Go To View 3</button>
+</div>

@@ -1,0 +1,20 @@
+<!-- test3.html -->
+<div style="background-color: green; color: white;">
+  <p id="test3" style="margin: 0;">
+    Test 3: ${this.count}
+  </p>  
+  <button
+    class="goto-button"
+    onclick="
+      getController(this).test();
+      event.stopPropagation();">Test 3 Button</button>
+  <br>
+  <test-2-controller
+    onclick="
+      getController(this).test();
+      event.stopPropagation();"></test-2-controller>
+  <test-2-controller
+    onclick="
+      getController(this).test();
+      event.stopPropagation();"></test-2-controller>
+</div>

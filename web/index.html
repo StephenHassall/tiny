@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Tiny Web Application Framework" />
+  <meta name="keywords" content="HTML, CSS, JavaScript, Framework, Web Component" />
+  <meta name="author" content="Stephen Paul Hassall" />
+  <meta name="robots" content="all" />
+  <link rel="icon" type="image/png" href="/tiny-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="/tiny-16x16.png" sizes="16x16" />
+  <link href="/tiny.css" rel="stylesheet" type="text/css" media="all" />
+  <title>Tiny Web Application Framework</title>
+</head>
+<body style="background-color: white;">
+  <!-- Header -->
+  <div style="max-width: 100rem; margin: auto; margin-top: 2rem; padding-left: 1rem; padding-right: 1rem;">
+    <div>
+      <img style="height: 2rem;" src="/tiny.svg" alt="Tiny Web Application Framework"></img>
+      <span style="font-size: 2rem; margin-left: 1rem;">
+        Tiny Web Application Framework
+      </span>
+    </div>
+    <h1 style="font-size: 3.5rem; line-height: 3.5rem;">
+      Build websites without unnecessary complexity. Use existing standards in a simple way.
+    </h1>
+    <h3 style="font-size: 2rem; color: gray; font-weight: 600; margin-top: 0;">
+      No build tools. No TypeScript. No JSX. No mountain of code to learn.
+      No framework that goes out of date in a month.
+      Just a small library and simple code.
+    </h3>
+
+    <div>
+      <a href="help/gettingStarted.html" class="button-get-started">GET STARTED</a>
+      <a href="help/index.html" class="button-learn-more">LEARN MORE</a>
+      <a href="https://github.com/StephenHassall/tiny" class="button-github">GITHUB</a>
+    </div>  
+  </div>
+
+
+  <!-- Introduction -->
+  <div style="max-width: 100rem; margin: auto; margin-top: 2rem; padding-left: 1rem; padding-right: 1rem;">
+
+    <div
+      style="
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+        gap: 2rem;">
+
+      <div class="info-panel">
+        <div style="background-color: #f8961f; color: white;" class="info-panel-title">Model-View-Controller (MVC)</div>
+        <div class="info-panel-text">
+          A controller has its own separate HTML, CSS and JavaScript files, making it easier to edit their different parts.
+        </div>
+      </div>
+
+      <div class="info-panel">
+        <div style="background-color: #4e908e; color: white;" class="info-panel-title">String Templates &amp; HTML</div>
+        <div class="info-panel-text">
+          Format HTML using standard JavaScript string template literals. The <span class="label">${...}</span> notation can include variables, functions, and embedded conditions.
+        </div>
+      </div>
+
+      <div class="info-panel">
+        <div style="background-color: #f3732d; color: white;" class="info-panel-title">Two Way Data Binding</div>
+        <div class="info-panel-text">
+          Transfer information between data and form inputs. Create a link between the property of an object and an input element.
+        </div>
+      </div>
+
+      <div class="info-panel">
+        <div style="background-color: #287ea1; color: white;" class="info-panel-title">Single Page Apps &amp; Routing</div>
+        <div class="info-panel-text">
+          Create a single page application with multiple views for quick and dynamic web sites.
+        </div>
+      </div>
+
+      <div class="info-panel">
+        <div style="background-color: #44aa8b; color: white;" class="info-panel-title">ES6 &amp; Web Components</div>
+        <div class="info-panel-text">
+          Using modern web standards. These are more resilient to change. So, the code you write today, will be working long into the future.
+        </div>
+      </div>
+    </div>
+
+    <h2 style="font-size: 3rem; font-weight: 600; margin-bottom: 0;">What the HTML looks like</h2>
+
+    <h3 style="font-size: 1.5rem; color: gray; font-weight: normal; margin-top: 1rem;">
+      Keep HTML, CSS and JavaScript files separate. Use string template literal notation to format the HTML. Use inline events to call controller functions.
+    </h3>
+
+<pre class="help-source">
+<span class="html-brown">&lt;div</span> <span class="html-red">class</span>=<span class="html-blue">"lucky7"</span><span class="html-brown">&gt;</span>
+  <span class="html-brown">&lt;h3&gt;</span>Role the dice and see how lucky you are? Will you get the lucky 7?<span class="html-brown">&lt;/h3&gt;</span>
+  <span class="html-brown">&lt;div</span> <span class="html-red">id</span>=<span class="html-blue">"templateArea"</span><span class="html-brown">&gt;</span>
+    <span class="html-brown">&lt;div</span> <span class="html-red">class</span>=<span class="html-blue">"dice"</span><span class="html-brown">&gt;</span>${this.dice1}<span class="html-brown">&lt;/div&gt;</span>
+    <span class="html-brown">&lt;div</span> <span class="html-red">class</span>=<span class="html-blue">"dice"</span><span class="html-brown">&gt;</span>${this.dice2}<span class="html-brown">&lt;/div&gt;</span>
+    <span class="html-brown">&lt;div</span> <span class="html-red">class</span>=<span class="html-blue">"equal"</span><span class="html-brown">&gt;</span>=<span class="html-brown">&lt;/div&gt;</span>
+    <span class="html-brown">&lt;div</span> <span class="html-red">class</span>=<span class="html-blue">"dice ${this.diceTotal===7 ? 'dice-lucky' : ''}"</span><span class="html-brown">&gt;</span>${this.diceTotal}<span class="html-brown">&lt;/div&gt;</span>
+  <span class="html-brown">&lt;/div&gt;</span>
+  <span class="html-brown">&lt;button</span>
+    <span class="html-red">class</span>=<span class="html-blue">"roleDice"</span>
+    <span class="html-red">onclick</span>=<span class="html-blue">"</span><span class="js-brown">getController</span><span class="js-blue">(this)</span>.<span class="js-brown">roleDice</span><span class="js-blue">()</span><span class="html-blue">"</span><span class="html-brown">&gt;</span>
+    Role Dice
+  <span class="html-brown">&lt;/button&gt;</span>
+<span class="html-brown">&lt;/div&gt;</span>
+</pre>
+
+    <h2 style="font-size: 3rem; font-weight: 600; margin-bottom: 0;">What the code looks like</h2>
+
+    <h3 style="font-size: 1.5rem; color: gray; font-weight: normal; margin-top: 1rem;">
+      Load in HTML and CSS files dynamically. Set local variables. Handle the loaded event. Create template area. Process inline event.
+    </h3>
+
+<pre class="help-source">
+<span class="js-purple">import</span> Controller <span class="js-purple">from</span> <span class="js-red">"/lib/tiny/controller.js"</span>;
+<span class="js-purple">import</span> Template <span class="js-purple">from</span> <span class="js-red">"/lib/tiny/template.js"</span>;
+
+<span class="js-green">
+/**
+ * Luck 7
+ * 
+ * This web component shows how the Template class is used to set HTML text areas using
+ * string templates.
+ */</span>
+<span class="js-purple">export default</span> <span class="js-blue">class</span> <span class="js-gray">Lucky7Controller</span> <span class="js-blue">extends</span> <span class="js-gray">Controller</span> {
+  <span class="js-green">/**
+   * Lucky 7 controller web component constructor.
+   * </span><span class="html-blue">@constructor</span>
+   <span class="js-green">*/</span>
+  <span class="js-blue">constructor</span>() {
+    <span class="js-green">// Call the super with the page to load</span>
+    <span class="js-blue">super</span>({
+      htmlPath: <span class="js-red">'lucky7.html'</span>,
+      cssPath: <span class="js-red">'lucky7.css'</span>,
+      importMetaUrl: <span class="js-purple">import</span>.meta.url,
+      useShadowDom: <span class="js-blue">true</span>
+    });
+
+    <span class="js-green">// Set the dice parts</span>
+    <span class="js-blue">this</span>.dice1 = Math.<span class="js-brown">floor</span>(Math.<span class="js-brown">random</span>() * <span class="js-green">6</span>) + <span class="js-green">1</span>;
+    <span class="js-blue">this</span>.dice2 = Math.<span class="js-brown">floor</span>(Math.<span class="js-brown">random</span>() * <span class="js-green">6</span>) + <span class="js-green">1</span>;
+    <span class="js-blue">this</span>.diceTotal = <span class="js-blue">this</span>.dice1 + <span class="js-blue">this</span>.dice2;
+  }
+  
+  <span class="js-green">/**
+   * Override loadCallback function to handle when HTML/CSS has been loaded.
+   * </span><span class="html-blue">@override</span>
+   <span class="js-green">*/</span>  
+  <span class="js-brown">loadedCallback</span>() {
+    <span class="js-green">// Create template area object</span>
+    <span class="js-blue">this</span>._templateArea = <span class="js-blue">new</span> <span class="js-gray">Template</span>(<span class="js-red">'templateArea'</span>, <span class="js-blue">this</span>);
+  
+    <span class="js-green">// Update the template area for the first time</span>
+    <span class="js-blue">this</span>._templateArea.<span class="js-brown">update</span>();
+  }
+ 
+  <span class="js-green">/**
+   * Role dice button event.
+   * 
+   */</span>  
+  <span class="js-brown">roleDice</span>() {
+    <span class="js-green">// Reset the dice parts</span>
+    <span class="js-blue">this</span>.dice1 = Math.<span class="js-brown">floor</span>(Math.<span class="js-brown">random</span>() * <span class="js-green">6</span>) + <span class="js-green">1</span>;
+    <span class="js-blue">this</span>.dice2 = Math.<span class="js-brown">floor</span>(Math.<span class="js-brown">random</span>() * <span class="js-green">6</span>) + <span class="js-green">1</span>;
+    <span class="js-blue">this</span>.diceTotal = <span class="js-blue">this</span>.dice1 + <span class="js-blue">this</span>.dice2;
+  
+    <span class="js-green">// Update the template area with the new values</span>
+    <span class="js-blue">this</span>._templateArea.<span class="js-brown">update</span>();
+  }
+}
+
+<span class="js-green">// Define controller web component</span>
+customElements.<span class="js-brown">define</span>(<span class="js-red">'lucky7-controller'</span>, <span class="js-gray">Lucky7Controller</span>);
+</pre>
+
+  </div>
+
+  <div style="position: absolute; left: 0; right: 0; background-color: rgb(248,248,248); margin-top: 1rem;">
+
+    <div style="max-width: 100rem; margin: auto; margin-top: 2rem; padding-left: 1rem; padding-right: 1rem; margin-bottom: 1rem;">
+
+      <div
+        style="
+          width: 100%;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+          gap: 2rem;">
+  
+        <div class="footer-help">
+          <b>GENERAL</b>
+          <a href="help/index.html">Introduction</a>
+          <a href="help/gettingStarted.html">Getting Started</a>
+        </div>
+
+        <div class="footer-help">
+          <b>REFERENCE</b>
+          <a href="help/controller.html">Controller</a>
+          <a href="help/template.html">Template</a>
+          <a href="help/templateArray.html">TemplateArray</a>
+          <a href="help/form.html">Form</a>
+          <a href="help/route.html">Route (SPA)</a>
+          <a href="help/location.html">Location</a>
+        </div>
+
+        <div class="footer-help">
+          <b>EXAMPLE</b>
+          <a href="help/exampleMultilingual.html">Multilingual</a>
+          <a href="help/exampleLucky7.html">Lucky 7</a>
+          <a href="help/exampleSimpleList.html">Simple List</a>
+          <a href="help/exampleTodoList.html">Todo List</a>
+          <a href="help/exampleQuestionnaire.html">Questionnaire</a>
+        </div>
+
+        <div class="footer-help">
+          <b>EXTRA</b>
+          <a href="help/limitations.html">Limitations</a>
+          <a href="help/releaseNotes.html">Release Notes</a>
+        </div>
+
+      </div>
+  </div>
+
+</body>

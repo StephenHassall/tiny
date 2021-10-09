@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Tiny Web Application Framework" />
+  <meta name="keywords" content="HTML, CSS, JavaScript, Framework, Web Component" />
+  <meta name="author" content="Stephen Paul Hassall" />
+  <meta name="robots" content="all" />
+  <link rel="icon" type="image/png" href="/tiny-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="/tiny-16x16.png" sizes="16x16" />
+  <link href="/tiny.css" rel="stylesheet" type="text/css" media="all" />
+  <title>Tiny Web Application Framework Help - Reference: Controller </title>
+</head>
+<body>
+  <!-- Header -->
+  <div class="help-header">
+    <a href="/index.html" class="help-header-logo">
+      <img src="/tiny.svg" alt="Tiny Web Application Framework"></img>
+    </a>
+    <div class="help-header-title">Tiny Web Application Framework</div>
+  </div>
+
+  <!-- Help Side Bar-->
+  <div class="help-side-bar">
+    <div class="help-side-bar-group">
+      <div class="help-side-bar-group-title">General:</div>
+      <a href="index.html">Introduction</a>
+      <a href="gettingStarted.html">Getting Started</a>
+    </div>
+    <div class="help-side-bar-group">
+      <div class="help-side-bar-group-title">Reference:</div>
+      <a href="controller.html" class="help-side-bar-set">Controller</a>
+      <a href="template.html">Template</a>
+      <a href="templateArray.html">TemplateArray</a>
+      <a href="form.html">Form</a>
+      <a href="route.html">Route (SPA)</a>
+      <a href="location.html">Location</a>
+    </div>
+    <div class="help-side-bar-group">
+      <div class="help-side-bar-group-title">Examples:</div>
+      <a href="exampleMultilingual.html">Multilingual</a>
+      <a href="exampleLucky7.html">Lucky 7</a>
+      <a href="exampleSimpleList.html">Simple List</a>
+      <a href="exampleTodoList.html">Todo List</a>
+      <a href="exampleQuestionnaire.html">Questionnaire</a>
+    </div>
+    <div class="help-side-bar-group">
+      <div class="help-side-bar-group-title">Extra:</div>
+      <a href="limitations.html">Limitations</a>
+      <a href="releaseNotes.html">Release Notes</a>
+    </div>
+  </div>
+
+  <!-- Help Page -->
+  <div class="help-page">
+    <h2>Reference: Controller</h2>
+    <span class="label">import Controller from "/lib/tiny/controller.js";</span>
+
+    <h3>Overview</h3>
+    <p>
+      The Controller class is used to create your own Web Component (or Custom Element) controllers.
+      Look at a controller as the <b>C</b> part of the MVC (Model-View-Controller) architectural design pattern.
+    </p>
+    
+    <h3>Usage</h3>
+
+    <p>
+      Create a controller in the following way. First import the Tiny Controller class.
+      Then declare a class of your own derived from the Controller class.
+      At the end use the customElement object to define the Web Component.
+    </p>
+
+<pre class="help-source">
+<span class="js-purple">import</span> Controller <span class="js-purple">from</span> <span class="js-red">"/lib/tiny/controller.js"</span>;
+
+<span class="js-purple">export default</span> <span class="js-blue">class</span> <span class="js-gray">HelloWorld</span> <span class="js-blue">extends</span> <span class="js-gray">Controller</span> {
+  <span class="js-green">// ...</span>
+}
+customElements.<span class="js-brown">define</span>(<span class="js-red">'hello-world'</span>, <span class="js-gray">HelloWorld</span>);
+</pre>
+  
+    <h3>Constructor</h3>
+
+    <p>
+      From your own controller, in its constructor, you will need to call the super function with an <span class="label">options</span> object that has a
+      number of settings to control how the controller works.
+    </p>
+
+<pre class="help-source">
+<span class="js-blue">constructor</span>() {
+  <span class="js-blue">super</span>({
+      htmlPath: <span class="js-red">'helloWorld.html'</span>,
+      cssPath: <span class="js-red">'helloWorld.css',</span>
+      importMetaUrl: <span class="js-purple">import</span>.meta.url,
+      useShadowDom: <span class="js-blue">false</span>,
+      cache: <span class="js-blue">true</span>
+  });
+}
+</pre>
+ 
+    <table>
+      <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Information</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>htmlPath</td>
+          <td><span class="label-type">string</span></td>
+          <td>
+            Either the relative path or the full path to the HTML file.
+            <span class="label-required">Required</span>
+          </td>
+        </tr>
+        <tr>
+          <td>cssPath</td>
+          <td><span class="label-type">string</span></td>
+          <td>Either the relative path or the full path to the CSS file.</td>
+        </tr>
+        <tr>
+          <td>importMetaUrl</td>
+          <td><span class="label-type">string</span><br></td>
+          <td>
+            The <span class="label">"import.meta.url"</span> value of the derived web component.
+            If this is used then the HTML and CSS file locations will be relative to the path of the derived web component Javascript file.
+          </td>
+        </tr>
+        <tr>
+          <td>useShadowDom</td>
+          <td><span class="label-type">boolean</span></td>
+          <td>
+            Is the controller using a shadow DOM. A shadow DOM stops styles leaking in or out of the controller.
+            <span class="label-default">Default = false</span>
+          </td>
+        </tr>
+        <tr>
+          <td>cache</td>
+          <td><span class="label-type">boolean</span></td>
+          <td>
+            Should the HTML and CSS files be cached, or should the files be fetched each time the controller is created.
+            They will be stored in memory. This is useful if the controller is used with the <span class="label">Route</span> class
+            and a Single Page Application setup.
+            <span class="label-default">Default = true</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>loadedCallback <span class="label-override">override</span></h3>
+
+    <p>
+      After the controller has loaded in the HTML and, if required, the CSS file, and after the controller has
+      been attached to the DOM, it will call the <span class="label">loadedCallback</span> function. You will
+      need to override this function in your own derived controller class to perform any required setup tasks.
+    </p>
+    <p>
+      The controller's HTML will exist but it is set to not being visible until after the callback function returns.
+      This way, any HTML that contains template formatting will not be seen before it has been processed.
+    </p>
+
+    <!-- show example of the function to override -->
+
+    <h3>getElementById</h3>
+
+    <p>
+      If you need to find an element located within the controller then you need to use the <span class="label">getElementById</span>
+      function. This is similar to the <span class="label">document.getElementById</span> function but only works within
+      the controller's HTML and will not find any elements with the same id that exists outside the controller.
+    </p>
+
+    <h4>Parameters:</h4>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Parameter</th>
+          <th>Type</th>
+          <th>Information</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>elementId</td>
+          <td><span class="label-type">string</span></td>
+          <td>The id attribute value of the element you are searching for.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>Returns:</h4>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Information</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="label-type">Element</span></td>
+          <td>The found element object, or null if not found.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>window.getController</h3>
+
+    <p>
+      Within HTML you can use inline events that are triggered at different times for differenet events. For example,
+      the <span class="label">onclick</span> event is triggered when a button is pressed. You can run any JavaScript
+      code within the inline abbribute value.
+    </p>
+
+    <p>
+      To run a function that belongs to the controller, that the HTML element is part of, you use the <span class="label">getController</span>
+      global function, using the <span class="label">this</span> parameter. This looks for and returns the controller
+      and allows you to interact with any property or function that belongs to it.
+    </p>
+
+    <!-- Footer -->
+    <div class="footer">
+      <a href="gettingStarted.html">&lt; Getting Started</a>
+      <a href="template.html">Template &gt;</a>
+    </div>
+
+  </div>
+</body>
+</html>

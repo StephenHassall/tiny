@@ -1,0 +1,41 @@
+<div class="simpleList">
+	<h3>Shows a simple list within a table.</h3>
+	<table id="parent">
+		<thead>
+			<tr>
+				<th onclick="getController(this).setSort('name')">
+					<div class="${this.sortField==='name' ? 'header' : 'hidden'}">
+						<span class="${this.sortDirection==='up' ? 'header-up' : 'header-down'}"></span>
+					</div>
+					Name
+				</th>
+				<th onclick="getController(this).setSort('age')">
+					<div class="${this.sortField==='age' ? 'header' : 'hidden'}">
+						<span class="${this.sortDirection==='up' ? 'header-up' : 'header-down'}"></span>
+					</div>
+					Age
+				</th>
+			</tr>
+		</thead>
+		<tbody id="list">
+			<tr
+				class="${item.id===this.currentItem.id ? 'selected-item' : ''}"
+				onclick="getController(this).selectItem('${index}')">
+				<td>${item.name}</td>
+				<td>${item.age}</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<p id="currentItem">
+		<span class="${this.currentItem.id!==-1 ? 'hidden' : ''}">Nothing selected</span>
+		<span class="${this.currentItem.id===-1 ? 'hidden' : ''}">
+			Current item
+			${this.currentItem.id},
+			${this.currentItem.name},
+			${this.currentItem.age}
+		</span>
+	</p>
+
+	<button onclick="getController(this).deleteItem()">Delete</button>
+</div>

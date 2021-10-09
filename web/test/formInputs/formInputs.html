@@ -1,0 +1,356 @@
+<div class="form-inputs">
+	<form id="form">
+		<div class="form-list">
+
+			<!-- Header -->
+			<div class="form-info" style="grid-row: 1;">
+				<h2>Form Input Type</h2>
+			</div>
+			<div class="form-input" style="grid-row: 1;">
+				<h2>Input</h2>
+			</div>
+
+			<div class="form-result" style="grid-row: 1;">
+				<h2>Result</h2>
+			</div>
+
+			<!-- INPUT text -->
+			<div class="form-info" style="grid-row: 2;">
+				&lt;input type=&quot;text&quot;&gt;
+			</div>
+
+			<div class="form-input" style="grid-row: 2;">
+				<label for="inputTextString">textString (string):</label>
+				<br>
+				<input id="inputTextString" type="text">
+				<br>
+				<label for="inputTextNumber">textNumber (number):</label>
+				<br>
+				<input id="inputTextNumber" type="text">
+			</div>
+
+			<div class="form-result" style="grid-row: 2;">
+				textString = [${this.formData.textString===undefined ? 'undefined' : this.formData.textString}] typeof (${typeof this.formData.textString})<br>
+				textNumber = [${this.formData.textNumber===undefined ? 'undefined' : this.formData.textNumber}] typeof (${typeof this.formData.textNumber})
+			</div>
+		
+			<!-- TEXTAREA -->
+			<div class="form-info" style="grid-row: 3;">
+				&lt;textarea&gt;
+			</div>
+
+			<div class="form-input" style="grid-row: 3;">
+				<label style="vertical-align: top;" for="inputTextAreaString">textAreaString (string):</label>
+				<br>
+				<textarea id="inputTextAreaString" rows="4"></textarea>
+			</div>
+
+			<div class="form-result" style="grid-row: 3;">
+				textAreaString = [${this.formData.textAreaString===undefined ? 'undefined' : this.formData.textAreaString}] typeof (${typeof this.formData.textAreaString})
+			</div>
+
+			<!-- INPUT checkbox -->
+			<div class="form-info" style="grid-row: 4;">
+				&lt;input type=&quot;checkbox&quot;&gt;
+			</div>
+
+			<div class="form-input" style="grid-row: 4;">
+				<label for="inputCheckBoxBoolean">checkBoxBoolean (boolean):</label>
+				<input id="inputCheckBoxBoolean" type="checkbox">
+				<br>
+				<label for="inputCheckBoxNumber">checkBoxNumber (number):</label>
+				<input id="inputCheckBoxNumber" type="checkbox">
+				<br>
+				<label for="inputCheckBoxString">checkBoxString (string):</label>
+				<input id="inputCheckBoxString" type="checkbox">
+			</div>
+
+			<div class="form-result" style="grid-row: 4;">
+				checkBoxBoolean = [${this.formData.checkBoxBoolean===undefined ? 'undefined' : this.formData.checkBoxBoolean}] typeof (${typeof this.formData.checkBoxBoolean})<br>
+				checkBoxNumber = [${this.formData.checkBoxNumber===undefined ? 'undefined' : this.formData.checkBoxNumber}] typeof (${typeof this.formData.checkBoxNumber})<br>
+				checkBoxString = [${this.formData.checkBoxString===undefined ? 'undefined' : this.formData.checkBoxString}] typeof (${typeof this.formData.checkBoxString})
+			</div>
+
+			<!-- SELECT -->
+			<div class="form-info" style="grid-row: 5;">
+				&lt;select&gt;
+			</div>
+
+			<div class="form-input" style="grid-row: 5;">
+				<label for="inputSelectNumber">selectNumber (number):</label>
+				<select id="inputSelectNumber">
+					<option value="1">Option #1</option>
+					<option value="2">Option #2</option>
+					<option value="3">Option #3</option>
+					<option value="4">Option #4</option>
+				</select>
+				<br>
+				<label for="inputSelectString">selectString (string):</label>
+				<select id="inputSelectString">
+					<option value="1">Option #1</option>
+					<option value="2">Option #2</option>
+					<option value="3">Option #3</option>
+					<option value="4">Option #4</option>
+				</select>
+			</div>
+
+			<div class="form-result" style="grid-row: 5;">
+				selectNumber = [${this.formData.selectNumber===undefined ? 'undefined' : this.formData.selectNumber}] typeof (${typeof this.formData.selectNumber})<br>
+				selectString = [${this.formData.selectString===undefined ? 'undefined' : this.formData.selectString}] typeof (${typeof this.formData.selectString})
+			</div>
+
+			<!-- INPUT radio -->
+			<div class="form-info" style="grid-row: 6;">
+				&lt;input type=&quot;radio&quot;&gt;
+			</div>
+
+			<div class="form-input" style="grid-row: 6;">
+				<input id="inputRadioString1" type="radio" name="radioString" value="option #1">
+				<label for="inputRadioString1">radioString #1 (string):</label>
+				<br>
+				<input id="inputRadioString2" type="radio" name="radioString" value="option #2">
+				<label for="inputRadioString2">radioString #2 (string):</label>
+				<br>
+				<br>
+				<input id="inputRadioNumber1" type="radio" name="radioNumber" value="1">
+				<label for="inputRadioNumber1">radioNumber #1 (number):</label>
+				<br>
+				<input id="inputRadioNumber2" type="radio" name="radioNumber" value="2">
+				<label for="inputRadioNumber2">radioNumber #2 (number):</label>
+			</div>
+
+			<div class="form-result" style="grid-row: 6;">
+				radioString = [${this.formData.radioString===undefined ? 'undefined' : this.formData.radioString}] typeof (${typeof this.formData.radioString})<br>
+				radioNumber = [${this.formData.radioNumber===undefined ? 'undefined' : this.formData.radioNumber}] typeof (${typeof this.formData.radioNumber})				
+			</div>
+
+			<!-- INPUT color -->
+			<div class="form-info" style="grid-row: 7;">
+				&lt;input type=&quot;color&quot;&gt;
+			</div>
+
+			<div class="form-input" style="grid-row: 7;">
+				<label for="inputColorString">colorString (string):</label>
+				<br>
+				<input id="inputColorString" type="color">
+			</div>
+
+			<div class="form-result" style="grid-row: 7;">
+				colorString = [${this.formData.colorString===undefined ? 'undefined' : this.formData.colorString}] typeof (${typeof this.formData.colorString})
+			</div>
+
+			<!-- INPUT date -->
+			<div class="form-info" style="grid-row: 8;">
+				&lt;input type=&quot;date&quot;&gt;
+			</div>
+
+			<div class="form-input" style="grid-row: 8;">
+				<label for="inputDateString">dateString (string):</label>
+				<br>
+				<input id="inputDateString" type="date">
+				<br>
+				<label for="inputDateDate">dateDate (Date):</label>
+				<br>
+				<input id="inputDateDate" type="date">
+			</div>
+
+			<div class="form-result" style="grid-row: 8;">
+				dateString = [${this.formData.dateString===undefined ? 'undefined' : this.formData.dateString}] typeof (${typeof this.formData.dateString})<br>
+				dateDate = [${this.formData.dateDate===undefined ? 'undefined' : this.formData.dateDate.toString()}] typeof (${typeof this.formData.dateDate})
+			</div>
+
+			<!-- INPUT datetime-local -->
+			<div class="form-info" style="grid-row: 9;">
+				&lt;input type=&quot;datetime-local&quot;&gt;
+			</div>
+
+			<div class="form-input" style="grid-row: 9;">
+				<label for="inputDateTimeLocalString">dateTimeLocalString (string):</label>
+				<br>
+				<input id="inputDateTimeLocalString" type="datetime-local">
+				<br>
+				<label for="inputDateTimeLocalDate">dateTimeLocalDate (Date):</label>
+				<br>
+				<input id="inputDateTimeLocalDate" type="datetime-local">
+			</div>
+
+			<div class="form-result" style="grid-row: 9;">
+				dateTimeLocalString = [${this.formData.dateTimeLocalString===undefined ? 'undefined' : this.formData.dateTimeLocalString}] typeof (${typeof this.formData.dateTimeLocalString})<br>
+				dateTimeLocalDate = [${this.formData.dateTimeLocalDate===undefined ? 'undefined' : this.formData.dateTimeLocalDate.toString()}] typeof (${typeof this.formData.dateTimeLocalDate})
+			</div>
+
+			<!-- INPUT week -->
+			<div class="form-info" style="grid-row: 10;">
+				&lt;input type=&quot;week&quot;&gt;
+			</div>
+
+			<div class="form-input" style="grid-row: 10;">
+				<label for="inputWeekString">weekString (string):</label>
+				<br>
+				<input id="inputWeekString" type="week">
+			</div>
+
+			<div class="form-result" style="grid-row: 10;">
+				weekString = [${this.formData.weekString===undefined ? 'undefined' : this.formData.weekString}] typeof (${typeof this.formData.weekString})
+			</div>
+
+			<!-- INPUT time -->
+			<div class="form-info" style="grid-row: 11;">
+				&lt;input type=&quot;time&quot;&gt;
+			</div>
+
+			<div class="form-input" style="grid-row: 11;">
+				<label for="inputTimeString">timeString (string):</label>
+				<br>
+				<input id="inputTimeString" type="time">
+				<br>
+				<label for="inputTimeDate">timeDate (Date):</label>
+				<br>
+				<input id="inputTimeDate" type="time">
+			</div>
+
+			<div class="form-result" style="grid-row: 11;">
+				timeString = [${this.formData.timeString===undefined ? 'undefined' : this.formData.timeString}] typeof (${typeof this.formData.timeString})<br>
+				timeDate = [${this.formData.timeDate===undefined ? 'undefined' : this.formData.timeDate.toString()}] typeof (${typeof this.formData.timeDate})
+			</div>
+
+			<!-- INPUT date & time -->
+			<div class="form-info" style="grid-row: 12;">
+				&lt;input type=&quot;date&quot;&gt;<br>
+				&lt;input type=&quot;time&quot;&gt;
+			</div>
+
+			<div class="form-input" style="grid-row: 12;">
+				<label for="inputDateAndTimeDate">dateAndTimeDate (Date):</label>
+				<br>
+				<input id="inputDateAndTimeDate" type="date">
+				<br>
+				<input id="inputDateAndTimeTime" type="time">
+			</div>
+
+			<div class="form-result" style="grid-row: 12;">
+				dateAndTimeDate = [${this.formData.dateAndTimeDate===undefined ? 'undefined' : this.formData.dateAndTimeDate.toString()}] typeof (${typeof this.formData.dateAndTimeDate})
+			</div>
+
+			<!-- INPUT month -->
+			<div class="form-info" style="grid-row: 13;">
+				&lt;input type=&quot;month&quot;&gt;
+			</div>
+
+			<div class="form-input" style="grid-row: 13;">
+				<label for="inputMonthString">monthString (string):</label>
+				<br>
+				<input id="inputMonthString" type="month">
+				<br>
+				<label for="inputMonthDate">monthDate (Date):</label>
+				<br>
+				<input id="inputMonthDate" type="month">
+			</div>
+
+			<div class="form-result" style="grid-row: 13;">
+				monthString = [${this.formData.monthString===undefined ? 'undefined' : this.formData.monthString}] typeof (${typeof this.formData.monthString})<br>
+				monthDate = [${this.formData.monthDate===undefined ? 'undefined' : this.formData.monthDate.toString()}] typeof (${typeof this.formData.monthDate})
+			</div>
+			
+			<!-- INPUT number -->
+			<div class="form-info" style="grid-row: 14;">
+				&lt;input type=&quot;number&quot;&gt;
+			</div>
+
+			<div class="form-input" style="grid-row: 14;">
+				<label for="inputNumberString">numberString (string):</label>
+				<br>
+				<input id="inputNumberString" type="number">
+				<br>
+				<label for="inputNumberNumber">numberNumber (number):</label>
+				<br>
+				<input id="inputNumberNumber" type="number">
+			</div>
+
+			<div class="form-result" style="grid-row: 14;">
+				numberString = [${this.formData.numberString===undefined ? 'undefined' : this.formData.numberString}] typeof (${typeof this.formData.numberString})<br>
+				numberNumber = [${this.formData.numberNumber===undefined ? 'undefined' : this.formData.numberNumber}] typeof (${typeof this.formData.numberNumber})
+			</div>
+
+			<!-- INPUT range -->
+			<div class="form-info" style="grid-row: 15;">
+				&lt;input type=&quot;range&quot;&gt;
+			</div>
+
+			<div class="form-input" style="grid-row: 15;">
+				<label for="inputRangeString">rangeString (string):</label>
+				<br>
+				<input id="inputRangeString" type="range" min="1" max="10">
+				<br>
+				<label for="inputRangeNumber">rangeNumber (number):</label>
+				<br>
+				<input id="inputRangeNumber" type="range" min="1" max="10">
+			</div>
+
+			<div class="form-result" style="grid-row: 15;">
+				rangeString = [${this.formData.rangeString===undefined ? 'undefined' : this.formData.rangeString}] typeof (${typeof this.formData.rangeString})<br>
+				rangeNumber = [${this.formData.rangeNumber===undefined ? 'undefined' : this.formData.rangeNumber}] typeof (${typeof this.formData.rangeNumber})
+			</div>
+
+			<!-- Customer yes-no-not-sure -->
+			<div class="form-info" style="grid-row: 16;">
+				&lt;yes-no-not-sure&gt;
+			</div>
+
+			<div class="form-input" style="grid-row: 16;">
+				<label for="customInputYesNoNotSure">yesNoNotSureString (string):</label>
+				<br>
+				<yes-no-not-sure id="customInputYesNoNotSure"></yes-no-not-sure>
+			</div>
+
+			<div class="form-result" style="grid-row: 16;">
+				yesNoNotSureString = [${this.formData.yesNoNotSureString===undefined ? 'undefined' : this.formData.yesNoNotSureString}] typeof (${typeof this.formData.yesNoNotSureString})
+			</div>
+
+			<!-- Customer date-input -->
+			<div class="form-info" style="grid-row: 17;">
+				&lt;date-input&gt;
+			</div>
+
+			<div class="form-input" style="grid-row: 17;">
+				<label for="customInputDateInput">dateInputDate (Date):</label>
+				<br>
+				<date-input id="customInputDateInput"></date-input>
+			</div>
+
+			<div class="form-result" style="grid-row: 17;">
+				dateInputDate = [${this.formData.dateInputDate===undefined ? 'undefined' : this.formData.dateInputDate}] typeof (${typeof this.formData.dateInputDate})
+			</div>
+
+			<!-- Footer -->
+			<div class="form-info footer" style="grid-row: 18;">
+				<button onclick="getController(this).clearFormInputs()" type="button">Clear Form Inputs</button>
+			</div>
+
+			<div class="form-input footer" style="grid-row: 18;">
+				<button onclick="getController(this).formToData()" type="button">Transfer &gt; FORM_TO_DATA</button>
+			</div>
+
+			<div class="form-result footer" style="grid-row: 18;">
+				<button onclick="getController(this).dataToForm()" type="button">Transfer &lt; DATA_TO_FORM</button>
+			</div>
+
+		</div>
+
+	</form>
+
+	<form id="testRefocus">
+		<p>
+			The button will become disabled when the input is empty.<br>
+			But when we check and update the template it recreates the input element, taking the focus away.<br>
+			It should automatically reset the focus and put the selection in the same place.
+			<br>
+			<input id="refocusInput" type="text" oninput="getController(this).refocusTest()">
+			<br>
+			<button type="button" tiny-disabled="${this.formData.refocus.length===0 ? 'disabled' : ''}">Disabled if input is empty.</button>
+			<br>
+			Value is [${this.formData.refocus}]
+		</p>
+	</form>
+
+</div>

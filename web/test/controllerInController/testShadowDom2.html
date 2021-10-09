@@ -1,0 +1,20 @@
+<!-- testShadowDom2.html -->
+<div style="background-color: red; color: white;">
+  <p id="testShadowDom2" style="margin: 0;">
+    Test Shadow DOM 2: ${this.count}
+  </p>
+  <button
+    style="display: block;"
+    class="goto-button"
+    onclick="
+      getController(this).test();
+      event.stopPropagation();">Test Shadow DOM 2 Button</button>
+  <test-shadow-dom-1-controller
+    onclick="
+      getController(this).test();
+      event.stopPropagation();"></test-shadow-dom-1-controller>
+  <test-shadow-dom-1-controller
+    onclick="
+      getController(this).test();
+      event.stopPropagation();"></test-shadow-dom-1-controller>
+</div>

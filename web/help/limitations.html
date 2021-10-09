@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Tiny Web Application Framework" />
+  <meta name="keywords" content="HTML, CSS, JavaScript, Framework, Web Component" />
+  <meta name="author" content="Stephen Paul Hassall" />
+  <meta name="robots" content="all" />
+  <link rel="icon" type="image/png" href="/tiny-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="/tiny-16x16.png" sizes="16x16" />
+  <link href="/tiny.css" rel="stylesheet" type="text/css" media="all" />
+  <title>Tiny Web Application Framework Help - Extra: Limitations </title>
+</head>
+<body>
+  <!-- Header -->
+  <div class="help-header">
+    <a href="/index.html" class="help-header-logo">
+      <img src="/tiny.svg" alt="Tiny Web Application Framework"></img>
+    </a>
+    <div class="help-header-title">Tiny Web Application Framework</div>
+  </div>
+
+  <!-- Help Side Bar-->
+  <div class="help-side-bar">
+    <div class="help-side-bar-group">
+      <div class="help-side-bar-group-title">General:</div>
+      <a href="index.html">Introduction</a>
+      <a href="gettingStarted.html">Getting Started</a>
+    </div>
+    <div class="help-side-bar-group">
+      <div class="help-side-bar-group-title">Reference:</div>
+      <a href="controller.html">Controller</a>
+      <a href="template.html">Template</a>
+      <a href="templateArray.html">TemplateArray</a>
+      <a href="form.html">Form</a>
+      <a href="route.html">Route (SPA)</a>
+      <a href="location.html">Location</a>
+    </div>
+    <div class="help-side-bar-group">
+      <div class="help-side-bar-group-title">Examples:</div>
+      <a href="exampleMultilingual.html">Multilingual</a>
+      <a href="exampleLucky7.html">Lucky 7</a>
+      <a href="exampleSimpleList.html">Simple List</a>
+      <a href="exampleTodoList.html">Todo List</a>
+      <a href="exampleQuestionnaire.html">Questionnaire</a>
+    </div>
+    <div class="help-side-bar-group">
+      <div class="help-side-bar-group-title">Extra:</div>
+      <a href="limitations.html" class="help-side-bar-set">Limitations</a>
+      <a href="releaseNotes.html">Release Notes</a>
+    </div>
+  </div>
+
+  <!-- Help Page -->
+  <div class="help-page">
+    <h2>Limitations</h2>
+
+    <h3>Browser Support</h3>
+
+    <p>
+      The Tiny Web Application framework is tested on and works for Chrome, Edge and Safari.
+      It is not tested on Firefox or any Android or iOS devices.
+      It does not work on any version of IE.
+    </p>
+
+    <h3>Template inside another.</h3>
+
+    <p>
+      You cannot have one template area inside another. You will not get the results you maybe hoping for.
+      It would be best to only have one larger outer template area that covers the both.
+    </p>
+
+<pre class="help-source">
+<span class="html-brown">&lt;element</span> <span class="html-red">id</span>=<span class="html-blue">"templateArea1"</span><span class="html-brown">&gt;</span>
+  ...
+  <span class="html-brown">&lt;element</span> <span class="html-red">id</span>=<span class="html-blue">"templateArea2"</span><span class="html-brown">&gt;</span>
+     ...
+  <span class="html-brown">&lt;/element&gt;</span>
+  ...
+<span class="html-brown">&lt;/element&gt;</span>
+</pre>
+
+    <h3>Using shadow DOM stops outside CSS</h3>
+
+    <p>
+      By default a controller is created with the <span class="label">useShadowDom</span> option set to false.
+      This makes the controller a Customer Element instead of a Web Component. The main benefits of this is that
+      it allows outside CSS styling to be used within the controller's HTML. If you have turn off the shadow DOM
+      then you will not see any outside CSS styling work.
+    </p>
+
+    <h3>HTML must be valid, but template notation can break it</h3>
+
+    <p>
+      Template notation, <span class="label">${...}</span> when used in HTML can some times make the HTML
+      seem invalid, it all depends where you are using it. You can sometimes use the extra template formatting
+      <span class="label">tiny-[attribute]="..."</span> to allow the template notation.
+    </p>
+
+<pre class="help-source">
+<span class="html-green">&lt;!-- The style attribute does not like template notation --&gt</span>
+<span class="html-brown">&lt;div</span> <span class="html-red">style</span>=<span class="html-blue">"color: ${this.valid===false ? 'red' : 'green'};"</span><span class="html-brown">&gt;</span>Ready?<span class="html-brown">&lt;/div&gt;</span>
+
+<span class="html-green">&lt;!-- The tiny-style attribute does like template notation and will reformat into style="..." --&gt</span>
+<span class="html-brown">&lt;div</span> <span class="html-red">tiny-style</span>=<span class="html-blue">"color: ${this.valid===false ? 'red' : 'green'};"</span><span class="html-brown">&gt;</span>Ready?<span class="html-brown">&lt;/div&gt;</span>
+</pre>
+    
+    <h3>Inline function parameters need strings</h3>
+
+    <p>
+      When using inline functions in HTML, any function you call inside, the parameter cannot use template
+      <span class="label">${...}</span> notation. However it is fine to put the template notation inside a string.
+      This does mean that any inline function that gets called, may have to have text only parameters.
+    </p>
+    
+<pre class="help-source">
+<span class="html-green">&lt;!-- The function setNumber parameter cannot be template notation --&gt</span>
+<span class="html-brown">&lt;button</span> <span class="html-red">onclick</span>=<span class="html-blue">"</span><span class="js-brown">getController</span><span class="js-blue">(this)</span>.<span class="js-brown">setNumber</span><span class="js-blue">(</span><span class="js-blue">${</span>this.currentNumber<span class="js-blue">}</span><span class="js-blue">)"</span><span class="html-brown">&gt;</span>
+
+<span class="html-green">&lt;!-- But we can put it inside a string --&gt</span>
+<span class="html-brown">&lt;button</span> <span class="html-red">onclick</span>=<span class="html-blue">"</span><span class="js-brown">getController</span><span class="js-blue">(this)</span>.<span class="js-brown">setNumber</span><span class="js-blue">(</span><span class="js-red">'</span><span class="js-blue">${</span>this.currentNumber<span class="js-blue">}</span><span class="js-red">'</span><span class="js-blue">)"</span><span class="html-brown">&gt;</span>
+</pre>
+      
+    <h3>Template functions cannot access global functions</h3>
+
+    <p>
+      Any template <span class="label">${...}</span> notation cannot access any global function or variables directly.
+      It can only access variables and functions that are part of the controller it is linked to.
+    </p>
+
+<pre class="help-source">
+<span class="html-green">&lt;!-- The template notation cannot access window global object --&gt</span>
+<span class="html-brown">&lt;div&gt;</span>URL: ${window.location.href}<span class="html-brown">&lt;/div&gt;</span>
+
+<span class="html-green">&lt;!-- We can get the information we need by calling a controller function that can then call a global function --&gt</span>
+<span class="html-brown">&lt;div&gt;</span>URL: ${this.getHref()}"<span class="html-brown">&lt;/div&gt;</span>
+</pre>
+      
+    <h3>Invalid template notations can be hard to track down</h3>
+
+    <p>
+      There will be times when the HTML with its template notation is invalid. When you try to create a Template or
+      TemplateArray object, you may get an error message informing you there is an error. But there are times when you just
+      cannot see the problem. A good method of finding the problem is to add the HTML template into some JavaScript code
+      inside a string template literal and then allow the editor to highlight any issues.
+    </p>
+
+<pre class="help-source">
+<span class="js-green">// Manually set the HTML, with its template notation, to see where the error is</span>
+<span class="js-blue">let</span> text = <span class="js-red">`
+&lt;div&gt;something is wrong here ${this.valid===true : 'VALID' ? 'INVALID'}&lt;/div&gt;
+`</span>;
+</pre>
+
+  <h3>Template on first element when using a Shadow DOM</h3>
+
+  <p>
+    Having a template that covers the whole HTML of a controller may not work. It depends if the controller is setup to
+    use a shadow DOM. You may get the following error message.
+  </p>
+  <p><span class="label">Uncaught DOMException: Failed to set the 'outerHTML' property on 'Element': This element's parent is of type '#document-fragment', which is not an element node.</span></p>
+  <p>
+    You can overcome this by adding an extra parent element.
+  </p>
+
+<pre class="help-source">
+<span class="html-brown">&lt;element</span> <span class="html-red">id</span>=<span class="html-blue">"templateArea"</span><span class="html-brown">&gt;</span>
+  <span class="html-green">&lt;!-- If the controller is using a shadow DOM then this will not work --&gt</span>
+<span class="html-brown">&lt;/element&gt;</span>
+</pre>
+
+<pre class="help-source">
+<span class="html-brown">&lt;div&gt;</span>
+  <span class="html-brown">&lt;element</span> <span class="html-red">id</span>=<span class="html-blue">"templateArea"</span><span class="html-brown">&gt;</span>
+    <span class="html-green">&lt;!-- This is fine however --&gt</span>
+  <span class="html-brown">&lt;/element&gt;</span>
+<span class="html-brown">&lt;/div&gt;</span>
+</pre>
+  
+    <!-- Footer -->
+    <div class="footer">
+      <a href="exampleQuestionnaire.html">&lt; Questionnaire</a>
+      <a href="releaseNotes.html">Release Notes &gt;</a>
+    </div>
+
+  </div>
+</body>
+</html>

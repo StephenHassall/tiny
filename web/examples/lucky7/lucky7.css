@@ -1,0 +1,48 @@
+/**
+ * Lucky 7 styles
+ */
+.lucky7 {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.dice {
+  background-color: lightgray;
+  border-radius: 2rem;
+  border: 0.2rem solid gray;
+  padding: 2rem;
+  margin: 1rem;
+  font-size: large;
+  display: inline-block;
+  width: 5rem;
+  height: 5rem;
+  font-size: 4rem;
+  line-height: 5rem;
+  text-align: center;
+}
+
+.dice-lucky {
+  background-color: gold;
+  border: 0.2rem solid rgb(177, 150, 0);
+}
+
+.equal {
+  padding: 2rem;
+  font-size: large;
+  display: inline-block;
+  width: 2rem;
+  height: 5rem;
+  font-size: 4rem;
+  line-height: 5rem;
+  text-align: center;
+}
+
+.lucky7 > button {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: 2px solid #245580;
+  background-image: linear-gradient(to bottom,#337ab7 0,#265a88 100%);
+  color: white;
+  font-size: x-large;
+  cursor: pointer;
+}

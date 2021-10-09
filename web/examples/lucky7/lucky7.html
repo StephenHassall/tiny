@@ -1,0 +1,14 @@
+<div class="lucky7">
+	<h3>Role the dice and see how lucky you are? Will you get the lucky 7?</h3>
+	<div id="templateArea">
+		<div class="dice">${this.dice1}</div>
+		<div class="dice">${this.dice2}</div>
+		<div class="equal">=</div>
+		<div class="dice ${this.diceTotal===7 ? 'dice-lucky' : ''}">${this.diceTotal}</div>
+	</div>
+	<button
+		class="roleDice"
+		onclick="getController(this).roleDice()">
+		Role Dice
+	</button>
+</div>

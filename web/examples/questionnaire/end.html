@@ -1,0 +1,41 @@
+<!-- End View -->
+<div class="question">
+  <div id="templateArea">
+    <h3>Results:</h3>
+
+    <p>
+      How do you feel?
+      <br>
+      <i>
+        <span class="${this.results.question1===1 ? '' : 'hidden'}">Top of the world</span>
+        <span class="${this.results.question1===2 ? '' : 'hidden'}">Alright I think</span>
+        <span class="${this.results.question1===3 ? '' : 'hidden'}">Could be better</span>
+        <span class="${this.results.question1===4 ? '' : 'hidden'}">Do not ask!</span>
+      </i>
+    </p>
+
+    <p>
+      Just how bored are you?
+      <br>
+      <i>
+        <span class="${this.results.question2===1 ? '' : 'hidden'}">I'm a coder, boredom is my middle name</span>
+        <span class="${this.results.question2===2 ? '' : 'hidden'}">I've had a coffee. Nothing bores me</span>
+        <span class="${this.results.question2===3 ? '' : 'hidden'}">I didn't even read the question</span>
+        <span class="${this.results.question2===4 ? '' : 'hidden'}">Next stupid question</span>
+      </i>
+    </p>
+
+    <p>
+      As examples go, just how brilliant is this one?
+      <br>
+      <i>
+        <span class="${this.results.question3===1 ? '' : 'hidden'}">Example? I thought this was real!</span>
+        <span class="${this.results.question3===2 ? '' : 'hidden'}">I'm tempted to create a better one</span>
+        <span class="${this.results.question3===3 ? '' : 'hidden'}">My pet cat has come up with better</span>
+        <span class="${this.results.question3===4 ? '' : 'hidden'}">Please, make it stop</span>
+      </i>
+    </p>
+  </div>
+
+  <button onclick="getController(this).restart()">Restart</button>
+</div>

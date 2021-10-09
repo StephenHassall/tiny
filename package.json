@@ -1,0 +1,14 @@
+{
+  "name": "tiny",
+  "version": "1.0.0",
+  "description": "The Tiny Web Application Framework",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Stephen Paul Hassall",
+  "license": "MIT",
+  "devDependencies": {
+    "express": "^4.17.1"
+  }
+}
