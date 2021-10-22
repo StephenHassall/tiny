@@ -148,6 +148,9 @@ export default class Route extends HTMLElement {
         // Set result object
         let result = {};
 
+        // If on the default page then there are no parameters
+        if (Route._route.path === 'default') return result;
+
         // Get path
         const path = Route._getPath();
 
