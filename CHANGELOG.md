@@ -2,6 +2,13 @@
 
 Information about all releases and changes to the Tiny Web Application Framework will appear here.
 
+## __1.2__ - 30 October 2021
+
+- **Bug:** The Form.refresh function uses the document.activeElement function, which does not work correctly if the controller
+is using a shadow DOM.
+
+- **New:** Added Controller.getActiveElememt function. This first checks if the controller is running in a shadow DOM or not. Calls document.activeElement if not using a shadow DOM, and calls shadowDom.activeElement if it is.
+
 ## __1.1__ - 22 October 2021
 
 - **Bug:** When using a single page application, when a default view was being shown, calling Route.routeParams threw an exception.

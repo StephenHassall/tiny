@@ -173,6 +173,27 @@ export default class Controller extends HTMLElement {
     }
 
     /**
+     * Get the active element. This is the input or element that has the focus.
+     * @return {Element} The element that has the focus or null if nothing is active.
+     */
+    getActiveElement() {
+        // Set element
+        let element = null;
+
+        // If using a shadow DOM
+        if (this._useShadowDom === true) {
+            // Look inside the shadow DOM for the active element
+            if (this.shadowRoot.activeElement) element = this.shadowRoot.activeElement;
+        } else {
+            // Look at the document for the active element
+            if (document.activeElement) element = document.activeElement;
+        }
+
+        // Return the found active element
+        return element;
+    }
+
+    /**
      * Loaded callback event that needs overriding. This is called when the controller's HTML/CSS is loaded and attached to the DOM.
      */
     loadedCallback() {

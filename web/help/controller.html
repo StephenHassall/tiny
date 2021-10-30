@@ -162,8 +162,6 @@ customElements.<span class="js-brown">define</span>(<span class="js-red">'hello-
       This way, any HTML that contains template formatting will not be seen before it has been processed.
     </p>
 
-    <!-- show example of the function to override -->
-
     <h3>getElementById</h3>
 
     <p>
@@ -204,6 +202,31 @@ customElements.<span class="js-brown">define</span>(<span class="js-red">'hello-
         <tr>
           <td><span class="label-type">Element</span></td>
           <td>The found element object, or null if not found.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>getActiveElement</h3>
+
+    <p>
+      If you want to get the current input element that has the focus then you will need to use the <span class="label">getActiveElement</span>
+      function. This is used for any input within a controller. Because a controller can exist as a custom element or be inside a shadow DOM
+      you cannot use the <span class="label">document.activeElement</span> function, because it could return the controller element instead of the input element.
+    </p>
+
+    <h4>Returns:</h4>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Information</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="label-type">Element</span></td>
+          <td>The found input element object, or null if not found.</td>
         </tr>
       </tbody>
     </table>

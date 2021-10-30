@@ -178,12 +178,15 @@ export default class Form {
 
         // If task is form to data
         if (task === 3) {
+            // Get active element
+            const activeElement = this._controller.getActiveElement();
+
             // If active element exists
-            if (document.activeElement) {
+            if (activeElement !== null) {
                 // Set active element parts
-                this.activeElement.id = document.activeElement.id;
-                this.activeElement.selectionStart = document.activeElement.selectionStart;
-                this.activeElement.selectionEnd = document.activeElement.selectionEnd;
+                this.activeElement.id = activeElement.id;
+                this.activeElement.selectionStart = activeElement.selectionStart;
+                this.activeElement.selectionEnd = activeElement.selectionEnd;
             }
         }
     }
