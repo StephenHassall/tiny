@@ -592,15 +592,15 @@ export default class Form {
         }
 
         // Set date parts
-        const year = parseInt(dateText.substr(0, 4));
-        const month = parseInt(dateText.substr(5, 2));
-        const day = parseInt(dateText.substr(8, 2));
+        const year = parseInt(dateText.substring(0, 4));
+        const month = parseInt(dateText.substring(5, 7));
+        const day = parseInt(dateText.substring(8, 10));
         let hour = 0;
         let minute = 0;
         let second = 0;
         if (dateText.length === 16) {
-            hour = parseInt(dateText.substr(11, 2));
-            minute = parseInt(dateText.substr(14, 2));
+            hour = parseInt(dateText.substring(11, 13));
+            minute = parseInt(dateText.substring(14, 16));
         }
 
         // If there is a time part to use
@@ -709,10 +709,10 @@ export default class Form {
         }
 
         // Set time parts
-        const hour = parseInt(timeText.substr(0, 2));
-        const minute = parseInt(timeText.substr(3, 2));
+        const hour = parseInt(timeText.substring(0, 2));
+        const minute = parseInt(timeText.substring(3, 5));
         let second = 0;
-        if (timeText.length === 8) second = parseInt(timeText.substr(6, 2));
+        if (timeText.length === 8) second = parseInt(timeText.substring(6, 8));
 
         // Set date parts
         const year = date.getFullYear();
@@ -765,8 +765,8 @@ export default class Form {
         if (monthText.charAt(4) !== '-') return undefined;
 
         // Set month parts
-        const year = parseInt(monthText.substr(0, 4));
-        const month = parseInt(monthText.substr(5, 2));
+        const year = parseInt(monthText.substring(0, 4));
+        const month = parseInt(monthText.substring(5, 7));
         const day = date.getDate();
         const hour = date.getHours();
         const minute = date.getMinutes();

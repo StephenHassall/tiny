@@ -2,6 +2,11 @@
 
 Information about all releases and changes to the Tiny Web Application Framework will appear here.
 
+## __1.3__ - 15 January 2022
+
+- **Update:** Now uses fetch instead of XMLHttpRequest.
+- **Update:** Switched from using substr function to substring.
+
 ## __1.2__ - 30 October 2021
 
 - **Bug:** The Form.refresh function uses the document.activeElement function, which does not work correctly if the controller

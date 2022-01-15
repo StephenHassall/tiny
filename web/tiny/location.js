@@ -80,13 +80,13 @@ export default class Location {
         const searchIndex = hashPath.indexOf('?');
 
         // If there is a search part then remove it
-        if (searchIndex !== -1) hashPath = hashPath.substr(0, searchIndex);
+        if (searchIndex !== -1) hashPath = hashPath.substring(0, searchIndex);
 
         // Look for non-route hash character
         const hashIndex = hashPath.indexOf('#', 2);
 
         // If there is a hash part then remove it
-        if (hashIndex !== -1) hashPath = hashPath.substr(0, hashIndex);
+        if (hashIndex !== -1) hashPath = hashPath.substring(0, hashIndex);
 
         // Return the route pathname
         return window.location.pathname + hashPath;
@@ -113,13 +113,13 @@ export default class Location {
         if (searchIndex === -1) return '';
 
         // Set search
-        let search = location.hash.substr(searchIndex);
+        let search = location.hash.substring(searchIndex);
 
         // Look for hash character
         const hashIndex = search.indexOf('#');
 
         // If there is a hash part then remove it
-        if (hashIndex !== -1) search = search.substr(0, hashIndex);
+        if (hashIndex !== -1) search = search.substring(0, hashIndex);
 
         // Return the search part
         return search;
@@ -142,7 +142,7 @@ export default class Location {
         let result = {};
 
         // Remove the first ? character
-        search = search.substr(1);
+        search = search.substring(1);
 
         // Split the search into param=value items
         const paramValueList = search.split('&');
@@ -184,6 +184,6 @@ export default class Location {
         if (hashIndex === -1) return '';
 
         // Return the hash part
-        return location.hash.substr(hashIndex);
+        return location.hash.substring(hashIndex);
     }
 }

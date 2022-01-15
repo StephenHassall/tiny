@@ -99,9 +99,9 @@ select {
             if (newValue.charAt(7) !== '-') return;
 
             // Set date parts
-            this._yearElement.value = parseInt(newValue.substr(0, 4));
-            this._monthElement.value = parseInt(newValue.substr(5, 2));
-            this._dayElement.value = parseInt(newValue.substr(8, 2));
+            this._yearElement.value = parseInt(newValue.substring(0, 4));
+            this._monthElement.value = parseInt(newValue.substring(5, 7));
+            this._dayElement.value = parseInt(newValue.substring(8, 10));
         }
     }
 

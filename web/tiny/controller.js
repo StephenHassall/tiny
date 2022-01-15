@@ -256,7 +256,7 @@ export default class Controller extends HTMLElement {
         if (lastForwardSlash === -1) return '/';
 
         // Get the relative path
-        const relativePath = importMetaUrl.substr(0, lastForwardSlash + 1);
+        const relativePath = importMetaUrl.substring(0, lastForwardSlash + 1);
 
         // Return the relative path
         return relativePath;
@@ -266,64 +266,38 @@ export default class Controller extends HTMLElement {
      * Load the HTML file.
      */
     _loadHtml() {
-        // Set self
-        const self = this;
+        // Get HTML file
+        fetch(this._htmlPath)
+        .then(response => response.text())
+        .then(html => {
+            // Set HTML data
+            this._html = html;
 
-        // Create HTTP request
-        const xhttp = new XMLHttpRequest();
+            // Add HTML to cache
+            Controller._cacheMap.set(this._htmlPath, this._html);
 
-        // Set state change function
-        xhttp.onreadystatechange = function() {
-            // If got file
-            if (xhttp.readyState === 4 && xhttp.status === 200) {
-                // Set HTML data
-                self._html = xhttp.responseText;
-
-                // Add HTML to cache
-                Controller._cacheMap.set(self._htmlPath, self._html);
-
-                // Call the got data event
-                self._gotData();
-            }
-        };
-
-        // Set path
-        xhttp.open('GET', this._htmlPath, true);
-
-        // Get file
-        xhttp.send();
+            // Call the got data event
+            this._gotData();
+        });
     }
 
     /**
      * Load the CSS file.
      */
     _loadCss() {
-        // Set self
-        const self = this;
+        // Get HTML file
+        fetch(this._cssPath)
+        .then(response => response.text())
+        .then(css => {
+            // Set HTML data
+            this._css = css;
 
-        // Create HTTP request
-        const xhttp = new XMLHttpRequest();
+            // Add HTML to cache
+            Controller._cacheMap.set(this._cssPath, this._css);
 
-        // Set state change function
-        xhttp.onreadystatechange = function() {
-            // If got file
-            if (xhttp.readyState === 4 && xhttp.status === 200) {
-                // Set CSS data
-                self._css = xhttp.responseText;
-
-                // Add CSS to cache
-                Controller._cacheMap.set(self._cssPath, self._css);
-
-                // Call the got data event
-                self._gotData();
-            }
-        };
-
-        // Set path
-        xhttp.open('GET', this._cssPath, true);
-
-        // Get file
-        xhttp.send();
+            // Call the got data event
+            this._gotData();
+        });
     }
 
     /**

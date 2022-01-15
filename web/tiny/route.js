@@ -167,7 +167,7 @@ export default class Route extends HTMLElement {
             if (routeFolder.startsWith(':') === false) continue;
 
             // Add param and value to result
-            result[routeFolder.substr(1)] = decodeURIComponent(pathFolder);
+            result[routeFolder.substring(1)] = decodeURIComponent(pathFolder);
         }
 
         // Return the result object
@@ -305,7 +305,7 @@ export default class Route extends HTMLElement {
         if (lastForwardSlash === -1) return '/';
 
         // Get the relative path
-        const relativePath = importMetaUrl.substr(0, lastForwardSlash + 1);
+        const relativePath = importMetaUrl.substring(0, lastForwardSlash + 1);
 
         // Return the relative path
         return relativePath;
@@ -324,7 +324,7 @@ export default class Route extends HTMLElement {
         if (hash.startsWith('#!') === false) return '/';
 
         // Remove the starting characters
-        hash = hash.substr(2);
+        hash = hash.substring(2);
 
         // Look for a ? character (the search part)
         let searchIndex = hash.indexOf('?');
@@ -332,7 +332,7 @@ export default class Route extends HTMLElement {
         // If there is a search part
         if (searchIndex !== -1) {
             // Remove the search part from the hash
-            hash = hash.substr(0, searchIndex);
+            hash = hash.substring(0, searchIndex);
         }
 
         // Look for a # character (the other hash part)
@@ -341,7 +341,7 @@ export default class Route extends HTMLElement {
         // If there is a hash part
         if (hashIndex !== -1) {
             // Remove the other hash part from the hash
-            hash = hash.substr(0, hashIndex);
+            hash = hash.substring(0, hashIndex);
         }
 
         // Return the final hash that is the route path
