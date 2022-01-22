@@ -305,12 +305,12 @@ body {
   font-family: monospace;
   font-size: 1rem;
   max-width: 60rem;
-  min-width: fit-content;
   margin-top: 1.5rem;
   border-left: 0.5rem solid #287ea1;
   box-shadow: 0 0.1rem 0.5rem rgb(0 0 0 / 30%);
   padding: 1rem;
   margin-right: 1rem;
+  overflow-x: auto;
 }
 
 .js-purple {
@@ -424,6 +424,21 @@ body {
 .source-link:active { text-decoration: none;}
 
 @media (max-width: 60rem) {
+  .button-get-started {
+    display: block;
+    max-width: fit-content;
+    margin-left: 0;
+  }
+  .button-learn-more {
+    display: block;
+    max-width: fit-content;
+    margin-left: 0;
+  }
+  .button-github {
+    display: block;
+    max-width: fit-content;
+    margin-left: 0;
+  }
   .help-side-bar {
     display: none;
   }
