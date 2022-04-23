@@ -9,6 +9,7 @@
   "author": "Stephen Paul Hassall",
   "license": "MIT",
   "devDependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "netlify-cli": "^10.0.0"
   }
 }

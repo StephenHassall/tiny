@@ -137,7 +137,6 @@ body {
 .help-header-logo {
   display: inline-block;
   text-align: center;
-  background-color: white;
   width: 3rem;
 }
 .help-header-logo:link { text-decoration: none;}

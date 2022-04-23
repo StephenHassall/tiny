@@ -13,6 +13,6 @@
  // Create and add the static public HTML middleware module
  server.use(express.static('./web/'));
  
- // Start server on port 9092
- server.listen(9092);
+ // Start server on port 9094
+ server.listen(9094);
  
