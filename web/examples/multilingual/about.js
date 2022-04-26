@@ -13,9 +13,9 @@ export default class AboutController extends Controller {
      */
     constructor() {
         // Set the language dependant HTML
-        let htmlPage = 'about_en.html';
-        if (window.localStorage.langaugeCode === 'es') htmlPage = 'about_es.html';
-        if (window.localStorage.langaugeCode === 'fr') htmlPage = 'about_fr.html';
+        let htmlPage = 'about-en.html';
+        if (window.localStorage.langaugeCode === 'es') htmlPage = 'about-es.html';
+        if (window.localStorage.langaugeCode === 'fr') htmlPage = 'about-fr.html';
 
         // Call the super with the page to load
         super({

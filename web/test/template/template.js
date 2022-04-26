@@ -1,6 +1,6 @@
 import Controller from "./../../tiny/controller.js";
 import Template from "./../../tiny/template.js";
-import SpecialTemplate from "./specialTemplate.js";
+import SpecialTemplate from "./special-template.js";
 
 /**
  * Template

@@ -2,6 +2,11 @@
 
 Information about all releases and changes to the Tiny Web Application Framework will appear here.
 
+## __1.4__ - 26 April 2022
+
+- **Update:** Changed the names of files that used camelcase to use a hyphenated name instead. For example, templateArray.js
+became template-array.js.
+
 ## __1.3__ - 15 January 2022
 
 - **Update:** Now uses fetch instead of XMLHttpRequest.
