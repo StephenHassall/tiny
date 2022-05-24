@@ -53,6 +53,7 @@ export default class Route extends HTMLElement {
      * @param {string=} options.importMetaUrl The "import.meta.url" value of the derived route. If this is given then the javaScriptPath parameter
      * is a relative path. If it is not given then the default one is used (see constructor). If there is no default value and this is not given
      * then the javaScriptPath must be the full path.
+     * @param {boolean=} options.autoScroll Should the browser automatically scroll the page to the top. The default is false (not to auto scroll).
      * @param {*=} options.extra Any extra data you want to attach to the route.
      */
     add(options) {
@@ -70,6 +71,8 @@ export default class Route extends HTMLElement {
         const route = {};
         route.path = options.path;
         route.controllerTagName = options.controllerTagName;
+        route.autoScroll = false;
+        if (options.autoScroll !== undefined) route.autoScroll = options.autoScroll;
         route.extra = options.extra;
 
         // Set importMetaUrl to use
@@ -106,6 +109,7 @@ export default class Route extends HTMLElement {
      * @param {string=} options.importMetaUrl The "import.meta.url" value of the derived route. If this is given then the javaScriptPath parameter
      * is a relative path. If it is not given then the default one is used (see constructor). If there is no default value and this is not given
      * then the javaScriptPath must be the full path.
+     * @param {boolean=} options.autoScroll Should the browser automatically scroll the page to the top. The default is false (not to auto scroll).
      */
     default(options) {
         // Check parameters
@@ -119,6 +123,8 @@ export default class Route extends HTMLElement {
         Route._defaultRoute = {};
         Route._defaultRoute.path = 'default';
         Route._defaultRoute.controllerTagName = options.controllerTagName;
+        Route._defaultRoute.autoScroll = false;
+        if (options.autoScroll !== undefined) Route._defaultRoute.autoScroll = options.autoScroll;
 
         // Set importMetaUrl to use
         let importMetaUrl = this._importMetaUrl;
@@ -262,6 +268,9 @@ export default class Route extends HTMLElement {
             // Add the controller as a child element
             this.appendChild(controller);
 
+            // If auto scroll
+            if (Route._route.autoScroll === true) window.scrollTo(0, 0);
+
             // Stop here
             return;
         }
@@ -280,6 +289,9 @@ export default class Route extends HTMLElement {
 
             // Add the controller as a child element
             this.appendChild(controller);
+
+            // If auto scroll
+            if (Route._route.autoScroll === true) window.scrollTo(0, 0);
         })
         .catch((error) => {
             // Log the error

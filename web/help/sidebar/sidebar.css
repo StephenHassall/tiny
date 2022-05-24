@@ -1,0 +1,43 @@
+/**
+ * Sidebar styles
+ */
+
+.help-side-bar-set {
+  color: #287ea1 !important;
+}
+
+.help-side-bar-group {
+  margin-top: 1rem;
+}
+
+.help-side-bar-group-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color:black;
+  user-select: none;
+  padding-bottom: 0.3rem;
+}
+
+.help-side-bar-group > a {
+  font-size: 1rem;
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+.help-side-bar-group > a:link { text-decoration: none; color: black; }
+.help-side-bar-group > a:hover { text-decoration: underline; color: black; }
+.help-side-bar-group > a:visited { text-decoration: none; color: black; }
+.help-side-bar-group > a:active { text-decoration: none; color: black;}
+
+@media (prefers-color-scheme: dark) {
+  .help-side-bar {
+    color: rgb(248,248,248);
+  }
+  .help-side-bar-group-title {
+    color: rgb(248,248,248);
+  }
+  .help-side-bar-group > a:link { text-decoration: none; color: rgb(248,248,248); }
+  .help-side-bar-group > a:hover { text-decoration: underline; color: rgb(248,248,248); }
+  .help-side-bar-group > a:visited { text-decoration: none; color: rgb(248,248,248); }
+  .help-side-bar-group > a:active { text-decoration: none; color: rgb(248,248,248);}  
+}

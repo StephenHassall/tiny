@@ -1,0 +1,375 @@
+/**
+ * Help styles (used by all help controllers)
+ */
+
+.help-page > h2 {
+  font-size: 2rem;
+  color: #287ea1;
+  margin-top: 0.4rem;
+  margin-bottom: 0.3rem;
+}
+
+.help-page > h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #287ea1;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.help-page > h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgb(48,48,48);
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.help-page table {
+  border-collapse: collapse;
+}
+
+.help-page  ul {
+  list-style: none;
+}
+
+.help-page ul > li::before {
+  content: "\2022";
+  color: #287ea1;
+  font-weight: 600;
+  font-size: large;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+.help-page table th {
+  background-color: lightgray;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+  padding: 0.5rem;
+  border: 2px solid gray;
+}
+
+.help-page table td {
+  vertical-align: top;
+  font-size: 1rem;
+  text-align: left;
+  padding: 0.5rem;
+  border: 2px solid gray;
+}
+
+.help-warning {
+  background-color: rgb(252, 233, 127);
+  border-left: 0.5rem solid gold;
+  color: rgb(88, 76, 3);
+  padding: 1rem;
+}
+
+.source-window {
+  border-radius: 1rem;
+  border: 0.2rem solid #287ea1;
+  background-color: #287ea1;
+  overflow: hidden;
+  box-shadow: 0 0.1rem 0.5rem rgb(0 0 0 / 30%);
+  box-sizing: border-box;
+  margin: 0.5rem;
+}
+
+.source-window-header {
+  height: 2rem;
+  background-color: #287ea1;
+  user-select: none;
+}
+
+.source-window-dot {
+  display: inline-block;
+  border-radius: 100%;
+  background-color: lightgray;
+  width: 1rem;
+  height: 1rem;
+  margin: 0.5rem;
+  margin-right: 0;
+  content: ' ';
+}
+
+.source-window-dot1 {
+  background-color: #f3722c;
+}
+.source-window-dot2 {
+  background-color: #f9c74f;
+}
+.source-window-dot3 {
+  background-color: #43aa8b;
+}
+
+.html-source {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: white;
+  padding: 1rem;
+  overflow-x: auto;
+  white-space: nowrap
+}
+.html-brown {
+  color: #800000;
+}
+.html-red {
+  color: #ff0000;
+}
+.html-blue {
+  color: #0000ff;
+}
+.html-green {
+  color: #008000;
+}
+.html-line-number {
+  color: gray;
+  user-select: none;
+}
+.html-line-number::after{
+  content: '\00a0\00a0';
+}
+.html-line-number {
+  color: gray;
+  user-select: none;
+}
+.html-line-number::after{
+  content: '\00a0\00a0';
+}
+.html-line-number2 {
+  color: gray;
+  user-select: none;
+}
+.html-line-number2::after{
+  content: '\00a0';
+}
+
+.js-source {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: white;
+  padding: 1rem;
+  overflow-x: auto;
+  white-space: nowrap
+}
+.js-purple {
+  color: #af00db;
+}
+.js-red {
+  color: #a31515;
+}
+.js-blue {
+  color: #0000ff;
+}
+.js-green {
+  color: #008000;
+}
+.js-gray {
+  color: #267f99;
+}
+.js-brown {
+  color: #795e26;
+}
+.js-line-number {
+  color: gray;
+  user-select: none;
+}
+.js-line-number::after{
+  content: '\00a0\00a0';
+}
+.js-line-number2 {
+  color: gray;
+  user-select: none;
+}
+.js-line-number2::after{
+  content: '\00a0';
+}
+
+.css-source {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: white;
+  padding: 1rem;
+  overflow-x: auto;
+  white-space: nowrap
+}
+.css-brown {
+  color: #800000;
+}
+.css-red {
+  color: #ff0000;
+}
+.css-green {
+  color: #008000;
+}
+.css-blue {
+  color: #0451a5;
+}
+
+/* Labels */
+.label {
+  background-color: lightgray;
+  font-size: 85%;
+  font-weight: normal;
+  border-radius: 0.4rem;
+  padding: 0rem 0.3rem 0.1rem 0.3rem;
+  white-space: nowrap;
+}
+
+.label-required {
+  background-color: rgb(233, 206, 53);
+  font-size: 90%;
+  font-weight: 600;
+  border-radius: 0.2rem;
+  padding: 0rem 0.3rem 0.2rem 0.3rem;
+  white-space: nowrap;
+}
+
+.label-default {
+  background-color: rgb(52, 104, 52);
+  color: white;
+  font-size: 90%;
+  font-weight: 600;
+  border-radius: 0.2rem;
+  padding: 0rem 0.3rem 0.2rem 0.3rem;
+  white-space: nowrap;
+}
+
+.label-type {
+  background-color: rgb(4, 88, 116);
+  color: white;
+  font-size: 90%;
+  font-weight: 600;
+  border-radius: 0.2rem;
+  padding: 0rem 0.3rem 0.2rem 0.3rem;
+  white-space: nowrap;
+}
+
+.label-override {
+  background-color: #2196f3;
+  color: white;
+  font-size: 90%;
+  font-weight: 600;
+  border-radius: 0.2rem;
+  padding: 0rem 0.3rem 0.2rem 0.3rem;
+  white-space: nowrap;
+}
+
+.label-static {
+  background-color: green;
+  color: white;
+  font-size: 90%;
+  font-weight: 600;
+  border-radius: 0.2rem;
+  padding: 0rem 0.3rem 0.2rem 0.3rem;
+  white-space: nowrap;
+}
+
+/* Source Link */
+.source-link {
+  background-color: #287ea1;
+  color: rgb(248,248,248);
+  font-size: 85%;
+  font-weight: normal;
+  border-radius: 0.2rem;
+  padding: 0rem 0.3rem 0.1rem 0.3rem;
+}
+.source-link:link { text-decoration: none;}
+.source-link:hover { text-decoration: underline;}
+.source-link:visited { text-decoration: none;}
+.source-link:active { text-decoration: none;}
+
+@media (prefers-color-scheme: dark) {
+  .help-page {
+    color: rgb(248,248,248);
+  }
+  .label {
+    color: black;
+  }
+  .html-source {
+    background-color: #151718;
+    border: none;
+    border-radius: 0.5rem;
+    color: rgb(248,248,248);
+  }
+  .html-brown {
+    color: #55b5db;
+  }
+  .html-red {
+    color: #9fca56;
+  }
+  .html-blue {
+    color: #f36c6c;
+  }
+  .html-green {
+    color: #6acf72;
+  }
+  .html-line-number {
+    color: rgb(248,248,248);
+    user-select: none;
+  }  
+  .html-line-number2 {
+    color: rgb(248,248,248);
+    user-select: none;
+  }  
+  
+  .js-source {
+    background-color: #151718;
+    border: none;
+    border-radius: 0.5rem;
+    color: rgb(248,248,248);
+  }
+  .js-purple {
+    color: #e6cd69;
+  }
+  .js-red {
+    color: #55b5db;
+  }
+  .js-blue {
+    color: #a074c4;
+  }
+  .js-green {
+    color: #a3c3d1;
+  }
+  .js-gray {
+    color: #ff7878;
+  }
+  .js-brown {
+    color: #a074c4;
+  }
+  .js-line-number {
+    color: rgb(248,248,248);
+    user-select: none;
+  }
+  .js-line-number2 {
+    color: rgb(248,248,248);
+    user-select: none;
+  }
+
+  .css-source {
+    background-color: #151718;
+    border: none;
+    border-radius: 0.5rem;
+    color: rgb(248,248,248);
+  }
+  .css-brown {
+    color: #a074c4;
+  }
+  .css-red {
+    color: #55b5db;
+  }
+  .css-green {
+    color: #6acf72;
+  }
+  .css-blue {
+    color: #a074c4;
+  }
+
+  .help-page table th {
+    color: black;
+  }
+  .help-warning{
+    background-color: rgb(129 119 66);
+    border-left: 0.5rem solid #e7cf4c;
+    color: rgb(249 214 3);
+  }
+}

@@ -1,0 +1,86 @@
+/**
+ * Header styles
+ */
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4rem;
+  background-color: white;
+  color: #287ea1;
+  display: grid;
+  grid-template-columns: auto 80rem auto;
+  grid-template-rows: 4rem;
+}
+
+.header-left {
+  grid-column: 2;
+  grid-row: 1;
+  text-align: left;
+}
+
+.logo {
+  text-align: center;
+  user-select: none;
+}
+.logo:link { text-decoration: none;}
+.logo:visited { text-decoration: none; }
+.logo:hover { text-decoration: none; }
+.logo:active { text-decoration: none; }
+
+.logo > img {
+  height: 2.2rem;
+  margin: 0.9rem 0.9rem 0.9rem 0;
+}
+
+.title {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.title a {
+  font-size: 1rem;
+  line-height: 4rem;
+  font-weight: 600;
+  color: gray;
+  margin-right: 3rem;
+  user-select: none;
+}
+
+.title a:link { text-decoration: none;}
+.title a:visited { text-decoration: none; }
+.title a:hover { text-decoration: none; }
+.title a:active { text-decoration: none; }
+
+@media (max-width: 90rem) {
+  .header {
+    height: 3rem;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 3rem;
+  }
+
+  .logo {
+    text-align: center;
+  }
+  
+  .logo > img {
+    height: 2.2rem;
+    margin: 0.4rem 0.4rem 0.4rem 1rem;
+  }
+
+  .title a {
+    line-height: 3rem;
+    margin-right: 2rem;
+  }   
+}
+
+@media (prefers-color-scheme: dark) {
+  .header {
+    background-color: #404040;
+  }
+  .title a {
+    color: rgb(248,248,248);
+  }
+}

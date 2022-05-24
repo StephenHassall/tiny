@@ -1,0 +1,349 @@
+<!-- Route -->
+<div class="help-page">
+  <h2>Reference: Route (Single Page Application)</h2>
+  <span class="label">import Route from "/lib/tiny/route.js";</span>
+
+  <h3>Overview</h3>
+  <p>
+    The Route class is part of the Single Page Application (SPA) system. This allows you to have a single application page
+    that moves between multiple views depending on the part of the URL that follows the <span class="label">#!</span> characters.
+  </p>
+  
+  <p>
+    For example, each URL points to the same application page, but each has its own view and controller.
+    <br>
+    <span class="label">https://domain.com/single-page-app#!/view1</span>
+    <br>
+    <span class="label">https://domain.com/single-page-app#!/view2/param1</span>
+    <br>
+    <span class="label">https://domain.com/single-page-app#!/view3/folder/param1/param2</span>
+  </p>
+
+  <p>
+    The JavaScript file for each controller is not loaded until the view it is linked to is being shown.
+    This helps reduce the number of files being loaded when the page is shown.
+  </p>
+  
+  <h3>Usage</h3>
+
+  <p>
+    You need to create your own route class derived from the <span class="label">Route</span> class.
+    Then in the constructor you use the <span class="label">add</span> function to setup the different
+    route views with the controller to be shown.
+  </p>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="js-source">
+      <span class="js-line-number">1</span><span class="js-purple">export default</span> <span class="js-blue">class</span> <span class="js-gray">SinglePageAppRoute</span> <span class="js-blue">extends</span> <span class="js-gray">Route</span> {<br>
+      <span class="js-line-number">2</span>&nbsp;&nbsp;<span class="js-blue">constructor</span>() {<br>
+      <span class="js-line-number">3</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-green">// Call the super first</span><br>
+      <span class="js-line-number">4</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-blue">super</span>(<span class="js-purple">import</span>.meta.url);<br>
+      <span class="js-line-number">5</span><br>
+      <span class="js-line-number">6</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-green">// Add route views</span><br>
+      <span class="js-line-number">7</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-blue">this</span>.<span class="js-brown">add</span>({<br>
+      <span class="js-line-number">8</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;path: <span class="js-red">'/view1'</span>,<br>
+      <span class="js-line-number">9</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;javaScriptPath: <span class="js-red">'view1.js'</span>,<br>
+      <span class="js-line-number2">10</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;controllerTagName: <span class="js-red">'view1-controller'</span><br>
+      <span class="js-line-number2">11</span>&nbsp;&nbsp;&nbsp;&nbsp;});<br>
+      <span class="js-line-number2">12</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-blue">this</span>.<span class="js-brown">add</span>({<br>
+      <span class="js-line-number2">13</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;path: <span class="js-red">'/view2/:param1'</span>,<br>
+      <span class="js-line-number2">14</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;javaScriptPath: <span class="js-red">'view2.js'</span>,<br>
+      <span class="js-line-number2">15</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;controllerTagName: <span class="js-red">'view2-controller'</span><br>
+      <span class="js-line-number2">16</span>&nbsp;&nbsp;&nbsp;&nbsp;});<br>
+      <span class="js-line-number2">17</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-blue">this</span>.<span class="js-brown">add</span>({<br>
+      <span class="js-line-number2">18</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;path: <span class="js-red">'/view3/folder/:param1/:param2'</span>,<br>
+      <span class="js-line-number2">19</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;javaScriptPath: <span class="js-red">'view3.js'</span>,<br>
+      <span class="js-line-number2">20</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;controllerTagName: <span class="js-red">'view3-controller'</span><br>
+      <span class="js-line-number2">21</span>&nbsp;&nbsp;&nbsp;&nbsp;});<br>
+      <span class="js-line-number2">22</span>&nbsp;&nbsp;}<br>
+      <span class="js-line-number2">23</span>}
+    </div>
+  </div>
+
+  <h3>Constructor</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Information</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>importMetaUrl</td>
+        <td><span class="label-type">string</span><br></td>
+        <td>
+          The <span class="label">"import.meta.url"</span> value of the derived route class.
+          If this is used then the default <span class="label">javaScriptPath</span> path parameter, in the <span class="label">add</span>
+          function, will be relative to the path of the derived route Javascript file.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    You need to create your own route class that is derived from <span class="label">Route</span> and then call its
+    constuctor using the super function.
+  </p>
+
+  <h3>add</h3>
+
+  <p>
+    Add a view to the list of routes that make up the single page application. You pass an object that contains a
+    number of different options.
+  </p>
+
+  <h4>Parameter Options:</h4>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Information</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>path</td>
+        <td><span class="label-type">string</span><br></td>
+        <td>
+          The path format. This must start with a <span class="label">/</span> character.
+          You can set parameters by using the <span class="label">:</span> character. <span class="label-required">Required</span>
+          <br>For example,<br>
+          <span class="label">/</span><br>
+          <span class="label">/view1</span><br>
+          <span class="label">/view2/:param1</span><br>
+          <span class="label">/view3/:param1/:param2</span><br>
+          <span class="label">/view4/:param1/subView1/:param2</span>
+          
+        </td>
+      </tr>
+      <tr>
+        <td>javaScriptPath</td>
+        <td><span class="label-type">string</span><br></td>
+        <td>
+          The location of the JavaScript file that contains the controller we want to show in the view.
+          This is either the relative path or the full part.
+          <span class="label-required">Required</span>
+        </td>
+      </tr>
+      <tr>
+        <td>controllerTagName</td>
+        <td><span class="label-type">string</span><br></td>
+        <td>
+          The tag name of the controller that will be shown. For example, <span class="label">my-first-controller</span>.
+          When the view is shown the element with that tag name will be created.
+          This does not include the <span class="label">&lt;</span> or <span class="label">&gt;</span> characters.
+          <span class="label-required">Required</span>
+        </td>
+      </tr>
+      <tr>
+        <td>importMetaUrl</td>
+        <td><span class="label-type">string</span><br></td>
+        <td>
+          The <span class="label">"import.meta.url"</span> value of the derived route class.
+          If this is used then the <span class="label">javaScriptPath</span> path parameter will be relative to the
+          path of the derived route Javascript file.
+        </td>
+      </tr>
+      <tr>
+        <td>autoScroll</td>
+        <td><span class="label-type">boolean</span><br></td>
+        <td>
+          After the controller has been inserted, should the page be automatically scrolled to the top.
+          <span class="label-default">Default = false</span>
+        </td>
+      </tr>
+      <tr>
+        <td>extra</td>
+        <td><span class="label-type">Object</span><br></td>
+        <td>
+          Any extra information you want linked to the view.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>default</h3>
+
+  <p>
+    Add the default view. This view will be shown if none of the others match the path given in the URL.
+    Note, the <span class="label">beforeLoad</span> function will not be called for the default view.
+  </p>
+
+  <h4>Parameter Options:</h4>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Information</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>javaScriptPath</td>
+        <td><span class="label-type">string</span><br></td>
+        <td>
+          The location of the JavaScript file that contains the controller we want to show in the view.
+          This is either the relative path or the full part.
+          <span class="label-required">Required</span>
+        </td>
+      </tr>
+      <tr>
+        <td>controllerTagName</td>
+        <td><span class="label-type">string</span><br></td>
+        <td>
+          The tag name of the controller that will be shown. For example, <span class="label">my-first-controller</span>.
+          When the view is shown the element with that tag name will be created.
+          This does not include the <span class="label">&lt;</span> or <span class="label">&gt;</span> characters.
+          <span class="label-required">Required</span>
+        </td>
+      </tr>
+      <tr>
+        <td>importMetaUrl</td>
+        <td><span class="label-type">string</span><br></td>
+        <td>
+          The <span class="label">"import.meta.url"</span> value of the derived route class.
+          If this is used then the <span class="label">javaScriptPath</span> path parameter will be relative to the
+          path of the derived route Javascript file.
+        </td>
+      </tr>
+      <tr>
+        <td>autoScroll</td>
+        <td><span class="label-type">boolean</span><br></td>
+        <td>
+          After the controller has been inserted, should the page be automatically scrolled to the top.
+          <span class="label-default">Default = false</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>routeParams <span class="label-static">static</span></h3>
+
+  <p>
+    When a route uses parameters, for example <span class="label">/view3/:param1/:param2</span>, then this function can be used
+    to get the parameter values from the page's URL.
+  </p>
+
+  <p>
+    For example, if the page is<br><br>
+    <span class="label">https://domain.com/single-page-app#!/view3/123/hello</span>
+    
+    <br><br>
+    
+    then calling the <span class="label">Route.routeParams</span> function will return the following.
+    
+    <br><br>
+
+    <span class="label">{ param1: '123', param2: 'hello' }</span>
+    
+    <br><br>
+
+    You will notice that the parameter values are aways text, even when numbers are used.
+  </p>
+
+  <h3>beforeLoad <span class="label-override">override</span></h3>
+
+  <p>
+    If you want to test if a view can be shown before it happens, to check if it has permissions or something, then you
+    can override the <span class="label">beforeLoad</span> function. If you find that the user should not see the give view
+    then you can return false. You would then need to redirect to another view afterwards though.
+  </p>
+
+  <h4>Parameter Options:</h4>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Information</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>route</td>
+        <td><span class="label-type">Object</span><br></td>
+        <td>
+          The route contains the same information you passed to the <span class="label">add</span> function. This also
+          contains the <span class="label">extra</span> data object.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4>Returns:</h4>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Information</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="label-type">Boolean</span></td>
+        <td>True if the route is valid and can be shown. False if the route should not be shown. No view will be visible if you
+          return false, so you must redirect to another view.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br>
+
+  <h3>gotoView <span class="label-static">static</span></h3>
+
+  <p>
+    This is used to move to another view that is part of the same single page application. The path can include any route parameters.
+  </p>
+
+  <h4>Parameter Options:</h4>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Information</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>path</td>
+        <td><span class="label-type">string</span><br></td>
+        <td>
+          The path to move to. This is the part that comes after the <span class="label">#!</span> of the URL.
+          The path must start with a <span class="label">/</span> character.
+          <span class="label-required">Required</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <br>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="js-source">
+      <span class="js-gray">Route</span>.gotoView(<span class="js-red">'/view3/folder/123/hello'</span>;
+    </div>
+  </div>
+
+</div>

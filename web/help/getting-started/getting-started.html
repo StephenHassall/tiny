@@ -1,0 +1,236 @@
+<!-- Getting Started -->
+<div class="help-page">
+  <h2>Getting Started</h2>
+  <h3>Downloading</h3>
+  <p>
+    You can download the Tiny GitHub repository from <a class="source-link" href="https://github.com/StephenHassall/tiny">here</a>.
+  </p>
+  <ul>
+    <li>You will need to unzip the repository into a folder.</li>
+    <li>Then look for the <span class="label">/web/tiny</span> folder.</li>
+    <li>Copy all the files in here into a folder your browser will be able to find.</li>
+  </ul>  
+
+  <div class="help-warning">
+    <b>WARNING:</b>
+    You cannot run any web application directly from a file. 
+    You will need to be running a server application that sends them to the browser, using a http:// or https:// URL address.
+  </div>
+
+  <h3>Creating a Controller</h3>
+
+  <p>
+    Begin by creating a JavaScript file <span class="label">myFirstController.js</span>.
+    The first part is to import all the external parts required. We need to import the Tiny <span class="label">Controller</span> and <span class="label">Template</span> classes.
+  </p>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="js-source">
+      <span class="js-line-number">1</span><span class="js-purple">import</span> Controller <span class="js-purple">from</span> <span class="js-red">"/lib/tiny/controller.js"</span>;<br>
+      <span class="js-line-number">2</span><span class="js-purple">import</span> Template <span class="js-purple">from</span> <span class="js-red">"/lib/tiny/template.js"</span>;
+    </div>
+  </div>
+
+  <p>
+    Create the <span class="label">MyFirstController</span> class that is derived from the <span class="label">Controller</span> class.
+    Here we are making our own Web Component.
+  </p>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="js-source">
+      <span class="js-line-number">1</span><span class="js-purple">export default</span> <span class="js-blue">class</span> <span class="js-gray">MyFirstController</span> <span class="js-blue">extends</span> <span class="js-gray">Controller</span> {<br>
+      <span class="js-line-number">2</span>&nbsp;&nbsp;<span class="js-blue">constructor</span>() {<br>
+      <span class="js-line-number">3</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-green">// Call the super to load the HTML and CSS parts</span><br>
+      <span class="js-line-number">4</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-blue">super</span>({<br>
+      <span class="js-line-number">5</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;htmlPath: <span class="js-red">'my-first-controller.html'</span>,<br>
+      <span class="js-line-number">6</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cssPath: <span class="js-red">'my-first-controller.css'</span>,<br>
+      <span class="js-line-number">7</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;importMetaUrl: <span class="js-purple">import</span>.meta.url<br>
+      <span class="js-line-number">8</span>&nbsp;&nbsp;&nbsp;&nbsp;});<br>
+      <span class="js-line-number">9</span><br>
+      <span class="js-line-number2">10</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-green">// Set count value to zero</span><br>
+      <span class="js-line-number2">12</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-blue">this</span>.count = <span class="js-green">0</span>;<br>
+      <span class="js-line-number2">13</span>&nbsp;&nbsp;}<br>
+      <span class="js-line-number2">14</span>...<br>
+    </div>
+  </div>
+
+  <p>
+    In the construstor we are calling the <span class="label">super</span> function with a number of options.
+    The <span class="label">my-first-controller.html</span> and <span class="label">my-first-controller.css</span> files are stored in the same
+    folder as the <span class="label">my-first-controller.js</span> file.
+    We are using the relative path of the JavaScript source file to give the locations of the HTML and CSS files.
+    This is done by passing the <span class="label">import.meta.url</span> parameter.
+    This is the URL of the JavaScript source file itself.
+  </p>
+
+  <p>
+    The <span class="label">count</span> variable will be shown later in the template area.
+  </p>
+
+  <p>
+    Create the <span class="label">my-first-controller.html</span> and <span class="label">my-first-controller.css</span> files. These are located in
+    the same folder as the <span class="label">my-first-controller.js</span> file.
+  </p>
+  
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="html-source">
+      <span class="html-line-number">1</span><span class="html-green">&lt;!-- The HTML part of the controller --&gt</span><br>
+      <span class="html-line-number">2</span><span class="html-brown">&lt;div</span> <span class="html-red">class</span>=<span class="html-blue">"example"</span><span class="html-brown">&gt;</span>My First Controller<span class="html-brown">&lt;/div&gt;</span><br>
+      <span class="html-line-number">3</span>&nbsp;&nbsp;<span class="html-brown">&lt;h2&gt;</span>My First Controller<span class="html-brown">&lt;/h2&gt;</span><br>
+      <span class="html-line-number">4</span><br>
+      <span class="html-line-number">5</span>&nbsp;&nbsp;<span class="html-green">&lt;!-- Template area that gets formatted each time the count value is increased --&gt</span><br>
+      <span class="html-line-number">6</span>&nbsp;&nbsp;<span class="html-brown">&lt;p</span> <span class="html-red">id</span>=<span class="html-blue">"templateId"</span><span class="html-brown">&gt;</span>Count value is ${this.count}<span class="html-brown">&lt;/p&gt;</span><br>
+      <span class="html-line-number">7</span><br>
+      <span class="html-line-number">8</span>&nbsp;&nbsp;<span class="html-green">&lt;!-- Button with inline click event that calls a function in the controller --&gt</span><br>
+      <span class="html-line-number">9</span>&nbsp;&nbsp;<span class="html-brown">&lt;button</span> <span class="html-red">onclick</span>=<span class="html-blue">"<span class="js-brown">getController</span><span class="js-blue">(this)</span>.<span class="js-brown">increaseCount</span><span class="js-blue">()</span>"<span class="html-brown">&gt;</span>Increase Count<span class="html-brown">&lt;/button&gt;</span><br>
+      <span class="html-line-number2">10</span><span class="html-brown">&lt;/div&gt;</span>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="css-source">
+      <span class="html-line-number">1</span><span class="css-green">/* The CSS style parts of the controller */</span><br>
+      <span class="html-line-number">2</span><span class="css-brown">.example</span> {<br>
+      <span class="html-line-number">3</span>&nbsp;&nbsp;<span class="css-red">font-family</span>: <span class="css-blue">Arial, Helvetica, sans-serif</span>;<br>
+      <span class="html-line-number">4</span>&nbsp;&nbsp;<span class="css-red">margin</span>: <span class="css-green">1rem;</span><br>
+      <span class="html-line-number">5</span>}
+    </div>
+  </div>
+
+  <h3>Adding Events</h3>
+
+
+  <p>
+    Next we need to override the <span class="label">loadedCallback</span> function. This is called by the controller after the HTML
+    and CSS files are loaded.
+  </p>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="js-source">
+      <span class="js-line-number">1</span><span class="js-brown">loadedCallback</span>() {<br>
+      <span class="js-line-number">2</span>&nbsp;&nbsp;<span class="js-green">// Create template area</span><br>
+      <span class="js-line-number">3</span>&nbsp;&nbsp;<span class="js-blue">this</span>._templateArea = <span class="js-blue">new</span> <span class="js-gray">Template</span>(<span class="js-red">'templateId'</span>, <span class="js-blue">this</span>);<br>
+      <span class="js-line-number">4</span><br>
+      <span class="js-line-number">5</span>&nbsp;&nbsp;<span class="js-green">// Update the template area for the first time</span><br>
+      <span class="js-line-number">6</span>&nbsp;&nbsp;<span class="js-blue">this</span>._templateArea.<span class="js-brown">update</span>();<br>
+      <span class="js-line-number">7</span>}
+    </div>
+  </div>
+    
+  <p>
+    The <span class="label">Template</span> class is used to format JavaScript string template literal notations using variables belonging to
+    the controller. You need to create a new template object before you can format the template area. The <span class="lable">update</span> function
+    is used to reformat the template area and reset the HTML in the element.
+  </p>
+
+  <p>
+    The button has an inline <span class="label">onclick</span> event. When the button is pressed the function <span class="label">getController</span>
+    is called, which gets the MyFirstController instance, and then calls its <span class="label">increaseCount</span> function.
+  </p>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="js-source">
+      <span class="js-line-number">1</span><span class="js-brown">increaseCount</span>() {<br>
+      <span class="js-line-number">2</span>&nbsp;&nbsp;<span class="js-green">// Increase the count value</span><br>
+      <span class="js-line-number">3</span>&nbsp;&nbsp;<span class="js-blue">this</span>.count++;<br>
+      <span class="js-line-number">4</span><br>
+      <span class="js-line-number">5</span>&nbsp;&nbsp;<span class="js-green">// Update the template area</span><br>
+      <span class="js-line-number">6</span>&nbsp;&nbsp;<span class="js-blue">this</span>._templateArea.<span class="js-brown">update</span>();<br>
+      <span class="js-line-number">7</span>}
+    </div>
+  </div>
+    
+  <p>
+    The function performs two tasks. Firstly it increases the controller's <span class="label">count</span> variable.
+    Then it updates the template area. This reformats the HTML using the JavaScript string template literal.
+    It turns the <span class="label">${this.count}</span> formatted text into <span class="label">1</span> or whatever
+    the current count value is.
+  </p>
+
+  <h3>Showing the Controller</h3>
+
+  <p>
+    The final part to create the controller is to declare it as a web component.
+  </p>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="js-source">
+      <span class="js-line-number">1</span>customElements.<span class="js-brown">define</span>(<span class="js-red">'my-first-controller'</span>, <span class="js-gray">MyFirstController</span>);
+    </div>
+    </div>
+
+  <p>
+    Now that we have our controller we need to use it. To do this requires us to tell the browser to load in the JavaScript file
+    and then to add it into the HTML using its tag name.
+  </p>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="html-source">
+      <span class="html-line-number">1</span><span class="html-brown">&lt;!DOCTYPE</span> <span class="html-red">html</span><span class="html-brown">&gt;</span><br>
+      <span class="html-line-number">2</span><span class="html-brown">&lt;html</span> <span class="html-red">lang</span>=<span class="html-blue">"en"</span><span class="html-brown">&gt;</span><br>
+      <span class="html-line-number">3</span><span class="html-brown">&lt;header&gt;</span><br>
+      <span class="html-line-number">4</span>&nbsp;&nbsp;<span class="html-brown">&lt;title&gt;</span>Tiny Web Application Framework - Example: MyFirstController<span class="html-brown">&lt;/title&gt;</span><br>
+      <span class="html-line-number">5</span>&nbsp;&nbsp;<span class="html-brown">&lt;script</span> <span class="html-red">type</span>=<span class="html-blue">"module"</span> <span class="html-red">src</span>=<span class="html-blue">"my-first-controller.js"</span><span class="html-brown">&gt;&lt;/script&gt;</span><br>
+      <span class="html-line-number">6</span><span class="html-brown">&lt;/header&gt;</span><br>
+      <span class="html-line-number">7</span><span class="html-brown">&lt;body&gt;</span><br>
+      <span class="html-line-number">8</span>&nbsp;&nbsp;<span class="html-brown">&lt;my-first-controller&gt;&lt;/my-first-controller&gt;</span><br>
+      <span class="html-line-number">9</span><span class="html-brown">&lt;/body&gt;</span><br>
+      <span class="html-line-number2">10</span><span class="html-brown">&lt;/html&gt;</span>
+    </div>
+  </div>
+  
+  <h3>View the Source</h3>
+
+  <p>
+    View the source files involved using the links below. You can also see the final result <a class="source-link" href="../examples/my-first-controller/index.html">here</a>.
+    <ul>
+      <li><a class="source-link" href="../examples/my-first-controller/my-first-controller.js">my-first-controller.js</a></li>
+      <li><a class="source-link" download href="../examples/my-first-controller/my-first-controller.html">my-first-controller.html</a> (this will be downloaded)</li>
+      <li><a class="source-link" href="../examples/my-first-controller/my-first-controller.css">my-first-controller.css</a></li>
+    </ul>
+
+  </p>
+
+</div>

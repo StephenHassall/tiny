@@ -1,0 +1,154 @@
+<!-- Location -->
+<div class="help-page">
+  <h2>Reference: Location</h2>
+  <span class="label">import Location from "/lib/tiny/location.js";</span>
+
+  <h3>Overview</h3>
+  <p>
+    This is used along side the Route class when using a Single Page Application (SPA) system.
+    Because SPA page URLs have the <span class="label">/#!/</span> part to them, it requires some extra work to get the other URL parts.
+    The Location class is similar to the browser location object.
+  </p>
+  
+  <h3>Usage</h3>
+
+  <p>
+    All the functions are static getters and therefore do not require you to create a Location object or use <span class="label">(...)</span> parentheses.
+    Just call the function like <span class="label">let pathName = Location.pathname;</span>.
+  </p>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="js-source">
+      <span class="js-blue">console</span>.<span class="js-brown">log</span>(<span class="js-red">'href = '</span> + <span class="js-gray">Location</span>.href);<br>
+      <span class="js-blue">console</span>.<span class="js-brown">log</span>(<span class="js-red">'protocol = '</span> + <span class="js-gray">Location</span>.protocol);<br>
+      <span class="js-blue">console</span>.<span class="js-brown">log</span>(<span class="js-red">'host = '</span> + <span class="js-gray">Location</span>.host);<br>
+      <span class="js-blue">console</span>.<span class="js-brown">log</span>(<span class="js-red">'hostname = '</span> + <span class="js-gray">Location</span>.hostname);<br>
+      <span class="js-blue">console</span>.<span class="js-brown">log</span>(<span class="js-red">'port = '</span> + <span class="js-gray">Location</span>.port);<br>
+      <span class="js-blue">console</span>.<span class="js-brown">log</span>(<span class="js-red">'pathname = '</span> + <span class="js-gray">Location</span>.pathname);<br>
+      <span class="js-blue">console</span>.<span class="js-brown">log</span>(<span class="js-red">'search = '</span> + <span class="js-gray">Location</span>.search);<br>
+      <span class="js-blue">console</span>.<span class="js-brown">log</span>(<span class="js-red">'hash = '</span> + <span class="js-gray">Location</span>.hash);
+    </div>
+  </div>
+
+  <h3>href <span class="label-static">static</span></h3>
+
+  <p>
+    This is the whole URL.
+    <br><br>
+    <span class="label">http://domain.com:8080/path/page.html?search1=123&search2=hello#hashMark</span>
+    <br>
+    <span class="label">http://domain.com:8080/path/page.html#!/spaPage1/param1?search1=123&search2=hello#hashMark</span>
+  </p>
+
+  <p>
+    You can set the <span class="label">href</span> value to move the page on to another location.<br>
+  </p>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="js-source">
+      <span class="js-line-number">1</span><span class="js-gray">Location</span>.href = <span class="js-red">'http://google.com/'</span>;
+    </div>
+  </div>
+
+  <h3>protocol <span class="label-static">static</span></h3>
+
+  <p>
+    The protocol is the very starting part of the URL.
+    <br><br>
+    <span class="label">http:</span>//domain.com:8080/path/page.html?search1=123&search2=hello#hashMark
+    <br>
+    <span class="label">http:</span>//domain.com:8080/path/page.html#!/spaPage1/param1?search1=123&search2=hello#hashMark
+  </p>
+
+  <h3>host <span class="label-static">static</span></h3>
+
+  <p>
+    This is the domain address part and the port address section of the URL.
+    <br><br>
+    http://<span class="label">domain.com:8080</span>/path/page.html?search1=123&search2=hello#hashMark
+    <br>
+    http://<span class="label">domain.com:8080</span>/path/page.html#!/spaPage1/param1?search1=123&search2=hello#hashMark
+  </p>
+
+  <h3>hostname <span class="label-static">static</span></h3>
+
+  <p>
+    This is the domain address part only of the URL.
+    <br><br>
+    http://<span class="label">domain.com</span>:8080/path/page.html?search1=123&search2=hello#hashMark
+    <br>
+    http://<span class="label">domain.com</span>:8080/path/page.html#!/spaPage1/param1?search1=123&search2=hello#hashMark
+  </p>
+
+  <h3>port <span class="label-static">static</span></h3>
+
+  <p>
+    This is the port address section only of the URL.
+    <br><br>
+    http://domain.com:<span class="label">8080</span>/path/page.html?search1=123&search2=hello#hashMark
+    <br>
+    http://domain.com:<span class="label">8080</span>/path/page.html#!/spaPage1/param1?search1=123&search2=hello#hashMark
+  </p>
+
+  <h3>pathName <span class="label-static">static</span></h3>
+
+  <p>
+    This is the path part of the URL without any search or hash marks.
+    <br><br>
+    http://domain.com:8080<span class="label">/path/page.html</span>?search1=123&search2=hello#hashMark
+    <br>
+    http://domain.com:8080<span class="label">/path/page.html#!/spaPage1/param1</span>?search1=123&search2=hello#hashMark
+  </p>
+
+  <h3>search <span class="label-static">static</span></h3>
+
+  <p>
+    This is the search part of the URL.
+    <br><br>
+    http://domain.com:8080/path/page.html<span class="label">?search1=123&search2=hello</span>#hashMark
+    <br>
+    http://domain.com:8080/path/page.html#!/spaPage1/param1<span class="label">?search1=123&search2=hello</span>#hashMark
+  </p>
+
+  <h3>searchParams <span class="label-static">static</span></h3>
+
+  <p>
+    This gets the search part of the URL as an object with parameter value pairs. For example, if the URL is
+    <br><br>
+
+    <span class="label">http://domain.com:8080/path/page.html?search1=123&search2=hello#hashMark</span>
+          
+    <br><br>
+    
+    then calling the <span class="label">Location.searchParams</span> function will return the following.
+    
+    <br><br>
+
+    <span class="label">{ search1: '123', search2: 'hello' }</span>
+    
+    <br><br>
+
+    You will notice that the parameter values are aways text, even when numbers are used.
+  </p>
+
+  <h3>hash <span class="label-static">static</span></h3>
+
+  <p>
+    This is the hash part of the URL.
+    <br><br>
+    http://domain.com:8080/path/page.html?search1=123&search2=hello<span class="label">#hashMark</span>
+    <br>
+    http://domain.com:8080/path/page.html#!/spaPage1/param1?search1=123&search2=hello<span class="label">#hashMark</span>
+  </p>
+  
+</div>

@@ -11,98 +11,19 @@
   <link rel="icon" type="image/png" href="/tiny-16x16.png" sizes="16x16" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link href="/tiny.css" rel="stylesheet" type="text/css" media="all" />
-  <script src="/gdpr.js"></script>
-  <title>Tiny Web Application Framework Help - Introduction</title>
+  <title>Tiny Web Application Framework Help</title>
+  <script type="module" src="../controller/header/header.js"></script>
+  <script type="module" src="help-app.js"></script>
+  <script type="module" src="sidebar/sidebar.js"></script>
+  <script type="module" src="../controller/footer/footer.js"></script>
+  <script src="../gdpr.js"></script>
 </head>
 <body>
-  <!-- Header -->
-  <div class="help-header">
-    <a href="/index.html" class="help-header-logo">
-      <img src="/tiny.svg" alt="Tiny Web Application Framework"></img>
-    </a>
-    <div class="help-header-title">Tiny Web Application Framework</div>
+  <header-controller class="header"></header-controller>
+  <div class="help-area">
+    <sidebar-controller class="sidebar"></sidebar-controller>
+    <help-app-route class="help"></help-app-route>
   </div>
-
-  <!-- Help Side Bar -->
-  <div class="help-side-bar">
-    <div class="help-side-bar-group">
-      <div class="help-side-bar-group-title">General:</div>
-      <a href="index.html" class="help-side-bar-set">Introduction</a>
-      <a href="getting-started.html">Getting Started</a>
-    </div>
-    <div class="help-side-bar-group">
-      <div class="help-side-bar-group-title">Reference:</div>
-      <a href="controller.html">Controller</a>
-      <a href="template.html">Template</a>
-      <a href="template-array.html">TemplateArray</a>
-      <a href="form.html">Form</a>
-      <a href="route.html">Route (SPA)</a>
-      <a href="location.html">Location</a>
-    </div>
-    <div class="help-side-bar-group">
-      <div class="help-side-bar-group-title">Examples:</div>
-      <a href="example-multilingual.html">Multilingual</a>
-      <a href="example-lucky7.html">Lucky 7</a>
-      <a href="example-simple-list.html">Simple List</a>
-      <a href="example-todo-list.html">Todo List</a>
-      <a href="example-questionnaire.html">Questionnaire</a>
-    </div>
-    <div class="help-side-bar-group">
-      <div class="help-side-bar-group-title">Extra:</div>
-      <a href="limitations.html">Limitations</a>
-      <a href="release-notes.html">Release Notes</a>
-      <a href="/privacy.html">Privacy</a>
-    </div>
-  </div>
-
-  <!-- Help Page -->
-  <div class="help-page">
-    <h2>Introduction</h2>
-    <h3>What Is The Tiny Web Application Framework?</h3>
-    <p>
-      There are many JavaScript frameworks that help you create web applications.
-      They all have their own unique ways of doing things, but they all have one thing in common, they are large and complex.
-      Our goal is to use existing web standards and technologies, mainly Web Components, to help you create web applications without a framework.
-    </p>
-    <p>
-      Sadly, you cannot really create a web application using only Web Components, so it was necessary to create a small set of helper classes. 
-    </p>
-    <p>
-      There is no need to spend hours learning something that will go out of date in a year’s time.
-      The Tiny Web Application Framework is small, very quick to pick up and get started with, and because it is based off web standards, it wouldn’t get old quick.
-    </p>
-
-    <h3>What You Need To Know First</h3>
-    <p>
-      You will need to know how to use JavaScript, HTML, CSS and have some understanding of Web Components.
-      Some knowledge relating to ES6 (import, export, class, etc) will be helpful too.
-    </p>
-
-    <h3>How Does It Work</h3>
-
-    <p>
-      <ul>
-        <li>Runs in the browser.</li>
-        <li>Create your own Controller classes that load in HTML and CSS files.</li>
-        <li>Format HTML using JavaScript ${...} string template literal notations.</li>
-        <li>Transfer data between inputs and data.</li>
-        <li>No build tools.</li>
-      </ul>
-    </p>
-
-    <h3>Where To Get It</h3>
-
-    <p>
-      You can go to the Tiny GitHub repository from <a href="https://github.com/StephenHassall/tiny">here</a>.
-      Then select the option to download the ZIP file.
-    </p>
-
-    <!-- Footer -->
-    <div class="footer">
-      <a href="/index.html">&lt; Home</a>
-      <a href="getting-started.html">Getting Started &gt;</a>
-    </div>
-
-  </div>
-
+  <footer-controller class="footer"></footer-controller>
 </body>
+</html>

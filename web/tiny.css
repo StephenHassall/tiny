@@ -1,5 +1,7 @@
+/* Icon SVG styles */
+
 /* System Fonts */
-body, label, input, textarea, button {
+html {
   font-family:
     -apple-system,
     BlinkMacSystemFont,
@@ -13,440 +15,126 @@ body, label, input, textarea, button {
     "Helvetica Neue",
     sans-serif;
 }
+
+input, textarea, button {
+  font-family: inherit
+}
+
 body {
-  background-color: rgb(248, 248, 248);
+  background-color: rgb(248,248,248);
   margin: 0;
+  padding: 0;
 }
 
-/* Info Panel */
-.info-panel {
-  text-align: center;
-  border-radius: 1rem;
-  box-shadow: 0 0.1rem 0.5rem rgb(0 0 0 / 30%);
-}
-
-.info-panel-title {
-  font-size: 1.75rem;
-  font-weight: 400;
-  border-top-right-radius: 1rem;
-  border-top-left-radius: 1rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
-.info-panel-text {
-  font-size: 1.25rem;
-  margin: 0.5rem 3rem 0.5rem 3rem;
-}
-
-/* Button Get Started */
-.button-get-started {
-  display: inline-block;
-  background-color: #287ea1;
-  color: white;
-  margin: 0.5rem 0.5rem 0.5rem 0;
-  padding: 0.75rem;
-  font-size: 1.2rem;
-  font-weight: 600;
-  line-height: 1.2rem;
-  border-radius: 1.0rem;
-  border: 0.2rem solid #287ea1;
-  cursor: pointer;      
-}
-.button-get-started:hover {
-  background-color: #17485c;
-  border: 0.2rem solid #17485c;
-}
-.button-get-started:link { text-decoration: none;}
-.button-get-started:visited { text-decoration: none; }
-.button-get-started:hover { text-decoration: none; }
-.button-get-started:active { text-decoration: none; }
-
-/* Button Learn More */
-.button-learn-more {
-  display: inline-block;
-  background-color: rgb(248, 248, 248);
-  color: #287ea1;
-  margin: 0.5rem;
-  padding: 0.75rem;
-  font-size: 1.2rem;
-  font-weight: 600;
-  line-height: 1.2rem;
-  border-radius: 1.0rem;
-  border: 0.2rem solid #287ea1;
-  cursor: pointer;      
-}
-.button-learn-more:hover {
-  background-color: #90d5f0;
-  border: 0.2rem solid #287ea1;
-}
-.button-learn-more:link { text-decoration: none;}
-.button-learn-more:visited { text-decoration: none; }
-.button-learn-more:hover { text-decoration: none; }
-.button-learn-more:active { text-decoration: none; }
-
-/* Button GitHub */
-.button-github {
-  display: inline-block;
-  background-color: rgb(248, 248, 248);
-  color: gray;
-  margin: 0.5rem;
-  padding: 0.75rem;
-  font-size: 1.2rem;
-  font-weight: 600;
-  line-height: 1.2rem;
-  border-radius: 1.0rem;
-  border: 0.2rem solid gray;
-  cursor: pointer;
-}
-.button-github:hover {
-  background-color: lightgray;
-}
-.button-github:link { text-decoration: none;}
-.button-github:visited { text-decoration: none; }
-.button-github:hover { text-decoration: none; }
-.button-github:active { text-decoration: none; }
-
-.footer-help {
-  font-size: 1rem;
-}
-
-.footer-help > a {
-  font-size: 1rem;
-  margin-top: 0.5rem;
-  color:gray;
+.header {
   display: block;
-}
-
-.footer-help > a:link { text-decoration: none; color: gray; }
-.footer-help > a:hover { text-decoration: underline; color: gray; }
-.footer-help > a:visited { text-decoration: none; color: gray; }
-.footer-help > a:active { text-decoration: none; color: gray;}
-
-/* Help Header */
-.help-header {
-  position: absolute;
-  top: 0;
+  height: 4rem;
   left: 0;
   right: 0;
-  height: 3rem;
-  background-color: #287ea1;
-  color: white;
-}
-
-.help-header-logo {
-  display: inline-block;
-  text-align: center;
-  width: 3rem;
-}
-.help-header-logo:link { text-decoration: none;}
-.help-header-logo:visited { text-decoration: none; }
-.help-header-logo:hover { text-decoration: none; }
-.help-header-logo:active { text-decoration: none; }
-
-.help-header-logo > img {
-  height: 2.2rem;
-  margin: 0.4rem;
-}
-
-.help-header-title {
-  display: inline-block;
-  font-size: 1.4rem;
-  line-height: 3rem;
-  font-weight: 600;
-  margin-left: 0.5rem;
-  vertical-align: top;
-}
-
-/* Help Side Bar */
-.help-side-bar {
-  position: absolute;
-  top: 3rem;
-  left: 0;
-  width: 15rem;
-  background-color: rgb(248, 248, 248);
-  height: calc(100% - 3rem);
-  overflow-y: scroll;
-}
-
-.help-side-bar-set {
-  color: #287ea1 !important;
-}
-
-.help-side-bar-group {
-  margin-top: 1rem;
-  padding-left: 1rem;
-}
-
-.help-side-bar-group-title {
-  font-size: 1rem;
-  font-weight: 600;
-  color:black;
-  user-select: none;
-  padding-bottom: 0.3rem;
-}
-
-.help-side-bar-group > a {
-  font-size: 1rem;
-  margin-left: 1rem;
-  margin-bottom: 0.5rem;
-  display: block;
-}
-.help-side-bar-group > a:link { text-decoration: none; color: black; }
-.help-side-bar-group > a:hover { text-decoration: underline; color: black; }
-.help-side-bar-group > a:visited { text-decoration: none; color: black; }
-.help-side-bar-group > a:active { text-decoration: none; color: black;}
-
-/* Help Page */
-.help-page {
-  position: absolute;
-  top: 3rem;
-  left: 15rem;
-  width: calc(100% - 16rem);
-  padding-left: 1rem;
   background-color: white;
-  height: calc(100% - 3rem);
-  overflow-y: scroll;
 }
 
-.help-page > p {
-  max-width: 60rem;
+.home {
+  display: block;
+  left: 0;
+  right: 0;
+  min-height: 45rem;
+  background-color: white;
 }
 
-.help-page > h2 {
-  font-size: 2rem;
-  color: #287ea1;
-  margin-top: 0.4rem;
-  margin-bottom: 0.3rem;
+.privacy {
+  display: block;
+  left: 0;
+  right: 0;
+  min-height: 45rem;
+  background-color: white;
 }
 
-.help-page > h3 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #287ea1;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-}
-
-.help-page  table {
-  max-width: 60rem;
-  border-collapse: collapse;
-}
-
-.help-page  ul {
-  list-style: none;
-}
-
-.help-page ul > li::before {
-  content: "\2022";
-  color: #287ea1;
-  font-weight: 600;
-  font-size: large;
-  display: inline-block;
-  width: 1em;
-  margin-left: -1em;
-}
-
-.help-page table th {
-  background-color: lightgray;
-  font-size: 1rem;
-  font-weight: 600;
-  text-align: left;
-  padding: 0.5rem;
-  border: 2px solid gray;
-}
-
-.help-page table td {
-  vertical-align: top;
-  font-size: 1rem;
-  text-align: left;
-  padding: 0.5rem;
-  border: 2px solid gray;
-}
-
-.help-page .footer {
-  display: none;
+.help-area {
+  display: grid;
   width: 100%;
-  text-align: center;
-  margin-bottom: 1rem;
+  min-height: 45rem;
+  grid-template-columns: auto 15rem 65rem auto;
+  background-color: white;
 }
 
-.help-page .footer a {
-  font-size: x-large;
-  padding: 1rem;
-  color: #287ea1;
-}
-.help-page .footer a:link { text-decoration: none; }
-.help-page .footer a:hover { text-decoration: none; }
-.help-page .footer a:visited { text-decoration: none; }
-.help-page .footer a:active { text-decoration: none; }
-.help-page .footer a:hover {
-  color: #17485c;
-}
-.help-page .footer a:last-child {
-  float: right;
-}
-.help-page .footer a:first-child {
-  float: left;
-  padding-left: 0;
+.sidebar {
+  grid-column: 2;
 }
 
-.help-warning {
-  max-width: 60rem;
-  background-color: rgb(252, 233, 127);
-  border-left: 0.5rem solid gold;
-  color: rgb(88, 76, 3);
-  padding: 1rem;
-  margin-right: 1rem;
+.help {
+  grid-column: 3;
+  overflow: auto;
 }
 
-.help-source {
-  font-family: monospace;
-  font-size: 1rem;
-  max-width: 60rem;
-  margin-top: 1.5rem;
-  border-left: 0.5rem solid #287ea1;
-  box-shadow: 0 0.1rem 0.5rem rgb(0 0 0 / 30%);
-  padding: 1rem;
-  margin-right: 1rem;
-  overflow-x: auto;
+.footer {
+  display: block;
+  left: 0;
+  right: 0;
+  background-color: rgb(248,248,248);
 }
 
-.js-purple {
-  color: #af00db;
-}
-.js-red {
-  color: #a31515;
-}
-.js-blue {
-  color: #0000ff;
-}
-.js-green {
-  color: #008000;
-}
-.js-gray {
-  color: #267f99;
-}
-.js-brown {
-  color: #795e26;
-}
-.html-brown {
-  color: #800000;
-}
-.html-red {
-  color: #ff0000;
-}
-.html-blue {
-  color: #0000ff;
-}
-.html-green {
-  color: #008000;
-}
-.css-brown {
-  color: #800000;
-}
-.css-red {
-  color: #ff0000;
-}
-.css-green {
-  color: #008000;
-}
-.css-blue {
-  color: #0451a5;
-}
-
-/* Labels */
-.label {
-  background-color: lightgray;
-  font-size: 85%;
-  font-weight: normal;
-  border-radius: 0.4rem;
-  padding: 0rem 0.3rem 0.1rem 0.3rem;
-}
-
-.label-required {
-  background-color: rgb(233, 206, 53);
-  font-size: 90%;
-  font-weight: 600;
-  border-radius: 0.2rem;
-  padding: 0rem 0.3rem 0.2rem 0.3rem;
-}
-
-.label-default {
-  background-color: rgb(52, 104, 52);
-  color: white;
-  font-size: 90%;
-  font-weight: 600;
-  border-radius: 0.2rem;
-  padding: 0rem 0.3rem 0.2rem 0.3rem;
-}
-
-.label-type {
-  background-color: rgb(4, 88, 116);
-  color: white;
-  font-size: 90%;
-  font-weight: 600;
-  border-radius: 0.2rem;
-  padding: 0rem 0.3rem 0.2rem 0.3rem;
-}
-
-.label-override {
-  background-color: #2196f3;
-  color: white;
-  font-size: 90%;
-  font-weight: 600;
-  border-radius: 0.2rem;
-  padding: 0rem 0.3rem 0.2rem 0.3rem;
-}
-
-.label-static {
-  background-color: green;
-  color: white;
-  font-size: 90%;
-  font-weight: 600;
-  border-radius: 0.2rem;
-  padding: 0rem 0.3rem 0.2rem 0.3rem;
-}
-
-/* Source Link */
-.source-link {
-  background-color: #287ea1;
-  color: rgb(248,248,248);
-  font-size: 85%;
-  font-weight: normal;
-  border-radius: 0.2rem;
-  padding: 0rem 0.3rem 0.1rem 0.3rem;
-}
-.source-link:link { text-decoration: none;}
-.source-link:hover { text-decoration: underline;}
-.source-link:visited { text-decoration: none;}
-.source-link:active { text-decoration: none;}
-
-@media (max-width: 60rem) {
-  .button-get-started {
-    display: block;
-    max-width: fit-content;
-    margin-left: 0;
+@media (max-width: 90rem) {
+  .header {
+    height: 3rem;
   }
-  .button-learn-more {
-    display: block;
-    max-width: fit-content;
-    margin-left: 0;
+
+  .help-area {
+    grid-template-columns: 1rem 10rem 1fr 1rem;
+    max-width: 100%;
   }
-  .button-github {
-    display: block;
-    max-width: fit-content;
-    margin-left: 0;
+  .sidebar {
+    grid-column: 2;
   }
-  .help-side-bar {
+  .help {
+    grid-column: 3;
+  }
+}
+
+@media (max-width:44rem) {
+  .help-area {
+    grid-template-columns: 1rem auto 1rem;
+  }
+  .sidebar {
+    visibility: hidden;
     display: none;
   }
-  .help-page {
-    left: 0rem;
-    width: 100%;
-    box-sizing: border-box;
+  .help {
+    grid-column: 2;
   }
-  .help-page .footer {
-    display: block;
+}
+
+@media (max-width:25rem) {
+  .help-area {
+    grid-template-columns: 1rem auto 1rem;
+  }
+  .help {
+    grid-column: 2;
+    background-color: antiquewhite;
+  }
+  .sidebar {
+    visibility: hidden;
+    display: none;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #404040;
+  }
+  .header {
+    background-color: #404040;
+  }
+  .privacy {
+    background-color: #404040;
+  }
+  .help-area {
+    background-color: #404040;
+  }
+  .sidebar {
+    background-color: #404040;
+  }  
+  .help {
+    background-color: #404040;
   }
 }

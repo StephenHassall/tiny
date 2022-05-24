@@ -1,0 +1,174 @@
+<!-- Template -->
+<div class="help-page">
+  <h2>Reference: Template</h2>
+  <span class="label">import Template from "/lib/tiny/template.js";</span>
+
+  <h3>Overview</h3>
+  <p>
+    The Template class is used to format areas of HTML using JavaScript's template
+    string literals with data and functions that belong to a controller. It uses
+    the <span class="label">${...}</span> notation in a number of ways to create the HTML to show.
+  </p>
+  
+  <h3>Usage</h3>
+
+  <p>
+    To format a template area you need to create a Template object that points to the section of HTML that contains
+    the <span class="label">${...}</span> notations and then call its <span class="label">update</span> function.
+  </p>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="js-source">
+      <span class="js-line-number">1</span><span class="html-brown">&lt;div</span> <span class="html-red">id</span>=<span class="html-blue">"templateArea"</span><span class="html-brown">&gt;</span><br>
+      <span class="js-line-number">2</span>&nbsp;&nbsp;<span class="html-brown">&lt;div</span> <span class="html-red">class</span>=<span class="html-blue">"dice"</span><span class="html-brown">&gt;</span>${this.dice1}<span class="html-brown">&lt;/div&gt;</span><br>
+      <span class="js-line-number">3</span>&nbsp;&nbsp;<span class="html-brown">&lt;div</span> <span class="html-red">class</span>=<span class="html-blue">"dice"</span><span class="html-brown">&gt;</span>${this.dice2}<span class="html-brown">&lt;/div&gt;</span><br>
+      <span class="js-line-number">4</span>&nbsp;&nbsp;<span class="html-brown">&lt;div</span> <span class="html-red">class</span>=<span class="html-blue">"equal"</span><span class="html-brown">&gt;</span>=<span class="html-brown">&lt;/div&gt;</span><br>
+      <span class="js-line-number">5</span>&nbsp;&nbsp;<span class="html-brown">&lt;div</span> <span class="html-red">class</span>=<span class="html-blue">"dice ${this.diceTotal===7 ? 'dice-lucky' : ''}"</span><span class="html-brown">&gt;</span>${this.diceTotal}<span class="html-brown">&lt;/div&gt;</span><br>
+      <span class="js-line-number">6</span><span class="html-brown">&lt;/div&gt;</span>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="js-source">
+      <span class="js-line-number">1</span><span class="js-green">// Create template area</span><br>
+      <span class="js-line-number">2</span><span class="js-blue">this</span>._templateArea = <span class="js-blue">new</span> <span class="js-gray">Template</span>(<span class="js-red">'templateArea'</span>, <span class="js-blue">this</span>);<br>
+      <span class="js-line-number">3</span><br>
+      <span class="js-line-number">4</span><span class="js-green">// Update the template area</span><br>
+      <span class="js-line-number">5</span><span class="js-blue">this</span>._templateArea.<span class="js-brown">update</span>();
+    </div>
+  </div>
+
+  <h3>Constructor</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Information</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>elementId</td>
+        <td><span class="label-type">string</span></td>
+        <td>
+          The id attribute value of the element that contains the template notations that
+          you want to format.
+          <span class="label-required">Required</span>
+        </td>
+      </tr>
+      <tr>
+        <td>controller</td>
+        <td><span class="label-type">Controller</span></td>
+        <td>
+          A class derived from the Controller class.
+          <span class="label-required">Required</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    This creates a Template object. It finds the element and takes the <span class="label">outerHTML</span> part
+    and uses that as the template for later formatting. The element will be made invisible until the
+    <span class="label">update</span> function is called. This stops the template HTML being seen by the user.
+  </p>
+
+
+  <h3>update</h3>
+
+  <p>
+    Use the <span class="label">upate</span> function to reformat the HTML and update the element with the new
+    HTML it created. This takes the starting template HTML and reformats it using the current controller property
+    values.
+  </p>
+
+  <h3>Types of Formatting</h3>
+
+  <p>
+    The JavaScript string template literal formatting used by the Template class is the same as those used
+    within JavaScript code that has the <span class="label">let variable = `formatting using ${abc} notation`;</span>.
+    There are a number different formatting things you can use to get the desired results you are looking for.
+    Below are a list of some of them.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Format</th>
+        <th>Information</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>${this.variable}</td>
+        <td>
+          Converts the <span class="label">this.variable</span> into text.
+          The type of the variable can be anything, not just a string.
+        </td>
+      </tr>
+      <tr>
+        <td>${this.foo()}</td>
+        <td>Runs a function and converts the returned result into text.</td>
+      </tr>
+      <tr>
+        <td>${this.variable1 + this.variable2}</td>
+        <td>Adds a number of variables and converts the result into text.</td>
+      </tr>
+      <tr>
+        <td>${this.variable.substring(0, 10)}</td>
+        <td>Format functions on variables and convert the result into text.</td>
+      </tr>
+      <tr>
+        <td>${this.variable === true ? 'valid' : 'invalid'}</td>
+        <td>Conditional formatting. This tests a variable and converts the true part or the false part into text.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Special Formatting Rules</h3>
+
+  <p>
+    To help create the HTML required there is a special type of formatting. This is used to help
+    with attributes that do not have any values or have special values that can create problems.
+  </p>
+
+  <p>The special formatting is given as follows.</p>
+  <p><span class="label">tiny-[attribute]="..."</span><br></p>
+  <p>
+    This can be handled in two ways.
+    <ul>
+      <li>If the attribute value is empty, then the whole attribute is removed.</li>
+      <li>If there is an attribute value, then only the attribute part and its value remain.</li>
+    </ul>
+    In both cases the <span class="label">tiny-</span> part is removed. Some examples.<br>
+    <span class="label">tiny-disabled=""</span> becomes blank. Everything is removed.
+    <br>
+    <span class="label">tiny-disabled="disabled"</span> becomes <span class="label">disabled="disabled"</span>.
+    <br>
+    <span class="label">tiny-style="color: red;"</span> becomes <span class="label">style="color: red;"</span>
+  </p>
+
+  <h3>extraFormat <span class="label-override">override</span></h3>
+
+  <p>
+    You can add your own extra formatting. You will need to create your own class derived from Template.
+    Then you will need to override the <span class="label">extraFormat</span> function. This will allow you to
+    take the formatted template HTML and perform any extra formatting to create the final HTML that will be
+    used and attached to the element.
+  </p>
+
+</div>

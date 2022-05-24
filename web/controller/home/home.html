@@ -1,0 +1,172 @@
+<!-- Home -->
+<div class="home">
+
+  <div class="content">
+
+    <div class="title-primary">
+      Build websites without unnecessary complexity. Use existing standards in a simple way.
+    </div>
+
+    <div class="title-secondary">
+      No build tools. No TypeScript. No JSX. No mountain of code to learn.
+      No framework that goes out of date in a month.
+      Just a small library and simple code.
+    </div>
+
+    <div class="title-links">
+      <a href="/help/#!/getting-started" class="button-get-started">GET STARTED</a>
+      <a href="/help/#!/introduction" class="button-learn-more">LEARN MORE</a>
+      <a href="https://github.com/StephenHassall/tiny" class="button-github">GITHUB</a>
+    </div>
+
+    <div class="info-area">
+  
+      <div class="info-panel">
+        <div class="info-panel-title">Model-View-Controller (MVC)</div>
+        <div class="info-panel-text">
+          A controller has its own separate HTML, CSS and JavaScript files, making it easier to edit their different parts.
+        </div>
+      </div>
+
+      <div class="info-panel">
+        <div class="info-panel-title">String Templates &amp; HTML</div>
+        <div class="info-panel-text">
+          Format HTML using standard JavaScript string template literals. The <span class="label">${...}</span> notation can include variables, functions, and embedded conditions.
+        </div>
+      </div>
+
+      <div class="info-panel">
+        <div class="info-panel-title">Two Way Data Binding</div>
+        <div class="info-panel-text">
+          Transfer information between data and form inputs. Create a link between the property of an object and an input element.
+        </div>
+      </div>
+
+      <div class="info-panel">
+        <div class="info-panel-title">Single Page Apps &amp; Routing</div>
+        <div class="info-panel-text">
+          Create a single page application with multiple views for quick and dynamic web sites.
+        </div>
+      </div>
+
+      <div class="info-panel">
+        <div class="info-panel-title">ES6 &amp; Web Components</div>
+        <div class="info-panel-text">
+          Using modern web standards. These are more resilient to change. So, the code you write today, will be working long into the future.
+        </div>
+      </div>
+
+    </div>
+
+    <div class="header">
+      What the HTML looks like
+    </div>
+
+    <div class="subheader">
+      Keep HTML, CSS and JavaScript files separate. Use string template literal notation to format the HTML. Use inline events to call controller functions.
+    </div>
+
+    <div class="source-window">
+      <div class="source-window-header">
+        <div class="source-window-dot source-window-dot1"></div>
+        <div class="source-window-dot source-window-dot2"></div>
+        <div class="source-window-dot source-window-dot3"></div>
+      </div>
+      <div class="html-source">
+        <span class="html-line-number">1</span><span class="html-brown">&lt;div</span> <span class="html-red">class</span>=<span class="html-blue">"lucky7"</span><span class="html-brown">&gt;</span><br>
+        <span class="html-line-number">2</span>&nbsp;&nbsp;<span class="html-brown">&lt;h3&gt;</span>Role the dice and see how lucky you are? Will you get the lucky 7?<span class="html-brown">&lt;/h3&gt;</span><br>
+        <span class="html-line-number">3</span>&nbsp;&nbsp;<span class="html-brown">&lt;div</span> <span class="html-red">id</span>=<span class="html-blue">"templateArea"</span><span class="html-brown">&gt;</span><br>
+        <span class="html-line-number">4</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-brown">&lt;div</span> <span class="html-red">class</span>=<span class="html-blue">"dice"</span><span class="html-brown">&gt;</span>${this.dice1}<span class="html-brown">&lt;/div&gt;</span><br>
+        <span class="html-line-number">5</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-brown">&lt;div</span> <span class="html-red">class</span>=<span class="html-blue">"dice"</span><span class="html-brown">&gt;</span>${this.dice2}<span class="html-brown">&lt;/div&gt;</span><br>
+        <span class="html-line-number">6</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-brown">&lt;div</span> <span class="html-red">class</span>=<span class="html-blue">"equal"</span><span class="html-brown">&gt;</span>=<span class="html-brown">&lt;/div&gt;</span><br>
+        <span class="html-line-number">7</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-brown">&lt;div</span> <span class="html-red">class</span>=<span class="html-blue">"dice ${this.diceTotal===7 ? 'dice-lucky' : ''}"</span><span class="html-brown">&gt;</span>${this.diceTotal}<span class="html-brown">&lt;/div&gt;</span><br>
+        <span class="html-line-number">8</span>&nbsp;&nbsp;<span class="html-brown">&lt;/div&gt;</span><br>
+        <span class="html-line-number">9</span>&nbsp;&nbsp;<span class="html-brown">&lt;button</span><br>
+        <span class="html-line-number2">10</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-red">class</span>=<span class="html-blue">"roleDice"</span><br>
+        <span class="html-line-number2">11</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-red">onclick</span>=<span class="html-blue">"</span><span class="js-brown">getController</span><span class="js-blue">(this)</span>.<span class="js-brown">roleDice</span><span class="js-blue">()</span><span class="html-blue">"</span><span class="html-brown">&gt;</span><br>
+        <span class="html-line-number2">12</span>&nbsp;&nbsp;&nbsp;&nbsp;Role Dice<br>
+        <span class="html-line-number2">13</span>&nbsp;&nbsp;<span class="html-brown">&lt;/button&gt;</span><br>
+        <span class="html-line-number2">14</span><span class="html-brown">&lt;/div&gt;</span>
+      </div>
+    </div>
+    
+    <div class="header">
+      What the code looks like
+    </div>
+
+    <div class="subheader">
+      Load in HTML and CSS files dynamically. Set local variables. Handle the loaded event. Create template area. Process inline event.
+    </div>
+
+    <div class="source-window">
+      <div class="source-window-header">
+        <div class="source-window-dot source-window-dot1"></div>
+        <div class="source-window-dot source-window-dot2"></div>
+        <div class="source-window-dot source-window-dot3"></div>
+      </div>
+      <div class="js-source">
+        <span class="js-line-number">1</span><span class="js-purple">import</span> Controller <span class="js-purple">from</span> <span class="js-red">"/lib/tiny/controller.js"</span>;<br>
+        <span class="js-line-number">2</span><span class="js-purple">import</span> Template <span class="js-purple">from</span> <span class="js-red">"/lib/tiny/template.js"</span>;<br>
+        <span class="js-line-number">3</span><br>
+        <span class="js-line-number">4</span><span class="js-green">/**<br>
+        <span class="js-line-number">5</span>&nbsp;* Luck 7<br>
+        <span class="js-line-number">6</span>&nbsp;* <br>
+        <span class="js-line-number">7</span>&nbsp;* This web component shows how the Template class is used to set HTML text areas using<br>
+        <span class="js-line-number">8</span>&nbsp;* string templates.<br>
+        <span class="js-line-number">9</span>&nbsp;*/</span><br>
+        <span class="js-line-number2">10</span><span class="js-purple">export default</span> <span class="js-blue">class</span> <span class="js-gray">Lucky7Controller</span> <span class="js-blue">extends</span> <span class="js-gray">Controller</span> {<br>
+        <span class="js-line-number2">11</span>&nbsp;&nbsp;<span class="js-green">/**<br>
+        <span class="js-line-number2">12</span>&nbsp;&nbsp;&nbsp;* Lucky 7 controller web component constructor.<br>
+        <span class="js-line-number2">13</span>&nbsp;&nbsp;&nbsp;* </span><span class="html-blue">@constructor</span><br>
+        <span class="js-line-number2">14</span>&nbsp;&nbsp;&nbsp;<span class="js-green">*/</span><br>
+        <span class="js-line-number2">15</span>&nbsp;&nbsp;<span class="js-blue">constructor</span>() {<br>
+        <span class="js-line-number2">16</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-green">// Call the super with the page to load</span><br>
+        <span class="js-line-number2">17</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-blue">super</span>({<br>
+        <span class="js-line-number2">18</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;htmlPath: <span class="js-red">'lucky7.html'</span>,<br>
+        <span class="js-line-number2">19</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cssPath: <span class="js-red">'lucky7.css'</span>,<br>
+        <span class="js-line-number2">20</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;importMetaUrl: <span class="js-purple">import</span>.meta.url,<br>
+        <span class="js-line-number2">21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;useShadowDom: <span class="js-blue">true</span><br>
+        <span class="js-line-number2">22</span>&nbsp;&nbsp;&nbsp;&nbsp;});<br>
+        <span class="js-line-number2">23</span><br>
+        <span class="js-line-number2">24</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-green">// Set the dice parts</span><br>
+        <span class="js-line-number2">25</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-blue">this</span>.dice1 = Math.<span class="js-brown">floor</span>(Math.<span class="js-brown">random</span>() * <span class="js-green">6</span>) + <span class="js-green">1</span>;<br>
+        <span class="js-line-number2">26</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-blue">this</span>.dice2 = Math.<span class="js-brown">floor</span>(Math.<span class="js-brown">random</span>() * <span class="js-green">6</span>) + <span class="js-green">1</span>;<br>
+        <span class="js-line-number2">27</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-blue">this</span>.diceTotal = <span class="js-blue">this</span>.dice1 + <span class="js-blue">this</span>.dice2;<br>
+        <span class="js-line-number2">28</span>&nbsp;&nbsp;}<br>
+        <span class="js-line-number2">29</span><br>
+        <span class="js-line-number2">30</span>&nbsp;&nbsp;<span class="js-green">/**<br>
+        <span class="js-line-number2">31</span>&nbsp;&nbsp;&nbsp;* Override loadCallback function to handle when HTML/CSS has been loaded.<br>
+        <span class="js-line-number2">32</span>&nbsp;&nbsp;&nbsp;* </span><span class="html-blue">@override</span><br>
+        <span class="js-line-number2">33</span>&nbsp;&nbsp;&nbsp;<span class="js-green">*/</span>  <br>
+        <span class="js-line-number2">34</span>&nbsp;&nbsp;<span class="js-brown">loadedCallback</span>() {<br>
+        <span class="js-line-number2">35</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-green">// Create template area object</span><br>
+        <span class="js-line-number2">36</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-blue">this</span>._templateArea = <span class="js-blue">new</span> <span class="js-gray">Template</span>(<span class="js-red">'templateArea'</span>, <span class="js-blue">this</span>);<br>
+        <span class="js-line-number2">37</span><br>
+        <span class="js-line-number2">38</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-green">// Update the template area for the first time</span><br>
+        <span class="js-line-number2">39</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-blue">this</span>._templateArea.<span class="js-brown">update</span>();<br>
+        <span class="js-line-number2">40</span>&nbsp;&nbsp;}<br>
+        <span class="js-line-number2">41</span><br>
+        <span class="js-line-number2">42</span>&nbsp;&nbsp;<span class="js-green">/**<br>
+        <span class="js-line-number2">43</span>&nbsp;&nbsp;&nbsp;* Role dice button event.<br>
+        <span class="js-line-number2">44</span>&nbsp;&nbsp;&nbsp;*/</span>  <br>
+        <span class="js-line-number2">45</span>&nbsp;&nbsp;<span class="js-brown">roleDice</span>() {<br>
+        <span class="js-line-number2">46</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-green">// Reset the dice parts</span><br>
+        <span class="js-line-number2">47</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-blue">this</span>.dice1 = Math.<span class="js-brown">floor</span>(Math.<span class="js-brown">random</span>() * <span class="js-green">6</span>) + <span class="js-green">1</span>;<br>
+        <span class="js-line-number2">48</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-blue">this</span>.dice2 = Math.<span class="js-brown">floor</span>(Math.<span class="js-brown">random</span>() * <span class="js-green">6</span>) + <span class="js-green">1</span>;<br>
+        <span class="js-line-number2">49</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-blue">this</span>.diceTotal = <span class="js-blue">this</span>.dice1 + <span class="js-blue">this</span>.dice2;<br>
+        <span class="js-line-number2">50</span><br>
+        <span class="js-line-number2">51</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-green">// Update the template area with the new values</span><br>
+        <span class="js-line-number2">52</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-blue">this</span>._templateArea.<span class="js-brown">update</span>();<br>
+        <span class="js-line-number2">53</span>&nbsp;&nbsp;}<br>
+        <span class="js-line-number2">54</span>}<br>
+        <span class="js-line-number2">55</span><br>
+        <span class="js-line-number2">56</span><span class="js-green">// Define controller web component</span><br>
+        <span class="js-line-number2">57</span>customElements.<span class="js-brown">define</span>(<span class="js-red">'lucky7-controller'</span>, <span class="js-gray">Lucky7Controller</span>);
+      </div>
+    </div>
+    
+    <br>
+
+  </div>
+
+</div>

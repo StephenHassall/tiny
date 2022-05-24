@@ -1,18 +1,22 @@
 /**
  * Simple server code to run web site in browser.
- * Point you browser to http://localhost:9092/index.html
+ * Point you browser to http://localhost:9094
  */
- 'use strict';
+'use strict';
 
- // Get express node module
- var express = require('express');
- 
- // Create server
- var server = express();
- 
- // Create and add the static public HTML middleware module
- server.use(express.static('./web/'));
- 
- // Start server on port 9094
- server.listen(9094);
+// Get express node module
+var express = require('express');
+
+// Create server
+var server = express();
+
+// Create and add the static public HTML middleware module
+server.use(express.static('./web/'));
+
+// Start server on port 9094
+server.listen(9094);
+
+// Log ready
+console.log('Ready');
+
  

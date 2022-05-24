@@ -1,0 +1,283 @@
+<!-- Template Array -->
+<div class="help-page">
+  <h2>Reference: Template Array</h2>
+  <span class="label">import TemplateArray from "/lib/tiny/template-array.js";</span>
+
+  <h3>Overview</h3>
+  <p>
+    The TemplateArray class is used to repeatly format an area of HTML for each item in an array
+    using JavaScript's template string literals. It uses the <span class="label">${...}</span> notation in a number of ways
+    to create the HTML to show.
+  </p>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="js-source">
+      <span class="js-line-number">1</span><span class="html-brown">&lt;element</span> <span class="html-red">id</span>=<span class="html-blue">"parentPart"</span><span class="html-brown">&gt;</span><br>
+      <span class="js-line-number">2</span>&nbsp;&nbsp;...<br>
+      <span class="js-line-number">3</span>&nbsp;&nbsp;<span class="html-brown">&lt;element</span> <span class="html-red">id</span>=<span class="html-blue">"listPart"</span><span class="html-brown">&gt;</span><br>
+      <span class="js-line-number">4</span>&nbsp;&nbsp;&nbsp;&nbsp;... repeated for each item in array<br>
+      <span class="js-line-number">5</span>&nbsp;&nbsp;<span class="html-brown">&lt;/element&gt;</span><br>
+      <span class="js-line-number">6</span>&nbsp;&nbsp;...<br>
+      <span class="js-line-number">7</span><span class="html-brown">&lt;/element&gt;</span>
+    </div>
+  </div>
+
+  <p>
+    It formats a parent area and an inner list area. The list area is formatted against each item of an array.
+    The parent area is formatted against the controller values.
+  </p>
+  
+  <h3>Usage</h3>
+
+  <p>
+    To format a template array area you need to create a TemplateArray object with a number of options.
+    The options point to the parent element, the list element, and gives the array of items to repeat.
+    Once created you can use the <span class="label">update</span> function to recreate the HTML with any
+    updated information.
+  </p>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="html-source">
+      <span class="html-line-number">1</span><span class="html-brown">&lt;table</span> <span class="html-red">id</span>=<span class="html-blue">"parent"</span><span class="html-brown">&gt;</span><br>
+      <span class="html-line-number">2</span>&nbsp;&nbsp;<span class="html-brown">&lt;thead&gt;</span><br>
+      <span class="html-line-number">3</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-brown">&lt;tr&gt;</span><br>
+      <span class="html-line-number">4</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-brown">&lt;th&gt;</span>Name<span class="html-brown">&lt;/th&gt;</span><br>
+      <span class="html-line-number">5</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-brown">&lt;th&gt;</span>Age<span class="html-brown">&lt;/th&gt;</span><br>
+      <span class="html-line-number">6</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-brown">&lt;/tr&gt;</span><br>
+      <span class="html-line-number">7</span>&nbsp;&nbsp;<span class="html-brown">&lt;/thead&gt;</span><br>
+      <span class="html-line-number">8</span>&nbsp;&nbsp;<span class="html-brown">&lt;tbody</span> <span class="html-red">id</span>=<span class="html-blue">"list"</span><span class="html-brown">&gt;</span><br>
+      <span class="html-line-number">9</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-brown">&lt;tr</span> <span class="html-red">onclick</span>=<span class="html-blue">"</span><span class="js-brown">getController</span><span class="js-blue">(this)</span>.<span class="js-brown">selectionItem</span><span class="js-blue">(</span><span class="js-red">'</span><span class="js-blue">${</span>index<span class="js-blue">}</span><span class="js-red">'</span><span class="js-blue">)"</span><span class="html-brown">&gt;</span><br>
+      <span class="html-line-number2">10</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-brown">&lt;td&gt;</span>${item.name}<span class="html-brown">&lt;/td&gt;</span><br>
+      <span class="html-line-number2">11</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-brown">&lt;td&gt;</span>${item.age}<span class="html-brown">&lt;/td&gt;</span><br>
+      <span class="html-line-number2">12</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-brown">&lt;/tr&gt;</span><br>
+      <span class="html-line-number2">13</span>&nbsp;&nbsp;<span class="html-brown">&lt;/tbody&gt;</span><br>
+      <span class="html-line-number2">14</span><span class="html-brown">&lt;/table&gt;</span><br>
+    </div>
+  </div>
+
+  <br>
+  
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="js-source">
+      <span class="js-line-number">1</span><span class="js-green">// Create template array area</span><br>
+      <span class="js-line-number">2</span><span class="js-blue">this</span>._templateArray = <span class="js-blue">new</span> <span class="js-gray">TemplateArray</span>(<span class="js-red">'parent'</span>, <span class="js-red">'list'</span>, <span class="js-blue">this</span>._list, <span class="js-blue">this</span>);<br>
+      <span class="js-line-number">3</span><br>
+      <span class="js-line-number">4</span><span class="js-green">// Update the template array</span><br>
+      <span class="js-line-number">5</span><span class="js-blue">this</span>._templateArray.<span class="js-brown">update</span>();
+    </div>
+  </div>
+
+  <h3>Constructor</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Information</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>parentElementId</td>
+        <td><span class="label-type">string</span></td>
+        <td>
+          The id attribute value of the parent element that contains the template notations that
+          you want to format. You do not need to include this parameter. It can be set to
+          <span class="label">undefined</span>. The elements outer HTML is used as the template, except
+          anything inside the list element part.
+        </td>
+      </tr>
+      <tr>
+        <td>listElementId</td>
+        <td><span class="label-type">string</span></td>
+        <td>
+          The id attribute value of the list element that contains the template notations that
+          you want to format. Everything inside the element is used as the template, but not the element itself.
+          <span class="label-required">Required</span>
+        </td>
+      </tr>
+      <tr>
+        <td>array</td>
+        <td><span class="label-type">Array</span></td>
+        <td>
+          An array of items that will be used to create the list template HTML parts. The array can have items added, removed,
+          changed, and once you call the update function, the HTML shown will be updated too.
+          <span class="label-required">Required</span>
+        </td>
+      </tr>
+      <tr>
+        <td>controller</td>
+        <td><span class="label-type">Controller</span></td>
+        <td>
+          A class derived from the Controller class.
+          <span class="label-required">Required</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    This creates a TemplateArray object. It finds the parent element and takes the <span class="label">outerHTML</span> part
+    and uses that as the template for later formatting. It also searches for the list element and takes the <span class="label">innerHTML</span>
+    part and uses that as the item template. The parent element will be made invisible until the <span class="label">update</span> function is called.
+    This stops the template HTML being seen by the user.
+  </p>
+
+  <h3>reset</h3>
+
+  <p>
+    You can use a different array of items by calling the <span class="label">reset</span> function. Normally you only need to work with the array
+    you created the TemplateArray object will. You can change the contents of the array without needing to reset the whole array. But if required you
+    can reset the array the TemplateArray object will use.
+  </p>
+
+  <h4>Parameters:</h4>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Information</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>array</td>
+        <td><span class="label-type">Array</span></td>
+        <td>
+          An array of items that will be used to create the list template HTML parts. The array can have items added, removed,
+          changed, and once you call the update function, the HTML shown will be updated too.
+          <span class="label-required">Required</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>update</h3>
+
+  <p>
+    Use the <span class="label">upate</span> function to reformat the HTML and update the element with the new
+    HTML it created. This takes the starting parent and list template HTML and reformats it using the current controller property
+    values and the array of items.
+  </p>
+
+  <h3>Types of Formatting</h3>
+
+  <p>
+    The JavaScript string template literal formatting used by the Template class is the same as those used
+    within JavaScript code that has the <span class="label">let variable = `formatting using ${abc} notation`;</span>.
+    There are a number different formatting things you can use to get the desired results you are looking for.
+    Below are a list of some of them
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Format</th>
+        <th>Information</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>${this.variable}</td>
+        <td>
+          Converts the <span class="label">this.variable</span> into text.
+          The type of the variable can be anything, not just a string.
+        </td>
+      </tr>
+      <tr>
+        <td>${this.foo()}</td>
+        <td>Runs a function and converts the returned result into text.</td>
+      </tr>
+      <tr>
+        <td>${this.variable1 + this.variable2}</td>
+        <td>Adds a number of variables and converts the result into text.</td>
+      </tr>
+      <tr>
+        <td>${this.variable.substring(0, 10)}</td>
+        <td>Format functions on variables and convert the result into text.</td>
+      </tr>
+      <tr>
+        <td>${this.variable === true ? 'valid' : 'invalid'}</td>
+        <td>Conditional formatting. This tests a variable and converts the true part or the false part into text.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    For the template HTML used within the list area you can also use the following.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Format</th>
+        <th>Information</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>${item.variable}</td>
+        <td>
+          For each array item you can use any of its properties.
+          Converts the <span class="label">item.variable</span> into text.
+          The type of the variable can be anything, not just a string.
+        </td>
+      </tr>
+      <tr>
+        <td>${index}</td>
+        <td>The index value the item is in the array. Starts from 0.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Special Formatting Rules</h3>
+
+  <p>
+    To help create the HTML required there is a special type of formatting. This is used to help
+    with attributes that do not have any values or have special values that can create problems.
+  </p>
+
+  <p>The special formatting is given as follows.</p>
+  <p><span class="label">tiny-[attribute]="..."</span><br></p>
+  <p>
+    This can be handled in two ways.
+    <ul>
+      <li>If the attribute value is empty, then the whole attribute is removed.</li>
+      <li>If there is an attribute value, then only the attribute part and its value remain.</li>
+    </ul>
+    In both cases the <span class="label">tiny-</span> part is removed. Some examples.<br>
+    <span class="label">tiny-disabled=""</span> becomes blank. Everything is removed.
+    <br>
+    <span class="label">tiny-disabled="disabled"</span> becomes <span class="label">disabled="disabled"</span>.
+    <br>
+    <span class="label">tiny-style="color: red;"</span> becomes <span class="label">style="color: red;"</span>
+  </p>
+
+  <h3>extraFormat <span class="label-override">override</span></h3>
+
+  <p>
+    You can add your own extra formatting. You will need to create your own class derived from Template.
+    Then you will need to override the <span class="label">extraFormat</span> function. This will allow you to
+    take the formatted template HTML and perform any extra formatting to create the final HTML that will be
+    used and attached to the element.
+  </p>
+
+</div>

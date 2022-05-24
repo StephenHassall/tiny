@@ -1,0 +1,214 @@
+<!-- Example lucky7 -->
+<div class="help-page">
+  <h2>Example: Lucky 7</h2>
+
+  <h3>Overview</h3>
+
+  <p>
+    In this example we are looking at JavaScript string template literal notations and how to handle events.
+    The page shows 2 dice and what the sum total of their values are. If they add up to 7 then the result will
+    be highlighted in gold. There is a button you can press to role the dice.
+  </p>
+
+  <h3>The controller's HTML</h3>
+
+  <p>
+    There are two main parts we need. The template area to format the HTML with information about the dice and the button used to role the dice.
+  </p>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="html-source">
+      <span class="html-line-number">1</span><span class="html-brown">&lt;div</span> <span class="html-red">class</span>=<span class="html-blue">"lucky7"</span><span class="html-brown">&gt;</span><br>
+      <span class="html-line-number">2</span>&nbsp;&nbsp;<span class="html-brown">&lt;h3&gt;</span>Role the dice and see how lucky you are? Will you get the lucky 7?<span class="html-brown">&lt;/h3&gt;</span><br>
+      <span class="html-line-number">3</span>&nbsp;&nbsp;<span class="html-brown">&lt;div</span> <span class="html-red">id</span>=<span class="html-blue">"templateArea"</span><span class="html-brown">&gt;</span><br>
+      <span class="html-line-number">4</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-brown">&lt;div</span> <span class="html-red">class</span>=<span class="html-blue">"dice"</span><span class="html-brown">&gt;</span>${this.dice1}<span class="html-brown">&lt;/div&gt;</span><br>
+      <span class="html-line-number">5</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-brown">&lt;div</span> <span class="html-red">class</span>=<span class="html-blue">"dice"</span><span class="html-brown">&gt;</span>${this.dice2}<span class="html-brown">&lt;/div&gt;</span><br>
+      <span class="html-line-number">6</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-brown">&lt;div</span> <span class="html-red">class</span>=<span class="html-blue">"equal"</span><span class="html-brown">&gt;</span>=<span class="html-brown">&lt;/div&gt;</span><br>
+      <span class="html-line-number">7</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-brown">&lt;div</span> <span class="html-red">class</span>=<span class="html-blue">"dice ${this.diceTotal===7 ? 'dice-lucky' : ''}"</span><span class="html-brown">&gt;</span>${this.diceTotal}<span class="html-brown">&lt;/div&gt;</span><br>
+      <span class="html-line-number">8</span>&nbsp;&nbsp;<span class="html-brown">&lt;/div&gt;</span><br>
+      <span class="html-line-number">9</span>&nbsp;&nbsp;<span class="html-brown">&lt;button</span><br>
+      <span class="html-line-number2">10</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-red">class</span>=<span class="html-blue">"roleDice"</span><br>
+      <span class="html-line-number2">11</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-red">onclick</span>=<span class="html-blue">"</span><span class="js-brown">getController</span><span class="js-blue">(this)</span>.<span class="js-brown">roleDice</span><span class="js-blue">()</span><span class="html-blue">"</span><span class="html-brown">&gt;</span><br>
+      <span class="html-line-number2">12</span>&nbsp;&nbsp;&nbsp;&nbsp;Role Dice<br>
+      <span class="html-line-number2">13</span>&nbsp;&nbsp;<span class="html-brown">&lt;/button&gt;</span><br>
+      <span class="html-line-number2">14</span><span class="html-brown">&lt;/div&gt;</span>
+    </div>
+  </div>
+
+  <p>
+    The DIV element with the <span class="label">id="templateArea"</span> contains the template formatting. When the template is updated it will recreate
+    the HTML inside it using the latest dice1, dice2 and diceTotal values. It also has a condition notation testing to see if the dice total is 7.
+    If it is then the class name <span class="label">dice-lucky</span> is used, which highlights the total in gold.
+  </p>
+
+  <h3>Creating controller and setting properties</h3>
+
+  <p>
+    We create the controller by deriving it from the <span class="label">Controller</span> class.
+  </p>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="js-source">
+      <span class="js-line-number">1</span><span class="js-purple">export default</span> <span class="js-blue">class</span> <span class="js-gray">Lucky7Controller</span> <span class="js-blue">extends</span> <span class="js-gray">Controller</span> {<br>
+      <span class="js-line-number">2</span>&nbsp;&nbsp;<span class="js-blue">constructor</span>() {<br>
+      <span class="js-line-number">3</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-green">// Call the super with the page to load</span><br>
+      <span class="js-line-number">4</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-blue">super</span>({<br>
+      <span class="js-line-number">5</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;htmlPath: <span class="js-red">'lucky7.html'</span>,<br>
+      <span class="js-line-number">6</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cssPath: <span class="js-red">'lucky7.css'</span>,<br>
+      <span class="js-line-number">7</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;importMetaUrl: <span class="js-purple">import</span>.meta.url,<br>
+      <span class="js-line-number">8</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;useShadowDom: <span class="js-blue">true</span><br>
+      <span class="js-line-number">9</span>&nbsp;&nbsp;&nbsp;&nbsp;});<br>
+      <span class="js-line-number2">10</span><br>
+      <span class="js-line-number2">11</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-green">// Set the dice parts</span><br>
+      <span class="js-line-number2">12</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-blue">this</span>.dice1 = Math.<span class="js-brown">floor</span>(Math.<span class="js-brown">random</span>() * <span class="js-green">6</span>) + <span class="js-green">1</span>;<br>
+      <span class="js-line-number2">13</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-blue">this</span>.dice2 = Math.<span class="js-brown">floor</span>(Math.<span class="js-brown">random</span>() * <span class="js-green">6</span>) + <span class="js-green">1</span>;<br>
+      <span class="js-line-number2">14</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-blue">this</span>.diceTotal = <span class="js-blue">this</span>.dice1 + <span class="js-blue">this</span>.dice2;<br>
+      <span class="js-line-number2">15</span>&nbsp;&nbsp;}<br>
+      <span class="js-line-number2">16</span>&nbsp;&nbsp;...<br>
+      <span class="js-line-number2">17</span>}<br>
+      <span class="js-line-number2">18</span><br>
+      <span class="js-line-number2">19</span><span class="js-green">// Define controller web component</span><br>
+      <span class="js-line-number2">20</span>customElements.<span class="js-brown">define</span>(<span class="js-red">'lucky7-controller'</span>, <span class="js-gray">Lucky7Controller</span>);
+    </div>
+  </div>
+    
+  <p>
+    We need to call the <span class="label">super</span> function with details about the HTML and CSS files.
+    The constructor is a good place to add extra controller properties. Here we are adding <span class="label">dice1</span>,
+    <span class="label">dice2</span> and <span class="label">diceTotal</span>.
+    If you look back at the HTML you will see we access these properties using the <span class="label">${this.dice1}</span> notation.
+  </p>
+
+  <h3>Creating the template area</h3>
+
+  <p>
+    Next we need to create a template object to format the template area and its <span class="label">${...}</span> notations.
+  </p>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="js-source">
+      <span class="js-line-number">1</span><span class="js-brown">loadedCallback</span>() {<br>
+      <span class="js-line-number">2</span>&nbsp;&nbsp;<span class="js-green">// Create template area object</span><br>
+      <span class="js-line-number">3</span>&nbsp;&nbsp;<span class="js-blue">this</span>._templateArea = <span class="js-blue">new</span> <span class="js-gray">Template</span>(<span class="js-red">'templateArea'</span>, <span class="js-blue">this</span>);<br>
+      <span class="js-line-number">4</span><br>
+      <span class="js-line-number">5</span>&nbsp;&nbsp;<span class="js-green">// Update the template area for the first time</span><br>
+      <span class="js-line-number">6</span>&nbsp;&nbsp;<span class="js-blue">this</span>._templateArea.<span class="js-brown">update</span>();<br>
+      <span class="js-line-number">7</span>}
+    </div>
+  </div>
+
+  <p>
+    We need to have the HTML loaded before we can create any Template objects.
+    Therefore we need override the <span class="label">loadedCallback</span> function.
+    This is called by the controller when the HTML and CSS files have loaded and been attached
+    to the DOM.
+  </p>
+
+  <p>
+    We create the <span class="label">_templateArea</span> object and point it to the DIV element that has the <span class="label">id</span> value
+    of "templateArea". This will take all the HTML that is inside the DIV element, which includes all the <span class="label">${...}</span> notations,
+    and saves it for later. Whenever the template's <span class="label">update</span> function is called, it will use that HTML as a string
+    template literal and create a new HTML string from it and any controller values it accesses, and then resets the DIV element with the new HTML.
+    This update can be performed any number of times.
+  </p>
+
+  <h3>Handling role dice button</h3>
+
+  <p>
+    When the <span class="label">Role Dice</span> button is pressed we want to reset the dice values and update the template area to update
+    the HTML.
+  </p>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="js-source">
+      <span class="js-line-number">1</span><span class="html-red">onclick</span>=<span class="html-blue">"</span><span class="js-brown">getController</span><span class="js-blue">(this)</span>.<span class="js-brown">roleDice</span><span class="js-blue">()</span><span class="html-blue">"</span>
+    </div>
+  </div>
+
+  <p>
+    The button has an inline <span class="label">onclick</span> event. When the button is clicked, whatever code is inside the event is called.
+    The first function inside is <span class="label">getController(this)</span>. This finds the controller object the button element belongs to.
+    In this case, it will find the <span class="label">Lucky7Controller</span> object.
+    It is followed by calling the <span class="label">roleDice</span> function that belongs to the controller.
+  </p>
+    
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="js-source">
+      <span class="js-line-number">1</span><span class="js-brown">roleDice</span>() {<br>
+      <span class="js-line-number">2</span>&nbsp;&nbsp;<span class="js-green">// Reset the dice parts</span><br>
+      <span class="js-line-number">3</span>&nbsp;&nbsp;<span class="js-blue">this</span>.dice1 = Math.<span class="js-brown">floor</span>(Math.<span class="js-brown">random</span>() * <span class="js-green">6</span>) + <span class="js-green">1</span>;<br>
+      <span class="js-line-number">4</span>&nbsp;&nbsp;<span class="js-blue">this</span>.dice2 = Math.<span class="js-brown">floor</span>(Math.<span class="js-brown">random</span>() * <span class="js-green">6</span>) + <span class="js-green">1</span>;<br>
+      <span class="js-line-number">5</span>&nbsp;&nbsp;<span class="js-blue">this</span>.diceTotal = <span class="js-blue">this</span>.dice1 + <span class="js-blue">this</span>.dice2;<br>
+      <span class="js-line-number">6</span><br>
+      <span class="js-line-number">7</span>&nbsp;&nbsp;<span class="js-green">// Update the template area with the new values</span><br>
+      <span class="js-line-number">8</span>&nbsp;&nbsp;<span class="js-blue">this</span>._templateArea.<span class="js-brown">update</span>();<br>
+      <span class="js-line-number">9</span>}
+    </div>
+  </div>
+
+  <p>
+    This function first resets the dice values. It then updates the template area by reformatting the HTML.
+    This takes the template HTML, with its <span class="label">${...}</span> notation, that it had to start with and using
+    the new values, recreates the HTML and resets the DIV element's HTML.
+  </p>
+    
+  <h3>Putting it all together</h3>
+
+  <p>
+    The last thing we need to do is put everything together on a main page.
+  </p>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="html-source">
+      <span class="html-line-number">1</span><span class="html-brown">&lt;!DOCTYPE</span> <span class="html-red">html</span><span class="html-brown">&gt;</span><br>
+      <span class="html-line-number">2</span><span class="html-brown">&lt;html</span> <span class="html-red">lang</span>=<span class="html-blue">"en"</span><span class="html-brown">&gt;</span><br>
+      <span class="html-line-number">3</span><span class="html-brown">&lt;header&gt;</span><br>
+      <span class="html-line-number">4</span>&nbsp;&nbsp;<span class="html-brown">&lt;title&gt;</span>Tiny Web Application Framework - Example: Lucky7<span class="html-brown">&lt;/title&gt;</span><br>
+      <span class="html-line-number">5</span>&nbsp;&nbsp;<span class="html-brown">&lt;script</span> <span class="html-red">type</span>=<span class="html-blue">"module"</span> <span class="html-red">src</span>=<span class="html-blue">"lucky7.js"</span><span class="html-brown">&gt;&lt;/script&gt;</span><br>
+      <span class="html-line-number">6</span><span class="html-brown">&lt;/header&gt;</span><br>
+      <span class="html-line-number">7</span><span class="html-brown">&lt;body&gt;</span><br>
+      <span class="html-line-number">8</span>&nbsp;&nbsp;<span class="html-brown">&lt;lucky7-controller&gt;&lt;/lucky7-controller&gt;</span><br>
+      <span class="html-line-number">9</span><span class="html-brown">&lt;/body&gt;</span><br>
+      <span class="html-line-number2">10</span><span class="html-brown">&lt;/html&gt;</span>
+    </div>
+  </div>
+    
+  <p>
+    We need to include the controller's JavaScript file.
+    Make sure you include the <span class="label">type="module"</span> attribute when working with web components.
+    Then simply add the controller's tag.
+    This is the <span class="label">&lt;lucky7-controller&gt;</span> parts.
+    You can see the page working <a class="source-link" href="../examples/lucky7/index.html">here</a>.
+  </p>
+
+</div>

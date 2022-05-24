@@ -57,6 +57,17 @@ window.addEventListener('load', function () {
   font-size: large;
   margin-top: 1rem;
 }
+@media (prefers-color-scheme: dark) {
+  .gdpr-banner {
+    background-color: rgb(248, 248, 248);
+    color: rgb(48,48,48);
+  }
+  .gdpr-banner a { color: black; }
+  .gdpr-banner #gprd-accept {
+    background-color: black;
+    color: rgb(248, 248, 248);
+  }
+}
 </style>
 <div class="gdpr-banner">
   <div class="title">Cookies & Privacy</div>

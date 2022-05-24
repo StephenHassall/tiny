@@ -1,0 +1,118 @@
+/**
+ * Footer styles
+ */
+
+.footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-color: rgb(248,248,248);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  display: grid;
+  grid-template-columns: auto 20rem 1rem 59rem auto;
+}
+
+.footer-info {
+  grid-column: 2;
+  font-size: 1rem;
+  color: gray;
+}
+
+.footer-info-logo > .icon-svg {
+  height: 2rem;
+  display: inline-block;
+  fill: rgb(48, 48, 48);
+  vertical-align: middle;
+}
+
+.footer-info-logo > span {
+  font-size: 1.5rem;
+  vertical-align: middle;
+  padding: 0.25rem;
+  color: rgb(48, 48, 48);
+  user-select: none;
+}
+
+.footer-info-logo > img {
+  height: 2rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.footer-info-text {
+  margin-bottom: 1rem;
+}
+
+.footer-info-text > a {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  color:gray;
+}
+
+.footer-info-text > a:link { text-decoration: none; color: gray; }
+.footer-info-text > a:hover { text-decoration: underline; color: gray; }
+.footer-info-text > a:visited { text-decoration: none; color: gray; }
+.footer-info-text > a:active { text-decoration: none; color: gray;}
+
+.footer-link-group {
+  grid-column: 4;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  gap: 2rem;
+}
+
+.footer-link {
+  font-size: 1rem;
+}
+
+.footer-link > a {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  color:gray;
+  display: block;
+}
+
+.footer-link > a:link { text-decoration: none; color: gray; }
+.footer-link > a:hover { text-decoration: underline; color: gray; }
+.footer-link > a:visited { text-decoration: none; color: gray; }
+.footer-link > a:active { text-decoration: none; color: gray;}
+
+@media (max-width: 81rem) {
+  .footer {
+    grid-template-columns: 4rem auto 4rem;
+    grid-template-rows: auto auto 2rem;
+  }
+  .footer-info {
+    grid-column: 2;
+    grid-row: 1;
+  }  
+  .footer-link-group {
+    grid-column: 2;
+    grid-row: 2;
+  }
+}
+
+@media (max-width: 44rem) {
+  .footer {
+    grid-template-columns: 4rem auto 4rem;
+    grid-template-rows: 1rem auto 1rem auto auto;
+  }
+  .footer-info {
+    grid-column: 2;
+    grid-row: 4;
+  }  
+  .footer-link-group {
+    grid-column: 2;
+    grid-row: 5;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .header {
+    background-color: #404040;
+  }
+  .options a {
+    color: rgb(248,248,248);
+  }
+}

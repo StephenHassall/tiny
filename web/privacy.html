@@ -10,108 +10,15 @@
   <link rel="icon" type="image/png" href="/tiny-32x32.png" sizes="32x32" />
   <link rel="icon" type="image/png" href="/tiny-16x16.png" sizes="16x16" />
   <link href="/tiny.css" rel="stylesheet" type="text/css" media="all" />
-  <script src="/gdpr.js"></script>
   <title>Tiny Web Application Framework Privacy</title>
+  <script type="module" src="controller/header/header.js"></script>
+  <script type="module" src="controller/privacy/privacy.js"></script>
+  <script type="module" src="controller/footer/footer.js"></script>
+  <script src="/gdpr.js"></script>
 </head>
 <body style="background-color: white;">
-  <div style="max-width: 60rem; margin: auto; margin-top: 2rem; padding-left: 1rem; padding-right: 1rem;">
-    <div>
-      <a href="/"><img style="height: 2rem;" src="/tiny.svg" alt="Tiny Web Application Framework"></img></a>
-      <span style="font-size: 2rem; margin-left: 1rem;">
-        Tiny Web Application Framework
-      </span>      
-    </div>
-
-    <h1 style="font-size: 3.5rem; line-height: 3.5rem;">
-      Cookies & Privacy
-    </h1>
-
-    <div>
-      This Privacy Policy was last updated on January 22, 2021.
-    </div>
-
-    <h3 style="font-size: 2rem; color: gray; font-weight: 600; margin-bottom: 0.5rem;">
-      Legal Ownership
-    </h3>
-
-    <div>
-      Tiny Web Application Framework is owned and controlled by Stephen Paul Hassall.
-      It uses the MIT license as follows.
-
-<pre>
-MIT License
-
-Copyright (c) 2021 Stephen Paul Hassall (StephenPaulHassall@hotmail.com)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.      
-</pre>
-    </div>
-
-    <h3 style="font-size: 2rem; color: gray; font-weight: 600; margin-bottom: 0.5rem;">
-      Personal Data Collected
-    </h3>
-
-    <div>
-      When you visit our Website, we do not collect any information related to you or your device.
-      <br><br>
-      Our Website is hosted by Netlify.
-      You can view their privacy information <a href="https://www.netlify.com/gdpr-ccpa">here</a>.
-    </div>
-
-    <h3 style="font-size: 2rem; color: gray; font-weight: 600; margin-bottom: 0.5rem;">
-      Log Files
-    </h3>
-
-    <div>
-      Our Website is hosted by Netlify and they, like most standard Web site services, will keep log file that record information about you.
-      This may include the internet protocol (IP) addresses, the type of browser, your internet service provider (ISP),
-      which OS or platform type, page address and date/timestamp.
-      <br><br>
-      We do not use this information and it is not passed on to any 3rd party.
-    </div>
-
-    <h3 style="font-size: 2rem; color: gray; font-weight: 600; margin-bottom: 0.5rem;">
-      Cookies
-    </h3>
-
-    <div>
-      A cookie is a piece of data stored on the user’s computer or device that links them to additional information about the user.
-      <br>
-      Our Website does not use cookies.
-    </div>
-
-    <h3 style="font-size: 2rem; color: gray; font-weight: 600; margin-bottom: 0.5rem;">
-      Advertisers
-    </h3>
-
-    <div>
-      Our Website does not use advertising.
-    </div>
-
-    <br><br><br>
-
-    <div>
-      If you want to contact us about cookies and privacy please email StephenPaulHassall@hotmail.com.
-    </div>
-
-    <br><br><br>
-
-  </div>
-
+  <header-controller class="header"></header-controller>
+  <privacy-controller class="privacy"></privacy-controller>
+  <footer-controller class="footer"></footer-controller>
 </body>
+</html>

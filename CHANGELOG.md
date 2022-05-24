@@ -2,6 +2,10 @@
 
 Information about all releases and changes to the Tiny Web Application Framework will appear here.
 
+## __1.5__ - 21 May 2022
+
+- **New:** Added route option to automatically scroll to the top of the page when it is inserted.
+
 ## __1.4__ - 26 April 2022
 
 - **Update:** Changed the names of files that used camelcase to use a hyphenated name instead. For example, templateArray.js

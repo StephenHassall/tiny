@@ -1,0 +1,250 @@
+<!-- Example Multilingual -->
+<div class="help-page">
+  <h2>Example: Multilingual</h2>
+
+  <h3>Overview</h3>
+
+  <p>
+    In this example we are going to show what it would be like to have a single controller JavaScript file that can have
+    multiple HTML files, one for each different language, and be able to switch between them. We will have 2 controllers, one
+    for an About area and the other of a SwitchLanguage area that will allow the user to change the current language.
+  </p>
+
+  <h3>About Controller</h3>
+
+  <p>
+    The About controller will have 3 HTML files for English, Spanish and French. The About controller will load the required HTML
+    file when it is created depending on which langauge is the current one.
+  </p>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="html-source">
+      <span class="html-line-number">1</span><span class="html-green">&lt;!-- English: about-en.html --&gt</span><br>
+      <span class="html-line-number">2</span><span class="html-brown">&lt;div</span> <span class="html-red">class</span>=<span class="html-blue">"about"</span><span class="html-brown">&gt;</span><br>
+      <span class="html-line-number">3</span>&nbsp;&nbsp;<span class="html-brown">&lt;h3&gt;</span>Welcome to the Tiny Web Application Framework.<span class="html-brown">&lt;/h3&gt;</span><br>
+      <span class="html-line-number">4</span>&nbsp;&nbsp;<span class="html-brown">&lt;p&gt;</span><br>
+      <span class="html-line-number">5</span>&nbsp;&nbsp;&nbsp;&nbsp;This example shows you how you can use different HTML files dynamically.<br>
+      <span class="html-line-number">6</span>&nbsp;&nbsp;&nbsp;&nbsp;In this case we are using 3 different languages and switching between them.<br>
+      <span class="html-line-number">7</span>&nbsp;&nbsp;<span class="html-brown">&lt;/p&gt;</span><br>
+      <span class="html-line-number">8</span><span class="html-brown">&lt;/div&gt;</span>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="html-source">
+      <span class="html-line-number">1</span><span class="html-green">&lt;!-- Spanish: about-es.html --&gt</span><br>
+      <span class="html-line-number">2</span><span class="html-brown">&lt;div</span> <span class="html-red">class</span>=<span class="html-blue">"about"</span><span class="html-brown">&gt;</span><br>
+      <span class="html-line-number">3</span>&nbsp;&nbsp;<span class="html-brown">&lt;h3&gt;</span>Bienvenido a Tiny Web Application Framework.<span class="html-brown">&lt;/h3&gt;</span><br>
+      <span class="html-line-number">4</span>&nbsp;&nbsp;<span class="html-brown">&lt;p&gt;</span><br>
+      <span class="html-line-number">5</span>&nbsp;&nbsp;&nbsp;&nbsp;Este ejemplo le muestra cómo puede usar diferentes archivos HTML de forma dinámica.<br>
+      <span class="html-line-number">6</span>&nbsp;&nbsp;&nbsp;&nbsp;En este caso, estamos usando 3 idiomas diferentes y cambiando entre ellos.<br>
+      <span class="html-line-number">7</span>&nbsp;&nbsp;<span class="html-brown">&lt;/p&gt;</span><br>
+      <span class="html-line-number">8</span><span class="html-brown">&lt;/div&gt;</span><br>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="html-source">
+      <span class="html-line-number">1</span><span class="html-green">&lt;!-- French: about-fr.html --&gt</span><br>
+      <span class="html-line-number">2</span><span class="html-brown">&lt;div</span> <span class="html-red">class</span>=<span class="html-blue">"about"</span><span class="html-brown">&gt;</span><br>
+      <span class="html-line-number">3</span>&nbsp;&nbsp;<span class="html-brown">&lt;h3&gt;</span>Bienvenue dans le cadre d'applications Web Tiny.<span class="html-brown">&lt;/h3&gt;</span><br>
+      <span class="html-line-number">4</span>&nbsp;&nbsp;<span class="html-brown">&lt;p&gt;</span><br>
+      <span class="html-line-number">5</span>&nbsp;&nbsp;&nbsp;&nbsp;Cet exemple vous montre comment utiliser dynamiquement différents fichiers HTML.<br>
+      <span class="html-line-number">6</span>&nbsp;&nbsp;&nbsp;&nbsp;Dans ce cas, nous utilisons 3 langues différentes et basculons entre elles.<br>
+      <span class="html-line-number">7</span>&nbsp;&nbsp;<span class="html-brown">&lt;/p&gt;</span><br>
+      <span class="html-line-number">8</span><span class="html-brown">&lt;/div&gt;</span>
+    </div>
+  </div>
+
+  <p>
+    When the About controller is created it checks to see which langauge is the current one. It then selects which HTML file to use when
+    loading up. The HTML will be different but the CSS file will aways be the same, in this example.
+  </p>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="js-source">
+      <span class="js-line-number">1</span><span class="js-purple">export default</span> <span class="js-blue">class</span> <span class="js-gray">AboutController</span> <span class="js-blue">extends</span> <span class="js-gray">Controller</span> {<br>
+      <span class="js-line-number">2</span>&nbsp;&nbsp;<span class="js-blue">constructor</span>() {<br>
+      <span class="js-line-number">3</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-green">// Set the language dependant HTML</span><br>
+      <span class="js-line-number">4</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-blue">let</span> htmlPage = <span class="js-red">'about-en.html'</span>;<br>
+      <span class="js-line-number">5</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-purple">if</span> (window.localStorage.langaugeCode === <span class="js-red">'es'</span>) htmlPage = <span class="js-red">'about-es.html'</span>;<br>
+      <span class="js-line-number">6</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-purple">if</span> (window.localStorage.langaugeCode === <span class="js-red">'fr'</span>) htmlPage = <span class="js-red">'about-fr.html'</span>;<br>
+      <span class="js-line-number">7</span><br>
+      <span class="js-line-number">8</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-green">// Call the super with the page to load</span><br>
+      <span class="js-line-number">9</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-blue">super</span>({<br>
+      <span class="js-line-number2">10</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;htmlPath: htmlPath,<br>
+      <span class="js-line-number2">11</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cssPath: <span class="js-red">'about.css'</span>,<br>
+      <span class="js-line-number2">12</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;importMetaUrl: <span class="js-purple">import</span>.meta.url,<br>
+      <span class="js-line-number2">13</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;useShadowDom: <span class="js-blue">true</span><br>
+      <span class="js-line-number2">14</span>&nbsp;&nbsp;&nbsp;&nbsp;});<br>
+      <span class="js-line-number2">15</span>&nbsp;&nbsp;}<br>
+      <span class="js-line-number2">16</span>}<br>
+      <span class="js-line-number2">17</span><br>
+      <span class="js-line-number2">18</span><span class="js-green">// Define controller web component</span><br>
+      <span class="js-line-number2">19</span>customElements.<span class="js-brown">define</span>(<span class="js-red">'about-controller'</span>, <span class="js-gray">AboutController</span>);
+    </div>
+  </div>
+
+  <h3>Switch Language Controller</h3>
+
+  <p>
+    The Switch Language controller will again have 3 HTML files for English, Spanish and French. Just like the About controller, it will load the required HTML
+    depending on what the current langauge is.
+  </p>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="html-source">
+      <span class="html-line-number">1</span><span class="html-green">&lt;!-- English: switchLanguage-en.html --&gt</span><br>
+      <span class="html-line-number">2</span><span class="html-brown">&lt;div</span> <span class="html-red">class</span>=<span class="html-blue">"switchLanguage"</span><span class="html-brown">&gt;</span><br>
+      <span class="html-line-number">3</span>&nbsp;&nbsp;<span class="html-brown">&lt;p&gt;</span>Select the language to use.<span class="html-brown">&lt;/p&gt;</span><br>
+      <span class="html-line-number">4</span>&nbsp;&nbsp;<span class="html-brown">&lt;button</span> <span class="html-red">onclick</span>=<span class="html-blue">"</span><span class="js-brown">getController</span><span class="js-blue">(this)</span>.<span class="js-brown">setLanguage</span><span class="js-blue">(</span><span class="js-red">'en'</span><span class="js-blue">)"</span><span class="html-brown">&gt;</span>English<span class="html-brown">&lt;/button&gt;</span><br>
+      <span class="html-line-number">5</span>&nbsp;&nbsp;<span class="html-brown">&lt;button</span> <span class="html-red">onclick</span>=<span class="html-blue">"</span><span class="js-brown">getController</span><span class="js-blue">(this)</span>.<span class="js-brown">setLanguage</span><span class="js-blue">(</span><span class="js-red">'es'</span><span class="js-blue">)"</span><span class="html-brown">&gt;</span>Spanish<span class="html-brown">&lt;/button&gt;</span><br>
+      <span class="html-line-number">6</span>&nbsp;&nbsp;<span class="html-brown">&lt;button</span> <span class="html-red">onclick</span>=<span class="html-blue">"</span><span class="js-brown">getController</span><span class="js-blue">(this)</span>.<span class="js-brown">setLanguage</span><span class="js-blue">(</span><span class="js-red">'fr'</span><span class="js-blue">)"</span><span class="html-brown">&gt;</span>French<span class="html-brown">&lt;/button&gt;</span><br>
+      <span class="html-line-number">7</span><span class="html-brown">&lt;/div&gt;</span>
+    </div>
+  </div>
+
+  <br>
+    
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="html-source">
+      <span class="html-line-number">1</span><span class="html-green">&lt;!-- Spanish: switchLanguage-es.html --&gt</span><br>
+      <span class="html-line-number">2</span><span class="html-brown">&lt;div</span> <span class="html-red">class</span>=<span class="html-blue">"switchLanguage"</span><span class="html-brown">&gt;</span><br>
+      <span class="html-line-number">3</span>&nbsp;&nbsp;<span class="html-brown">&lt;p&gt;</span>Seleccione el idioma a utilizar.<span class="html-brown">&lt;/p&gt;</span><br>
+      <span class="html-line-number">4</span>&nbsp;&nbsp;<span class="html-brown">&lt;button</span> <span class="html-red">onclick</span>=<span class="html-blue">"</span><span class="js-brown">getController</span><span class="js-blue">(this)</span>.<span class="js-brown">setLanguage</span><span class="js-blue">(</span><span class="js-red">'en'</span><span class="js-blue">)"</span><span class="html-brown">&gt;</span>Inglesa<span class="html-brown">&lt;/button&gt;</span><br>
+      <span class="html-line-number">5</span>&nbsp;&nbsp;<span class="html-brown">&lt;button</span> <span class="html-red">onclick</span>=<span class="html-blue">"</span><span class="js-brown">getController</span><span class="js-blue">(this)</span>.<span class="js-brown">setLanguage</span><span class="js-blue">(</span><span class="js-red">'es'</span><span class="js-blue">)"</span><span class="html-brown">&gt;</span>Española<span class="html-brown">&lt;/button&gt;</span><br>
+      <span class="html-line-number">6</span>&nbsp;&nbsp;<span class="html-brown">&lt;button</span> <span class="html-red">onclick</span>=<span class="html-blue">"</span><span class="js-brown">getController</span><span class="js-blue">(this)</span>.<span class="js-brown">setLanguage</span><span class="js-blue">(</span><span class="js-red">'fr'</span><span class="js-blue">)"</span><span class="html-brown">&gt;</span>Francesa<span class="html-brown">&lt;/button&gt;</span><br>
+      <span class="html-line-number">7</span><span class="html-brown">&lt;/div&gt;</span>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="html-source">
+      <span class="html-line-number">1</span><span class="html-green">&lt;!-- French: switchLanguage-fr.html --&gt</span><br>
+      <span class="html-line-number">2</span><span class="html-brown">&lt;div</span> <span class="html-red">class</span>=<span class="html-blue">"switchLanguage"</span><span class="html-brown">&gt;</span><br>
+      <span class="html-line-number">3</span>&nbsp;&nbsp;<span class="html-brown">&lt;p&gt;</span>Sélectionnez la langue à utiliser.<span class="html-brown">&lt;/p&gt;</span><br>
+      <span class="html-line-number">4</span>&nbsp;&nbsp;<span class="html-brown">&lt;button</span> <span class="html-red">onclick</span>=<span class="html-blue">"</span><span class="js-brown">getController</span><span class="js-blue">(this)</span>.<span class="js-brown">setLanguage</span><span class="js-blue">(</span><span class="js-red">'en'</span><span class="js-blue">)"</span><span class="html-brown">&gt;</span>Anglaise<span class="html-brown">&lt;/button&gt;</span><br>
+      <span class="html-line-number">5</span>&nbsp;&nbsp;<span class="html-brown">&lt;button</span> <span class="html-red">onclick</span>=<span class="html-blue">"</span><span class="js-brown">getController</span><span class="js-blue">(this)</span>.<span class="js-brown">setLanguage</span><span class="js-blue">(</span><span class="js-red">'es'</span><span class="js-blue">)"</span><span class="html-brown">&gt;</span>Espanol<span class="html-brown">&lt;/button&gt;</span><br>
+      <span class="html-line-number">6</span>&nbsp;&nbsp;<span class="html-brown">&lt;button</span> <span class="html-red">onclick</span>=<span class="html-blue">"</span><span class="js-brown">getController</span><span class="js-blue">(this)</span>.<span class="js-brown">setLanguage</span><span class="js-blue">(</span><span class="js-red">'fr'</span><span class="js-blue">)"</span><span class="html-brown">&gt;</span>Français<span class="html-brown">&lt;/button&gt;</span><br>
+      <span class="html-line-number">7</span><span class="html-brown">&lt;/div&gt;</span>
+    </div>
+  </div>
+
+  <p>
+    Each HTML is using the same controller JavaScript code. This means they will use the same controller functions. The <span class="label">setLanguage</span> function takes
+    the same set of 3 parameters, <span class="label">en</span>, <span class="label">es</span> or <span class="label">fr</span>, no matter which language is being shown.
+  </p>
+  
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="js-source">
+      <span class="js-line-number">1</span><span class="js-purple">export default</span> <span class="js-blue">class</span> <span class="js-gray">SwitchLanguageController</span> <span class="js-blue">extends</span> <span class="js-gray">Controller</span> {<br>
+      <span class="js-line-number">2</span>&nbsp;&nbsp;<span class="js-blue">constructor</span>() {<br>
+      <span class="js-line-number">3</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-green">// Set the language dependant HTML</span><br>
+      <span class="js-line-number">4</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-blue">let</span> htmlPage = <span class="js-red">'switch-language-en.html'</span>;<br>
+      <span class="js-line-number">5</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-purple">if</span> (window.localStorage.langaugeCode === <span class="js-red">'es'</span>) htmlPage = <span class="js-red">'switch-language-es.html'</span>;<br>
+      <span class="js-line-number">6</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-purple">if</span> (window.localStorage.langaugeCode === <span class="js-red">'fr'</span>) htmlPage = <span class="js-red">'switch-language-fr.html'</span>;<br>
+      <span class="js-line-number">7</span><br>
+      <span class="js-line-number">8</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-green">// Call the super with the page to load</span><br>
+      <span class="js-line-number">9</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-blue">super</span>({<br>
+      <span class="js-line-number2">10</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;htmlPath: htmlPath,<br>
+      <span class="js-line-number2">11</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cssPath: <span class="js-red">'switch-language.css'</span>,<br>
+      <span class="js-line-number2">12</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;importMetaUrl: <span class="js-purple">import</span>.meta.url,<br>
+      <span class="js-line-number2">13</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;useShadowDom: <span class="js-blue">true</span><br>
+      <span class="js-line-number2">14</span>&nbsp;&nbsp;&nbsp;&nbsp;});<br>
+      <span class="js-line-number2">15</span>&nbsp;&nbsp;}<br>
+      <span class="js-line-number2">16</span><br>
+      <span class="js-line-number2">17</span>&nbsp;&nbsp;<span class="js-brown">setLanguage</span>(languageCode) {<br>
+      <span class="js-line-number2">18</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-green">// Store the locale language code to use</span><br>
+      <span class="js-line-number2">19</span>&nbsp;&nbsp;&nbsp;&nbsp;window.localStorage.langaugeCode = languageCode;<br>
+      <span class="js-line-number2">20</span><br>
+      <span class="js-line-number2">21</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-green">// Reload the current page</span><br>
+      <span class="js-line-number2">22</span>&nbsp;&nbsp;&nbsp;&nbsp;location.<span class="js-brown">reload</span>();<br>
+      <span class="js-line-number2">23</span>&nbsp;&nbsp;}<br>
+      <span class="js-line-number2">24</span>}<br>
+      <span class="js-line-number2">25</span><br>
+      <span class="js-line-number2">26</span><span class="js-green">// Define controller web component</span><br>
+      <span class="js-line-number2">27</span>customElements.<span class="js-brown">define</span>(<span class="js-red">'switch-language-controller'</span>, <span class="js-gray">SwitchLanguageController</span>);
+    </div>
+  </div>
+    
+  <h3>Putting it all together</h3>
+
+  <p>
+    All we need to do now is put the About controller and the Switch Language controller together on the same page.
+  </p>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="html-source">
+      <span class="html-line-number">1</span><span class="html-brown">&lt;!DOCTYPE</span> <span class="html-red">html</span><span class="html-brown">&gt;</span><br>
+      <span class="html-line-number">2</span><span class="html-brown">&lt;html</span> <span class="html-red">lang</span>=<span class="html-blue">"en"</span><span class="html-brown">&gt;</span><br>
+      <span class="html-line-number">3</span><span class="html-brown">&lt;header&gt;</span><br>
+      <span class="html-line-number">4</span>&nbsp;&nbsp;<span class="html-brown">&lt;title&gt;</span>Tiny Web Application Framework - Example: Multilingual<span class="html-brown">&lt;/title&gt;</span><br>
+      <span class="html-line-number">5</span>&nbsp;&nbsp;<span class="html-brown">&lt;script</span> <span class="html-red">type</span>=<span class="html-blue">"module"</span> <span class="html-red">src</span>=<span class="html-blue">"about.js"</span><span class="html-brown">&gt;&lt;/script&gt;</span><br>
+      <span class="html-line-number">6</span>&nbsp;&nbsp;<span class="html-brown">&lt;script</span> <span class="html-red">type</span>=<span class="html-blue">"module"</span> <span class="html-red">src</span>=<span class="html-blue">"switch-language.js"</span><span class="html-brown">&gt;&lt;/script&gt;</span><br>
+      <span class="html-line-number">7</span><span class="html-brown">&lt;/header&gt;</span><br>
+      <span class="html-line-number">8</span><span class="html-brown">&lt;body&gt;</span><br>
+      <span class="html-line-number">9</span>&nbsp;&nbsp;<span class="html-brown">&lt;about-controller&gt;&lt;/about-controller&gt;</span><br>
+      <span class="html-line-number2">10</span>&nbsp;&nbsp;<span class="html-brown">&lt;switch-language-controller&gt;&lt;/switch-language-controller&gt;</span><br>
+      <span class="html-line-number2">11</span><span class="html-brown">&lt;/body&gt;</span><br>
+      <span class="html-line-number2">12</span><span class="html-brown">&lt;/html&gt;</span>
+    </div>
+  </div>
+
+  <p>
+    First we need to include the controller's JavaScript files. You need to include the <span class="label">type="module"</span> attribute when loading web components.
+    Then you need to add the controller's tags. These are the <span class="label">&lt;about-controller&gt;</span> parts.
+    You can see the final result <a class="source-link" href="../examples/multilingual/index.html">here</a>.
+  </p>
+
+</div>

@@ -1,0 +1,501 @@
+<!-- Example todo list -->
+<div class="help-page">
+  <h2>Example: Todo List</h2>
+
+  <h3>Overview</h3>
+
+  <p>
+    In this example we shall be looking at the <span class="label">Form</span> class and allow the user to add, edit and delete
+    todo items from a list.
+    There are 3 main areas, the form, the button area and the list of todo items.
+  </p>
+
+  <h3>Creating controller and setting properties</h3>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="js-source">
+      <span class="js-line-number">1</span><span class="js-purple">export default</span> <span class="js-blue">class</span> <span class="js-gray">TodoListController</span> <span class="js-blue">extends</span> <span class="js-gray">Controller</span> {<br>
+      <span class="js-line-number">2</span>&nbsp;&nbsp;<span class="js-blue">constructor</span>() {<br>
+      <span class="js-line-number">3</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-green">// Call the super with the page to load</span><br>
+      <span class="js-line-number">4</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-blue">super</span>({<br>
+      <span class="js-line-number">5</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;htmlPath: <span class="js-red">'todo-list.html'</span>,<br>
+      <span class="js-line-number">6</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cssPath: <span class="js-red">'todo-list.css'</span>,<br>
+      <span class="js-line-number">7</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;importMetaUrl: <span class="js-purple">import</span>.meta.url,<br>
+      <span class="js-line-number">8</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;useShadowDom: <span class="js-blue">true</span><br>
+      <span class="js-line-number">9</span>&nbsp;&nbsp;&nbsp;&nbsp;});<br>
+      <span class="js-line-number2">10</span><br>
+      <span class="js-line-number2">11</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-green">// Create form data</span><br>
+      <span class="js-line-number2">12</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-blue">this</span>._formData = {};<br>
+      <span class="js-line-number2">13</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-blue">this</span>._formData.info = <span class="js-red">''</span>;<br>
+      <span class="js-line-number2">14</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-blue">this</span>._formData.done = <span class="js-blue">false</span>;<br>
+      <span class="js-line-number2">15</span><br>
+      <span class="js-line-number2">16</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-green">// Set mode (0=blank, 1=add, 2=edit)</span><br>
+      <span class="js-line-number2">17</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-blue">this</span>.mode = <span class="js-green">0</span>;<br>
+      <span class="js-line-number2">18</span><br>
+      <span class="js-line-number2">19</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-green">// Set form valid</span><br>
+      <span class="js-line-number2">20</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-blue">this</span>.formValid = <span class="js-blue">false</span>;<br>
+      <span class="js-line-number2">21</span><br>
+      <span class="js-line-number2">22</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-green">// Set current todo</span><br>
+      <span class="js-line-number2">23</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-blue">this</span>.currentTodo = <span class="js-blue">null</span>;<br>
+      <span class="js-line-number2">24</span><br>
+      <span class="js-line-number2">25</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-green">// Set todo list</span><br>
+      <span class="js-line-number2">26</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="js-blue">this</span>.todolist = [<br>
+      <span class="js-line-number2">27</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ info: <span class="js-red">'Go outside into the real world.'</span>, done: <span class="js-blue">false</span> },<br>
+      <span class="js-line-number2">28</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ info: <span class="js-red">'Read a book. Not a computer one.'</span>, done: <span class="js-blue">true</span> },<br>
+      <span class="js-line-number2">29</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ info: <span class="js-red">'Take some time off.'</span>, done: <span class="js-blue">false</span> }<br>
+      <span class="js-line-number2">30</span>&nbsp;&nbsp;&nbsp;&nbsp;];<br>
+      <span class="js-line-number2">31</span>&nbsp;&nbsp;}<br>
+      <span class="js-line-number2">32</span>&nbsp;&nbsp;...<br>
+      <span class="js-line-number2">33</span>}<br>
+      <span class="js-line-number">34</span><br>
+      <span class="js-line-number">35</span><span class="js-green">// Define controller web component</span><br>
+      <span class="js-line-number">36</span>customElements.<span class="js-brown">define</span>(<span class="js-red">'todo-list-controller'</span>, <span class="js-gray">TodoListController</span>);
+    </div>
+  </div>
+        
+  <p>
+    The controller is created with the constructor and with it a number of other properties.
+    The data the form will be using is created and set to blank values.
+    The <span class="label">mode</span> property is used to control the state of the controller, whether it is
+    blank, adding a new todo item or editing an existing one.
+    We also add some todo items to start with.
+  </p>
+
+  <h3>Form Area HTML</h3>
+
+  <p>
+    The form area has a text box and a checkbox. These are linked to the <span class="label">_formData.info</span> and <span class="label">_formData.done</span>
+    properties.
+  </p>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="html-source">
+      <span class="html-line-number">1</span><span class="html-brown">&lt;form</span><br>
+      <span class="html-line-number">2</span>&nbsp;&nbsp;<span class="html-red">id</span>=<span class="html-blue">"formArea"</span><br>
+      <span class="html-line-number">3</span>&nbsp;&nbsp;<span class="html-red">class</span>=<span class="html-blue">"${this.mode===1 || this.mode===2 ? 'not-hidden' : 'hidden'}"</span><span class="html-brown">&gt;</span><br>
+      <span class="html-line-number">4</span>&nbsp;&nbsp;<span class="html-brown">&lt;div</span> <span class="html-red">style</span>=<span class="html-blue">"margin-top: 1rem; margin-bottom: 1rem;"</span><span class="html-brown">&gt;</span><br>
+      <span class="html-line-number">5</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-brown">&lt;input</span><br>
+      <span class="html-line-number">6</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-red">id</span>=<span class="html-blue">"formInfo"</span><br>
+      <span class="html-line-number">7</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-red">class</span>=<span class="html-blue">"form-information"</span><br>
+      <span class="html-line-number">8</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-red">type</span>=<span class="html-blue">"text"</span><br>
+      <span class="html-line-number">9</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-red">placeholder</span>=<span class="html-blue">"what to do?"</span><br>
+      <span class="html-line-number2">10</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-red">oninput</span>=<span class="html-blue">"</span><span class="js-brown">getController</span><span class="js-blue">(this)</span>.<span class="js-brown">formChange</span><span class="js-blue">()"</span><span class="html-brown">&gt;</span><br>
+      <span class="html-line-number2">11</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-brown">&lt;input</span><br>
+      <span class="html-line-number2">12</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-red">id</span>=<span class="html-blue">"formDone"</span><br>
+      <span class="html-line-number2">13</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-red">class</span>=<span class="html-blue">"form-done"</span><br>
+      <span class="html-line-number2">14</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-red">type</span>=<span class="html-blue">"checkbox"</span><span class="html-brown">&gt;</span><br>
+      <span class="html-line-number2">15</span>&nbsp;&nbsp;<span class="html-brown">&lt;/div&gt;</span><br>
+      <span class="html-line-number2">16</span><span class="html-brown">&lt;/form&gt;</span>
+    </div>
+  </div>
+
+  <p>
+    The form is only shown if the <span class="label">mode</span> value is 1 or 2 (add or edit).
+  </p>
+
+  <p>
+    The text input has the inline <span class="label">oninput</span> event.
+    This is used to call the <span class="label">formChange</span> function that checks the inputs to make sure they are valid.
+    The <span class="label">Save</span> and <span class="label">Update</span> buttons are disabled if the text box is empty.
+  </p>
+
+  <h3>Button Area HTML</h3>
+
+  <p>
+    The button area contains all the buttons the user can press. This includes the <span class="label">Add</span>, 
+    <span class="label">Save</span>, <span class="label">Update</span>, <span class="label">Cancel</span> and
+    <span class="label">Delete</span> buttons. Depending on the status mode the controller is working in, the buttons
+    are either hidden or shown.
+  </p>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="html-source">
+      <span class="html-line-number">1</span><span class="html-brown">&lt;div</span> <span class="html-red">id</span>=<span class="html-blue">"buttonArea"</span><span class="html-brown">&gt;</span><br>
+      <span class="html-line-number">2</span>&nbsp;&nbsp;<span class="html-brown">&lt;button</span><br>
+      <span class="html-line-number">3</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-red">class</span>=<span class="html-blue">"${this.mode===0 ? 'add-button' : 'hidden'}"</span><br>
+      <span class="html-line-number">4</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-red">onclick</span>=<span class="html-blue">"</span><span class="js-brown">getController</span><span class="js-blue">(this)</span>.<span class="js-brown">add</span><span class="js-blue">()"</span><span class="html-brown">&gt;</span>+<span class="html-brown">&lt;/button&gt;</span><br>
+      <span class="html-line-number">5</span>&nbsp;&nbsp;<span class="html-brown">&lt;button</span><br>
+      <span class="html-line-number">6</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-red">class</span>=<span class="html-blue">"${this.mode===1 ? 'button' : 'hidden'}"</span><br>
+      <span class="html-line-number">7</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-red">tiny-disabled</span>=<span class="html-blue">"${this.formValid===false ? 'disabled' : ''}"</span><br>
+      <span class="html-line-number">8</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-red">onclick</span>=<span class="html-blue">"</span><span class="js-brown">getController</span><span class="js-blue">(this)</span>.<span class="js-brown">save</span><span class="js-blue">()"</span><span class="html-brown">&gt;</span>Save<span class="html-brown">&lt;/button&gt;</span><br>
+      <span class="html-line-number">9</span>&nbsp;&nbsp;<span class="html-brown">&lt;button</span><br>
+      <span class="html-line-number2">10</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-red">class</span>=<span class="html-blue">"${this.mode===2 ? 'button' : 'hidden'}"</span><br>
+      <span class="html-line-number2">11</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-red">tiny-disabled</span>=<span class="html-blue">"${this.formValid===false ? 'disabled' : ''}"</span><br>
+      <span class="html-line-number2">12</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-red">onclick</span>=<span class="html-blue">"</span><span class="js-brown">getController</span><span class="js-blue">(this)</span>.<span class="js-brown">update</span><span class="js-blue">()"</span><span class="html-brown">&gt;</span>Update<span class="html-brown">&lt;/button&gt;</span><br>
+      <span class="html-line-number2">13</span>&nbsp;&nbsp;<span class="html-brown">&lt;button</span><br>
+      <span class="html-line-number2">14</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-red">class</span>=<span class="html-blue">"${this.mode===1 || this.mode===2 ? 'button' : 'hidden'}"</span><br>
+      <span class="html-line-number2">15</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-red">onclick</span>=<span class="html-blue">"</span><span class="js-brown">getController</span><span class="js-blue">(this)</span>.<span class="js-brown">cancel</span><span class="js-blue">()"</span><span class="html-brown">&gt;</span>Cancel<span class="html-brown">&lt;/button&gt;</span><br>
+      <span class="html-line-number2">16</span>&nbsp;&nbsp;<span class="html-brown">&lt;button</span><br>
+      <span class="html-line-number2">17</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-red">class</span>=<span class="html-blue">"${this.mode===2 ? 'button' : 'hidden'}"</span><br>
+      <span class="html-line-number2">18</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-red">onclick</span>=<span class="html-blue">"</span><span class="js-brown">getController</span><span class="js-blue">(this)</span>.<span class="js-brown">delete</span><span class="js-blue">()"</span><span class="html-brown">&gt;</span>Delete<span class="html-brown">&lt;/button&gt;</span><br>
+      <span class="html-line-number2">19</span>&nbsp;&nbsp;<span class="html-brown">&lt;div</span><br>
+      <span class="html-line-number2">20</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-red">style</span>=<span class="html-blue">"border-bottom: 0.1rem solid lightgray; padding-top: 1rem;"</span><br>
+      <span class="html-line-number2">21</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-red">class</span>=<span class="html-blue">"${this.mode===0 ? 'hidden' : 'not-hidden'}"</span><span class="html-brown">&gt;</span><br>
+      <span class="html-line-number2">22</span>&nbsp;&nbsp;<span class="html-brown">&lt;/div&gt;</span><br>
+      <span class="html-line-number2">23</span><span class="html-brown">&lt;/div&gt;</span>
+    </div>
+  </div>
+  
+  <p>
+    There is also a border line shown if the form inputs are shown.
+  </p>
+
+  <h3>List Area HTML</h3>
+
+  <p>
+    The list area shows all the todo items that have been added. They also show if the todo item has been done or not.
+    It also checks to see if the list is empty and if so then shows a message saying there is nothing to do.
+  </p>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="html-source">
+      <span class="html-line-number">1</span><span class="html-brown">&lt;div</span> <span class="html-red">id</span>=<span class="html-blue">"todoListParent"</span><span class="html-brown">&gt;</span><br>
+      <span class="html-line-number">2</span>&nbsp;&nbsp;<span class="html-brown">&lt;div</span> <span class="html-red">class</span>=<span class="html-blue">"${this.todoList.length===0 ? 'todo-list-empty' : 'hidden'}"</span><span class="html-brown">&gt;</span><br>
+      <span class="html-line-number">3</span>&nbsp;&nbsp;&nbsp;&nbsp;Nothing to do...<br>
+      <span class="html-line-number">4</span>&nbsp;&nbsp;<span class="html-brown">&lt;/div&gt;</span><br>
+      <span class="html-line-number">5</span>&nbsp;&nbsp;<span class="html-brown">&lt;div</span> <span class="html-red">class</span>=<span class="html-blue">"${this.todoList.length!==0 ? 'not-hidden' : 'hidden'}"</span><span class="html-brown">&gt;</span><br>
+      <span class="html-line-number">6</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-brown">&lt;div</span><br>
+      <span class="html-line-number">7</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-red">id</span>=<span class="html-blue">"todoListList"</span><br>
+      <span class="html-line-number">8</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-red">class</span>=<span class="html-blue">"todo-list-area"</span><span class="html-brown">&gt;</span><br>
+      <span class="html-line-number">9</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-brown">&lt;div</span><br>
+      <span class="html-line-number2">10</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-red">class</span>=<span class="html-blue">"${item.done===true ? 'todo-item todo-item-done' : 'todo-item'}"</span>  <br>
+      <span class="html-line-number2">11</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-red">onclick</span>=<span class="html-blue">"</span><span class="js-brown">getController</span><span class="js-blue">(this)</span>.<span class="js-brown">select</span><span class="js-blue">(</span><span class="js-red">'</span><span class="js-blue">${</span>index<span class="js-blue">}</span><span class="js-red">'</span><span class="html-blue">)"</span><span class="html-brown">&gt;</span><br>
+      <span class="html-line-number2">12</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${item.info}<br>
+      <span class="html-line-number2">13</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-brown">&lt;/div&gt;</span><br>
+      <span class="html-line-number2">14</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="html-brown">&lt;/div&gt;</span><br>
+      <span class="html-line-number2">15</span>&nbsp;&nbsp;<span class="html-brown">&lt;/div&gt;</span><br>
+      <span class="html-line-number2">16</span><span class="html-brown">&lt;/div&gt;</span>
+    </div>
+  </div>
+
+  <p>
+    The parent part of the list controls whether the list is shown or the empty list message. This is done by checking
+    the length of the <span class="label">todoList</span> array. Each item in the list can be given the class value
+    <span class="label">todo-item-done</span> if the todo item has been marked as done.
+  </p>
+
+  <h3>Setting Form and Templates</h3>
+
+  <p>
+    We override the <span class="label">loadedCallback</span> function to create the form and template objects we need.
+  </p>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="js-source">
+      <span class="js-line-number">1</span><span class="js-brown">loadedCallback</span>() {<br>
+      <span class="js-line-number">2</span>&nbsp;&nbsp;<span class="js-green">// Create form (links form data to form inputs)</span><br>
+      <span class="js-line-number">3</span>&nbsp;&nbsp;<span class="js-blue">this</span>._form = <span class="js-blue">new</span> <span class="js-gray">Form</span>(<span class="js-blue">this</span>._formData, <span class="js-blue">this</span>);<br>
+      <span class="js-line-number">4</span><br>
+      <span class="js-line-number">5</span>&nbsp;&nbsp;<span class="js-green">// Add form inputs</span><br>
+      <span class="js-line-number">6</span>&nbsp;&nbsp;<span class="js-blue">this</span>._form.<span class="js-brown">add</span>(<span class="js-red">'info'</span>, <span class="js-red">'formInfo'</span>);<br>
+      <span class="js-line-number">7</span>&nbsp;&nbsp;<span class="js-blue">this</span>._form.<span class="js-brown">add</span>(<span class="js-red">'done'</span>, <span class="js-red">'formDone'</span>);<br>
+      <span class="js-line-number">8</span><br>
+      <span class="js-line-number">9</span>&nbsp;&nbsp;<span class="js-green">// Create button area template</span><br>
+      <span class="js-line-number2">10</span>&nbsp;&nbsp;<span class="js-blue">this</span>._buttonAreaTemplate = <span class="js-blue">new</span> <span class="js-gray">Template</span>(<span class="js-red">'buttonArea'</span>, <span class="js-blue">this</span>);<br>
+      <span class="js-line-number2">11</span>&nbsp;&nbsp;<span class="js-blue">this</span>._buttonAreaTemplate.<span class="js-brown">update</span>();<br>
+      <span class="js-line-number2">12</span><br>
+      <span class="js-line-number2">13</span>&nbsp;&nbsp;<span class="js-green">// Create form area template</span><br>
+      <span class="js-line-number2">14</span>&nbsp;&nbsp;<span class="js-blue">this</span>._formAreaTemplate = <span class="js-blue">new</span> <span class="js-gray">Template</span>(<span class="js-red">'formArea'</span>, <span class="js-blue">this</span>);<br>
+      <span class="js-line-number2">15</span>&nbsp;&nbsp;<span class="js-blue">this</span>._formAreaTemplate.<span class="js-brown">update</span>();<br>
+      <span class="js-line-number2">16</span><br>
+      <span class="js-line-number2">17</span>&nbsp;&nbsp;<span class="js-green">// Create todo list template</span><br>
+      <span class="js-line-number2">18</span>&nbsp;&nbsp;<span class="js-blue">this</span>._todoListTemplate = <span class="js-blue">new</span> <span class="js-gray">TemplateArray</span>(<span class="js-red">'todoListParent'</span>, <span class="js-red">'todoListList'</span>, <span class="js-blue">this</span>._list, <span class="js-blue">this</span>);<br>
+      <span class="js-line-number2">19</span>&nbsp;&nbsp;<span class="js-blue">this</span>._todoListTemplate.<span class="js-brown">update</span>();<br>
+      <span class="js-line-number2">20</span>}
+    </div>
+  </div>
+
+  <p>
+    The form is used to link the properties in the <span class="label">_formData</span> object and the form input elements.
+    We create the form object and add the <span class="label">info</span> and <span class="label">done</span> data parts.
+    Then the template areas for the buttons and the form are created.
+    Finally, the todo list template is created. All the templates are then updated to format the HTML and show it.
+  </p>
+
+  <h3>Form Validation</h3>
+
+  <p>
+    Each time the input text box is changed we need to check if the form is valid or not. We cannot create an empty todo item so we need
+    to check something has been entered. This is done using the inline <span class="label">oninput</span> event and calling the
+    <span class="label">formChange</span> function.
+  </p>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="js-source">
+      <span class="js-line-number">1</span><span class="js-brown">formChange</span>() {<br>
+      <span class="js-line-number">2</span>&nbsp;&nbsp;<span class="js-green">// Check if the form is valid</span><br>
+      <span class="js-line-number">3</span>&nbsp;&nbsp;<span class="js-blue">const</span> result = <span class="js-blue">this</span>.<span class="js-brown">_isFormValid</span>();<br>
+      <span class="js-line-number">4</span><br>
+      <span class="js-line-number">5</span>&nbsp;&nbsp;<span class="js-green">// If the result is still the same</span><br>
+      <span class="js-line-number">6</span>&nbsp;&nbsp;<span class="js-purple">if</span> (result === <span class="js-blue">this</span>.formValid) <span class="js-purple">return</span>;<br>
+      <span class="js-line-number">7</span><br>
+      <span class="js-line-number">8</span>&nbsp;&nbsp;<span class="js-green">// Update current form valid result</span><br>
+      <span class="js-line-number">9</span>&nbsp;&nbsp;<span class="js-blue">this</span>.formValid = result;<br>
+      <span class="js-line-number2">10</span><br>
+      <span class="js-line-number2">11</span>&nbsp;&nbsp;<span class="js-green">// Update the button template</span><br>
+      <span class="js-line-number2">12</span>&nbsp;&nbsp;<span class="js-blue">this</span>._buttonAreaTemplate.<span class="js-brown">update</span>();<br>
+      <span class="js-line-number2">13</span>}<br>
+      <span class="js-line-number2">14</span><br>
+      <span class="js-line-number2">15</span><span class="js-brown">_isFormValid</span>() {<br>
+      <span class="js-line-number2">16</span>&nbsp;&nbsp;<span class="js-green">// Set default result value</span><br>
+      <span class="js-line-number2">17</span>&nbsp;&nbsp;<span class="js-blue">let</span> result = <span class="js-blue">true</span>;<br>
+      <span class="js-line-number2">18</span><br>
+      <span class="js-line-number2">19</span>&nbsp;&nbsp;<span class="js-green">// Get form data</span><br>
+      <span class="js-line-number2">20</span>&nbsp;&nbsp;<span class="js-blue">this</span>._form.<span class="js-brown">formToData</span>();<br>
+      <span class="js-line-number2">21</span><br>
+      <span class="js-line-number2">22</span>&nbsp;&nbsp;<span class="js-green">// Check form data is valid or not</span><br>
+      <span class="js-line-number2">23</span>&nbsp;&nbsp;<span class="js-purple">if</span> (<span class="js-blue">this</span>._formData.info.length === <span class="js-green">0</span>) result = <span class="js-blue">false</span>;<br>
+      <span class="js-line-number2">24</span><br>
+      <span class="js-line-number2">25</span>&nbsp;&nbsp;<span class="js-green">// Return the result</span><br>
+      <span class="js-line-number2">26</span>&nbsp;&nbsp;<span class="js-purple">return</span> result;<br>
+      <span class="js-line-number2">27</span>}
+    </div>
+  </div>
+  
+  <p>
+    In order to check the form input values, we first need to transfer the values in the input elements into the form's data properties. This is done using
+    the <span class="label">this._form.formToData</span> function. Once we have the data we need we check the value of the <span class="label">info</span>
+    property. If it is empty then the form is not valid. If there is something entered then the form is valid.
+    For all text inputs the string data entered will be trimmed. So entering in lots of spaces will not make the form valid.
+  </p>
+
+  <p>
+    If the form has changed from being valid to invalid or vice versa then the buttom area template is updated.
+  </p>
+
+  <h3>Adding and Saving</h3>
+
+  <p>
+    Pressing the add button changes the state of the controller, which shows the form inputs and the save and cancel
+    buttons.
+  </p>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="js-source">
+      <span class="js-line-number">1</span><span class="js-brown">add</span>() {<br>
+      <span class="js-line-number">2</span>&nbsp;&nbsp;<span class="js-green">// Set mode to add</span><br>
+      <span class="js-line-number">3</span>&nbsp;&nbsp;<span class="js-blue">this</span>.mode = <span class="js-green">1</span>;<br>
+      <span class="js-line-number">4</span><br>
+      <span class="js-line-number">5</span>&nbsp;&nbsp;<span class="js-green">// Reset form valid to invalid</span><br>
+      <span class="js-line-number">6</span>&nbsp;&nbsp;<span class="js-blue">this</span>.formValid = <span class="js-blue">false</span>;<br>
+      <span class="js-line-number">7</span><br>
+      <span class="js-line-number">8</span>&nbsp;&nbsp;<span class="js-green">// Update the areas</span><br>
+      <span class="js-line-number">9</span>&nbsp;&nbsp;<span class="js-blue">this</span>._buttonAreaTemplate.<span class="js-brown">update</span>();<br>
+      <span class="js-line-number2">10</span>&nbsp;&nbsp;<span class="js-blue">this</span>._formAreaTemplate.<span class="js-brown">update</span>();<br>
+      <span class="js-line-number2">11</span><br>
+      <span class="js-line-number2">12</span>&nbsp;&nbsp;<span class="js-green">// Clear the form inputs</span><br>
+      <span class="js-line-number2">13</span>&nbsp;&nbsp;<span class="js-blue">this</span>._form.<span class="js-brown">clear</span>();<br>
+      <span class="js-line-number2">14</span>}<br>
+      <span class="js-line-number2">15</span><br>
+      <span class="js-line-number2">16</span><span class="js-brown">save</span>() {<br>
+      <span class="js-line-number2">17</span>&nbsp;&nbsp;<span class="js-green">// If the form data is not valid</span><br>
+      <span class="js-line-number2">18</span>&nbsp;&nbsp;<span class="js-purple">if</span> (<span class="js-blue">this</span>._isFormValid() === <span class="js-blue">false</span>) <span class="js-purple">return</span>;<br>
+      <span class="js-line-number2">19</span><br>
+      <span class="js-line-number2">20</span>&nbsp;&nbsp;<span class="js-green">// Create new todo item</span><br>
+      <span class="js-line-number2">21</span>&nbsp;&nbsp;<span class="js-blue">const todo</span> = {<br>
+      <span class="js-line-number2">22</span>&nbsp;&nbsp;&nbsp;&nbsp;info: <span class="js-blue">this</span>._formData.info,<br>
+      <span class="js-line-number2">23</span>&nbsp;&nbsp;&nbsp;&nbsp;done: <span class="js-blue">this</span>._formData.done<br>
+      <span class="js-line-number2">24</span>&nbsp;&nbsp;};<br>
+      <span class="js-line-number2">25</span><br>
+      <span class="js-line-number2">26</span>&nbsp;&nbsp;<span class="js-green">// Add to list</span><br>
+      <span class="js-line-number2">27</span>&nbsp;&nbsp;<span class="js-blue">this</span>.todoList.<span class="js-brown">push</span>(<span class="js-blue">todo</span>);<br>
+      <span class="js-line-number2">28</span><br>
+      <span class="js-line-number2">29</span>&nbsp;&nbsp;<span class="js-green">// Set mode to blank</span><br>
+      <span class="js-line-number2">30</span>&nbsp;&nbsp;<span class="js-blue">this</span>.mode = <span class="js-green">0</span>;<br>
+      <span class="js-line-number2">31</span><br>
+      <span class="js-line-number2">32</span>&nbsp;&nbsp;<span class="js-green">// Update the areas</span><br>
+      <span class="js-line-number2">33</span>&nbsp;&nbsp;<span class="js-blue">this</span>._buttonAreaTemplate.<span class="js-brown">update</span>();<br>
+      <span class="js-line-number2">34</span>&nbsp;&nbsp;<span class="js-blue">this</span>._formAreaTemplate.<span class="js-brown">update</span>();<br>
+      <span class="js-line-number2">35</span><br>
+      <span class="js-line-number2">36</span>&nbsp;&nbsp;<span class="js-green">// Update the list</span><br>
+      <span class="js-line-number2">37</span>&nbsp;&nbsp;<span class="js-blue">this</span>._todoListTemplate.<span class="js-brown">update</span>();<br>
+      <span class="js-line-number2">38</span>}
+    </div>
+  </div>
+
+  <p>
+    If the form inputs are valid then the save button can be pressed. When pressed the controller's
+    <span class="label">save</span> function is called. This first double checks the form inputs are valid,
+    then creates the todo object and adds it to the list. The controller's status mode is reset to blank.
+    Finally, the area templates, including the list, are updated.
+  </p>
+    
+  <h3>Selecting and Updating</h3>
+
+  <p>
+    If you press on one of the list items it fires the inline <span class="label">onclick</span> event.
+    This calls the controller's <span class="label">select</span> function.
+  </p>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="js-source">
+      <span class="js-line-number">1</span><span class="js-brown">select</span>(indexText) {<br>
+      <span class="js-line-number">2</span>&nbsp;&nbsp;<span class="js-green">// Set current todo</span><br>
+      <span class="js-line-number">3</span>&nbsp;&nbsp;<span class="js-blue">this</span>.currentTodo = <span class="js-blue">this</span>.todoList[<span class="js-brown">parseInt</span>(index)];<br>
+      <span class="js-line-number">4</span><br>
+      <span class="js-line-number">5</span>&nbsp;&nbsp;<span class="js-green">// Set mode to edit</span><br>
+      <span class="js-line-number">6</span>&nbsp;&nbsp;<span class="js-blue">this</span>.mode = <span class="js-green">2</span>;<br>
+      <span class="js-line-number">7</span><br>
+      <span class="js-line-number">8</span>&nbsp;&nbsp;<span class="js-green">// Set the form data to the current one</span><br>
+      <span class="js-line-number">9</span>&nbsp;&nbsp;<span class="js-blue">this</span>._formData.info = <span class="js-blue">this</span>.currentTodo.info;<br>
+      <span class="js-line-number2">10</span>&nbsp;&nbsp;<span class="js-blue">this</span>._formData.done = <span class="js-blue">this</span>.currentTodo.done;<br>
+      <span class="js-line-number2">11</span><br>
+      <span class="js-line-number2">12</span>&nbsp;&nbsp;<span class="js-green">// Set form valid to valid</span><br>
+      <span class="js-line-number2">13</span>&nbsp;&nbsp;<span class="js-blue">this</span>.formValid = <span class="js-blue">true</span>;<br>
+      <span class="js-line-number2">14</span><br>
+      <span class="js-line-number2">15</span>&nbsp;&nbsp;<span class="js-green">// Update the areas</span><br>
+      <span class="js-line-number2">16</span>&nbsp;&nbsp;<span class="js-blue">this</span>._buttonAreaTemplate.<span class="js-brown">update</span>();<br>
+      <span class="js-line-number2">17</span>&nbsp;&nbsp;<span class="js-blue">this</span>._formAreaTemplate.<span class="js-brown">update</span>();<br>
+      <span class="js-line-number2">18</span><br>
+      <span class="js-line-number2">19</span>&nbsp;&nbsp;<span class="js-green">// Transfer the form data to the form inputs</span><br>
+      <span class="js-line-number2">20</span>&nbsp;&nbsp;<span class="js-blue">this</span>._form.<span class="js-brown">dataToForm</span>();<br>
+      <span class="js-line-number2">21</span>}<br>
+      <span class="js-line-number2">22</span><br>
+      <span class="js-line-number2">23</span><span class="js-brown">update</span>() {<br>
+      <span class="js-line-number2">24</span>&nbsp;&nbsp;<span class="js-green">// If the form data is not valid</span><br>
+      <span class="js-line-number2">25</span>&nbsp;&nbsp;<span class="js-purple">if</span> (<span class="js-blue">this</span>._isFormValid() === <span class="js-blue">false</span>) <span class="js-purple">return</span>;<br>
+      <span class="js-line-number2">26</span><br>
+      <span class="js-line-number2">27</span>&nbsp;&nbsp;<span class="js-green">// Update the current todo with the updated information</span><br>
+      <span class="js-line-number2">28</span>&nbsp;&nbsp;<span class="js-blue">this</span>.currentTodo.info = <span class="js-blue">this</span>._formData.info;<br>
+      <span class="js-line-number2">29</span>&nbsp;&nbsp;<span class="js-blue">this</span>.currentTodo.done = <span class="js-blue">this</span>._formData.done;<br>
+      <span class="js-line-number2">30</span><br>
+      <span class="js-line-number2">31</span>&nbsp;&nbsp;<span class="js-green">// Reset mode to blank</span><br>
+      <span class="js-line-number2">32</span>&nbsp;&nbsp;<span class="js-blue">this</span>.mode = <span class="js-green">0</span>;<br>
+      <span class="js-line-number2">33</span><br>
+      <span class="js-line-number2">34</span>&nbsp;&nbsp;<span class="js-green">// Update the areas</span><br>
+      <span class="js-line-number2">35</span>&nbsp;&nbsp;<span class="js-blue">this</span>._buttonAreaTemplate.<span class="js-brown">update</span>();<br>
+      <span class="js-line-number2">36</span>&nbsp;&nbsp;<span class="js-blue">this</span>._formAreaTemplate.<span class="js-brown">update</span>();<br>
+      <span class="js-line-number2">37</span><br>
+      <span class="js-line-number2">38</span>&nbsp;&nbsp;<span class="js-green">// Update the list</span><br>
+      <span class="js-line-number2">39</span>&nbsp;&nbsp;<span class="js-blue">this</span>._todoListTemplate.<span class="js-brown">update</span>();<br>
+      <span class="js-line-number2">40</span>}
+    </div>
+  </div>
+
+  <p>
+    If the form inputs are valid then the update button can be pressed. Pressing the update button
+    will end up calling the controller's <span class="label">update</span> function.
+    This first makes sure the form inputs are valid, then it resets the current todo item.
+    As we are updating the properties, we are still working with the item that exists in the array.
+    This means when we update the template list the new todo details will be shown.
+    After this the controller's status mode is reset to blank.
+    Finally, the area templates, including the list, are updated.
+  </p>
+
+  <h3>Deleting</h3>
+
+  <p>
+    Once a todo item has been selected then the delete button is shown. This can be pressed to remove
+    the todo item from the list.
+  </p>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="js-source">
+      <span class="js-line-number">1</span><span class="js-brown">delete</span>() {<br>
+      <span class="js-line-number">2</span>&nbsp;&nbsp;<span class="js-green">// Get the index of the current todo item</span><br>
+      <span class="js-line-number">3</span>&nbsp;&nbsp;<span class="js-blue">const</span> index = <span class="js-blue">this</span>.todoList.<span class="js-brown">indexOf</span>(<span class="js-blue">this</span>.currentTodo);<br>
+      <span class="js-line-number">4</span><br>
+      <span class="js-line-number">5</span>&nbsp;&nbsp;<span class="js-green">// If not found</span><br>
+      <span class="js-line-number">6</span>&nbsp;&nbsp;<span class="js-purple">if</span> (index === -<span class="js-green">1</span>) <span class="js-purple">return</span>;<br>
+      <span class="js-line-number">7</span><br>
+      <span class="js-line-number">8</span>&nbsp;&nbsp;<span class="js-green">// Remove the todo item from the list</span><br>
+      <span class="js-line-number">9</span>&nbsp;&nbsp;<span class="js-blue">this</span>.todoList.<span class="js-brown">splice</span>(index, <span class="js-green">1</span>);<br>
+      <span class="js-line-number2">10</span><br>
+      <span class="js-line-number2">11</span>&nbsp;&nbsp;<span class="js-green">// Reset mode to blank</span><br>
+      <span class="js-line-number2">12</span>&nbsp;&nbsp;<span class="js-blue">this</span>.mode = <span class="js-green">0</span>;<br>
+      <span class="js-line-number2">13</span><br>
+      <span class="js-line-number2">14</span>&nbsp;&nbsp;<span class="js-green">// Update the areas</span><br>
+      <span class="js-line-number2">15</span>&nbsp;&nbsp;<span class="js-blue">this</span>._buttonAreaTemplate.<span class="js-brown">update</span>();<br>
+      <span class="js-line-number2">16</span>&nbsp;&nbsp;<span class="js-blue">this</span>._formAreaTemplate.<span class="js-brown">update</span>();<br>
+      <span class="js-line-number2">17</span><br>
+      <span class="js-line-number2">18</span>&nbsp;&nbsp;<span class="js-green">// Update the list</span><br>
+      <span class="js-line-number2">19</span>&nbsp;&nbsp;<span class="js-blue">this</span>._todoListTemplate.<span class="js-brown">update</span>();<br>
+      <span class="js-line-number2">20</span>}
+    </div>
+  </div>
+
+  <p>
+    First we get the index of the current todo item in the list. Then we remove the todo item from the list.
+    Finally, we reset the controller status mode to blank and update all the template areas.
+  </p>
+
+  <h3>Putting it all together</h3>
+
+  <p>
+    The last thing we need to do is put everything together on a main page.
+  </p>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="js-source">
+      <span class="html-line-number">1</span><span class="html-brown">&lt;!DOCTYPE</span> <span class="html-red">html</span><span class="html-brown">&gt;</span><br>
+      <span class="html-line-number">2</span><span class="html-brown">&lt;html</span> <span class="html-red">lang</span>=<span class="html-blue">"en"</span><span class="html-brown">&gt;</span><br>
+      <span class="html-line-number">3</span><span class="html-brown">&lt;header&gt;</span><br>
+      <span class="html-line-number">4</span>&nbsp;&nbsp;<span class="html-brown">&lt;title&gt;</span>Tiny Web Application Framework - Example: Todo List<span class="html-brown">&lt;/title&gt;</span><br>
+      <span class="html-line-number">5</span>&nbsp;&nbsp;<span class="html-brown">&lt;script</span> <span class="html-red">type</span>=<span class="html-blue">"module"</span> <span class="html-red">src</span>=<span class="html-blue">"todo-list.js"</span><span class="html-brown">&gt;&lt;/script&gt;</span><br>
+      <span class="html-line-number">6</span><span class="html-brown">&lt;/header&gt;</span><br>
+      <span class="html-line-number">7</span><span class="html-brown">&lt;body&gt;</span><br>
+      <span class="html-line-number">8</span>&nbsp;&nbsp;<span class="html-brown">&lt;todo-list-controller&gt;&lt;/todo-list-controller&gt;</span><br>
+      <span class="html-line-number">9</span><span class="html-brown">&lt;/body&gt;</span><br>
+      <span class="html-line-number2">10</span><span class="html-brown">&lt;/html&gt;</span>
+    </div>
+  </div>
+    
+  <p>
+    We need to include the controller's JavaScript file.
+    Make sure you include the <span class="label">type="module"</span> attribute when working with web components.
+    Then simply add the controller's tag.
+    This is the <span class="label">&lt;todo-list-controller&gt;</span> parts.
+    You can see the page working <a class="source-link" href="../examples/todo-list/index.html">here</a>.
+  </p>
+
+</div>

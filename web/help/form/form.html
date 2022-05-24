@@ -1,0 +1,295 @@
+<!-- Form -->
+<div class="help-page">
+  <h2>Reference: Form</h2>
+  <span class="label">import Form from "/lib/tiny/form.js";</span>
+
+  <h3>Overview</h3>
+  <p>
+    The Form class is used to link properties in a data object with a forms input elements.
+    It can transfer data from a property to an input, and transfer it back.
+    This is used to perform two way data binding.
+  </p>
+  
+  <h3>Usage</h3>
+
+  <p>
+    Before we can link data to input elements we need to create the data object in JavaScript and the inputs in HTML.
+  </p>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="js-source">
+      <span class="js-line-number">1</span><span class="js-green">// Create form data</span><br>
+      <span class="js-line-number">2</span><span class="js-blue">this</span>._formData = {};<br>
+      <span class="js-line-number">3</span><span class="js-blue">this</span>._formData.info = <span class="js-red">''</span>;<br>
+      <span class="js-line-number">4</span><span class="js-blue">this</span>._formData.done = <span class="js-blue">false</span>;
+    </div>
+  </div>
+
+  <br>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="html-source">
+      <span class="html-line-number">1</span><span class="html-brown">&lt;input</span><br>
+      <span class="html-line-number">2</span>&nbsp;&nbsp;<span class="html-red">id</span>=<span class="html-blue">"formInfo"</span><br>
+      <span class="html-line-number">3</span>&nbsp;&nbsp;<span class="html-red">type</span>=<span class="html-blue">"text"</span><br>
+      <span class="html-line-number">4</span>&nbsp;&nbsp;<span class="html-red">placeholder</span>=<span class="html-blue">"what to do?"</span><span class="html-brown">&gt;</span><br>
+      <span class="html-line-number">5</span><span class="html-brown">&lt;input</span><br>
+      <span class="html-line-number">6</span>&nbsp;&nbsp;<span class="html-red">id</span>=<span class="html-blue">"formDone"</span><br>
+      <span class="html-line-number">7</span>&nbsp;&nbsp;<span class="html-red">type</span>=<span class="html-blue">"checkbox"</span><span class="html-brown">&gt;</span>
+    </div>
+  </div>
+
+  <p>
+    To create a link between the data and the input elements you need to create a Form object and then add in each
+    data property to input element link.
+  </p>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="js-source">
+      <span class="js-line-number">1</span><span class="js-green">// Create form (links form data to form inputs)</span><br>
+      <span class="js-line-number">2</span><span class="js-blue">this</span>._form = <span class="js-blue">new</span> <span class="js-gray">Form</span>(<span class="js-blue">this</span>._formData, <span class="js-blue">this</span>);<br>
+      <span class="js-line-number">3</span><br>
+      <span class="js-line-number">4</span><span class="js-green">// Add form inputs</span><br>
+      <span class="js-line-number">5</span><span class="js-blue">this</span>._form.<span class="js-brown">add</span>(<span class="js-red">'info'</span>, <span class="js-red">'formInfo'</span>);<br>
+      <span class="js-line-number">6</span><span class="js-blue">this</span>._form.<span class="js-brown">add</span>(<span class="js-red">'done'</span>, <span class="js-red">'formDone'</span>);
+    </div>
+  </div>
+
+  <p>
+    To move data between the data and the form inputs you call either <span class="label">dataToForm</span> or <span class="label">formToData</span>.
+  </p>
+
+  <div class="source-window">
+    <div class="source-window-header">
+      <div class="source-window-dot source-window-dot1"></div>
+      <div class="source-window-dot source-window-dot2"></div>
+      <div class="source-window-dot source-window-dot3"></div>
+    </div>
+    <div class="js-source">
+      <span class="js-line-number">1</span><span class="js-green">// Set form data</span><br>
+      <span class="js-line-number">2</span><span class="js-blue">this</span>._form.<span class="js-brown">dataToForm</span>();<br>
+      <span class="js-line-number">3</span><br>
+      <span class="js-line-number">4</span><span class="js-green">// Get form data</span><br>
+      <span class="js-line-number">5</span><span class="js-blue">this</span>._form.<span class="js-brown">formToData</span>();
+    </div>
+  </div>
+
+  <p>
+    The properties data type is taken into account when moving it from the data into the form inputs and back again.
+    For example, if the property is a number and the input is text based, then it will take whatever the user entered
+    and convert it into a number value, and not set it as a string.
+  </p>
+
+  <p class="help-warning">
+    <b>WARNING:</b>
+    The form data properties must be set to the right type before using them. For example, do not set the <span class="label">info</span> property
+    to <span class="label">null</span> or <span class="label">undefined</span>. It is a string so set it to an empty string to start with.
+  </p>
+    
+  <h3>Constructor</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Information</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>data</td>
+        <td><span class="label-type">Object</span></td>
+        <td>
+          The data object that contains different properties that will be linked to different input elements.
+          <span class="label-required">Required</span>
+        </td>
+      </tr>
+      <tr>
+        <td>controller</td>
+        <td><span class="label-type">Controller</span></td>
+        <td>
+          A class derived from the Controller class.
+          <span class="label-required">Required</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    This creates a Form object. It will use the data object and the controller to transfer between the data properties and the input elements.
+  </p>
+
+  <h3>add</h3>
+
+  <p>
+    Add a link between a property of the data and an input element.
+  </p>
+
+  <h4>Parameters:</h4>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Information</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>propertyName</td>
+        <td><span class="label-type">string</span></td>
+        <td>
+          The name of the property in the data.
+          <span class="label-required">Required</span>
+        </td>
+      </tr>
+      <tr>
+        <td>inputElementId</td>
+        <td><span class="label-type">string</span></td>
+        <td>
+          The id attribute value of the input element that the property is linked to.
+          <span class="label-required">Required</span>
+        </td>
+      </tr>
+      <tr>
+        <td>translateFunction</td>
+        <td><span class="label-type">function</span></td>
+        <td>
+          If the input requires special handling when translating data to and from the data then you can supply your own
+          translate function.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>dataToForm</h3>
+
+  <p>
+    For each link added to the form, it will transfer the information in the data properties into the input elements they are linked.
+  </p>
+
+  <h3>formToData</h3>
+
+  <p>
+    For each link added to the form, it will transfer the information in the input elements into the data properties. It will try to convert
+    the information based on the data property's type. So text input will be converted into a number if the property was a number to start with.
+  </p>
+
+  <h3>refresh</h3>
+
+  <p>
+    Refresh the form inputs so they contain the same values they had the last time they where updated.
+    This is used to reset the form elements after they have been recreated by using the <span class="label">Template.update()</span> function.
+  </p>
+
+  <h3>clear</h3>
+
+  <p>
+    Clear all the form inputs so they are empty and blank.
+  </p>
+
+  <h3>setData</h3>
+
+  <p>
+    Normally you only use the data object you setup the Form object with. But if you need, you can reset the data object, with its new set of
+    property values.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Information</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>data</td>
+        <td><span class="label-type">Object</span></td>
+        <td>
+          The data object that contains different properties that will be linked to different input elements.
+          <span class="label-required">Required</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>translateFunction</h3>
+
+  <p>
+    When adding a link between a data property and an input element, you can give your own translate function.
+    Moving the information between the two isn't always simple, so some extra work will need to be done.
+  </p>
+
+  <h4>Parameters:</h4>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Information</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>data</td>
+        <td><span class="label-type">Object</span></td>
+        <td>
+          The data object that contains different properties.
+        </td>
+      </tr>
+      <tr>
+        <td>propertyName</td>
+        <td><span class="label-type">string</span></td>
+        <td>
+          The name of the property that is being processed.
+        </td>
+      </tr>
+      <tr>
+        <td>element</td>
+        <td><span class="label-type">Element</span></td>
+        <td>
+          The element the property is linked to.
+        </td>
+      </tr>
+      <tr>
+        <td>task</td>
+        <td><span class="label-type">number</span></td>
+        <td>
+          The task the function is required to perform.<br>
+          <ul>
+            <li><b>1</b> = Clear all form inputs</li>
+            <li><b>2</b> = Data to form transfer</li>
+            <li><b>3</b> = Form to data transfer</li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4>Returns:</h4>
+
+  <p>
+    The name of the attribute used by the input element to get/set its value.
+  </p>
+ 
+</div>
