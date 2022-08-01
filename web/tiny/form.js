@@ -162,10 +162,12 @@ export default class Form {
                 // If element is found
                 if (element !== null) {
                     // If selection start is set
-                    if (this.activeElement.selectionStart !== undefined) element.selectionStart = this.activeElement.selectionStart;
+                    if (this.activeElement.selectionStart !== undefined &&
+                        this.activeElement.selectionStart !== null) element.selectionStart = this.activeElement.selectionStart;
 
                     // If selection end is set
-                    if (this.activeElement.selectionEnd !== undefined) element.selectionEnd = this.activeElement.selectionEnd;
+                    if (this.activeElement.selectionEnd !== undefined &&
+                        this.activeElement.selectionEnd !== null) element.selectionEnd = this.activeElement.selectionEnd;
 
                     // Give the element the focus
                     element.focus();

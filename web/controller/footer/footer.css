@@ -78,6 +78,46 @@
 .footer-link > a:visited { text-decoration: none; color: gray; }
 .footer-link > a:active { text-decoration: none; color: gray;}
 
+.footer-info-donate {
+  display: grid;
+  grid-template-columns: 2rem auto;
+  grid-template-rows: 2rem;
+  align-content: center;
+  gap: 0.5rem;
+}
+
+.footer-info-donate > icon-dollar-ring {
+  grid-column: 1;
+  fill: #277da1;
+  display: inline-block;
+}
+
+.footer-info-donate > span {
+  grid-column: 2;
+  font-size: 1.5rem;
+  vertical-align: middle;
+  color: rgb(48, 48, 48);
+  user-select: none;
+}
+
+.footer-info-donate-extra {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color:gray;
+  display: block;
+}
+
+.footer-info-donate:link { text-decoration: none; }
+.footer-info-donate:hover { text-decoration: none; }
+.footer-info-donate:visited { text-decoration: none; }
+.footer-info-donate:active { text-decoration: none; }
+
+.footer-info-donate-extra:link { text-decoration: none; }
+.footer-info-donate-extra:hover { text-decoration: none; }
+.footer-info-donate-extra:visited { text-decoration: none; }
+.footer-info-donate-extra:active { text-decoration: none; }
+
 @media (max-width: 81rem) {
   .footer {
     grid-template-columns: 4rem auto 4rem;

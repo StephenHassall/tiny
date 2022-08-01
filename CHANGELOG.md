@@ -2,6 +2,9 @@
 
 Information about all releases and changes to the Tiny Web Application Framework will appear here.
 
+## __1.6__ - 1 August 2022
+- **Bug:** The Form.refresh function was not working correctly with Radio buttons.
+
 ## __1.5__ - 21 May 2022
 
 - **New:** Added route option to automatically scroll to the top of the page when it is inserted.

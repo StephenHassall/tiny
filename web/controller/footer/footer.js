@@ -1,4 +1,5 @@
 import Controller from "./../../tiny/controller.js";
+import "./../../dollar-ring.js";
 
 /**
  * Footer controller
