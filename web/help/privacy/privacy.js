@@ -1,4 +1,4 @@
-import Controller from "./../../tiny/controller.js";
+import Controller from "./../../../tiny/controller.js";
 
 /**
  * Privacy controller
@@ -12,11 +12,10 @@ export default class PrivacyController extends Controller {
         // Call the super with the page to load
         super({
             htmlPath: 'privacy.html',
-            cssPath: 'privacy.css',
+            cssPath: './../help.css',
             importMetaUrl: import.meta.url,
             useShadowDom: true
         });
-
     }
 }
  

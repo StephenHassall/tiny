@@ -109,6 +109,24 @@ export default class HelpAppRoute extends Route {
             controllerTagName: 'release-notes-controller',
             autoScroll: true
         });
+        this.add({
+            path: '/privacy',
+            javaScriptPath: 'privacy/privacy.js',
+            controllerTagName: 'privacy-controller',
+            autoScroll: true
+        });
+        this.add({
+            path: '/license',
+            javaScriptPath: 'license/license.js',
+            controllerTagName: 'license-controller',
+            autoScroll: true
+        });
+        this.add({
+            path: '/terms',
+            javaScriptPath: 'terms/terms.js',
+            controllerTagName: 'terms-controller',
+            autoScroll: true
+        });
 
         // Add default view
         this.default({

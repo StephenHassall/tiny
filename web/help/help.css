@@ -25,12 +25,22 @@
   margin-bottom: 0.5rem;
 }
 
+.help-page p {
+  line-height: 1.75;
+  font-size: 1.2rem;
+}
+
 .help-page table {
   border-collapse: collapse;
 }
 
 .help-page  ul {
   list-style: none;
+}
+
+.help-page li {
+  line-height: 1.75;
+  font-size: 1.2rem;  
 }
 
 .help-page ul > li::before {
