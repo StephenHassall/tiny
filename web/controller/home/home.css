@@ -2,6 +2,15 @@
  * Home styles
  */
 
+.deprecated {
+  border: 4px dashed gold;
+  border-radius: 1rem;
+  background-color: rgb(248, 236, 165);
+  font-size: large;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 .home {
   display: grid;
   grid-template-columns: auto 80rem auto;

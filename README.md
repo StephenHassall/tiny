@@ -1,10 +1,14 @@
 # Tiny Web Application Framework
 
+>I have come to the conclusion that any framework, even a tiny one, is now no longer required. You can perform most of the tasks required using Web Components and JavaScript classes and modules.
+>
+>This framework is now deprecated. The domain has been removed but you can still find it at [tiny-web-framework.netlify.com](https://tiny-web-framework.netlify.com)
+>
+>For information able how to use Web Components and other interesting stuff, go to my main site at [CodeRunDebug.com](https://CodeRunDebug.com)
+
 Build websites without unnecessary complexity. Use existing standards in a simple way.
 
 No build tools. No TypeScript. No JSX. No mountain of code to learn. No framework that goes out of date in a month. Just a small library and simple code.
-
-For more details, visit [Tiny Web Application Framework](http://tinywebapplicationframework.com).
 
 **Model-View-Controller (MVC)**
 
