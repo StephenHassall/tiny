@@ -2,7 +2,8 @@
 
 >I have come to the conclusion that any framework, even a tiny one, is now no longer required. You can perform most of the tasks required using Web Components and JavaScript classes and modules.
 >
->This framework is now deprecated. The domain has been removed but you can still find it at [tiny-web-framework.netlify.com](https://tiny-web-framework.netlify.com)
+>This framework is now deprecated. The domain has been removed but you can still find it at [tiny-web-framework.netlify.app](https://tiny-web-framework.netlify.app)
+
 >
 >For information able how to use Web Components and other interesting stuff, go to my main site at [CodeRunDebug.com](https://CodeRunDebug.com)
 
